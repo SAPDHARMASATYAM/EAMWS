@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 
 	<name>EAS</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Exams Adda Application Services</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
