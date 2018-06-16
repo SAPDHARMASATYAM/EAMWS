@@ -1,6 +1,11 @@
 package in.co.examsadda.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+	@Id
 	private String emailId;
 	private String password;
 	private String securityQuestion1;
