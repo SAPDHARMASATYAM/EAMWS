@@ -4,6 +4,8 @@ public class Option {
 	private Integer optionId;
 	private Character optionIndicator;
 	private String optionValueInEnglish;
+	private String optionImageInEnglishURL;
+	private String optionImageRegionalURL;
 	private String optionValueInRegional;
 	private Integer questionId;
 	private Boolean active;
@@ -18,15 +20,20 @@ public class Option {
 	 * @param optionId
 	 * @param optionIndicator
 	 * @param optionValueInEnglish
+	 * @param optionImageInEnglishURL
+	 * @param optionImageRegionalURL
 	 * @param optionValueInRegional
 	 * @param questionId
 	 * @param active
 	 */
 	public Option(Integer optionId, Character optionIndicator, String optionValueInEnglish,
-			String optionValueInRegional, Integer questionId, Boolean active) {
+			String optionImageInEnglishURL, String optionImageRegionalURL, String optionValueInRegional,
+			Integer questionId, Boolean active) {
 		this.optionId = optionId;
 		this.optionIndicator = optionIndicator;
 		this.optionValueInEnglish = optionValueInEnglish;
+		this.optionImageInEnglishURL = optionImageInEnglishURL;
+		this.optionImageRegionalURL = optionImageRegionalURL;
 		this.optionValueInRegional = optionValueInRegional;
 		this.questionId = questionId;
 		this.active = active;
@@ -66,6 +73,30 @@ public class Option {
 	 */
 	public void setOptionValueInEnglish(String optionValueInEnglish) {
 		this.optionValueInEnglish = optionValueInEnglish;
+	}
+	/**
+	 * @return the optionImageInEnglishURL
+	 */
+	public String getOptionImageInEnglishURL() {
+		return optionImageInEnglishURL;
+	}
+	/**
+	 * @param optionImageInEnglishURL the optionImageInEnglishURL to set
+	 */
+	public void setOptionImageInEnglishURL(String optionImageInEnglishURL) {
+		this.optionImageInEnglishURL = optionImageInEnglishURL;
+	}
+	/**
+	 * @return the optionImageRegionalURL
+	 */
+	public String getOptionImageRegionalURL() {
+		return optionImageRegionalURL;
+	}
+	/**
+	 * @param optionImageRegionalURL the optionImageRegionalURL to set
+	 */
+	public void setOptionImageRegionalURL(String optionImageRegionalURL) {
+		this.optionImageRegionalURL = optionImageRegionalURL;
 	}
 	/**
 	 * @return the optionValueInRegional
@@ -109,8 +140,9 @@ public class Option {
 	@Override
 	public String toString() {
 		return "Option [optionId=" + optionId + ", optionIndicator=" + optionIndicator + ", optionValueInEnglish="
-				+ optionValueInEnglish + ", optionValueInRegional=" + optionValueInRegional + ", questionId="
-				+ questionId + ", active=" + active + "]";
+				+ optionValueInEnglish + ", optionImageInEnglishURL=" + optionImageInEnglishURL
+				+ ", optionImageRegionalURL=" + optionImageRegionalURL + ", optionValueInRegional="
+				+ optionValueInRegional + ", questionId=" + questionId + ", active=" + active + "]";
 	}
 	
 }

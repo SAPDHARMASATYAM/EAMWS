@@ -4,8 +4,8 @@ public class Question {
 	private Integer questionId;
 	private String questionInEnglish;
 	private String questionInRegional;
-	private Byte [] questionImageInEnglish;
-	private Byte [] questionImageInRegional;
+	private String questionImageInEnglishURL;
+	private String questionImageInRegionalURL;
 	private Integer numberOfOptions;
 	private Character answer;
 	private Integer sectionId;
@@ -14,26 +14,25 @@ public class Question {
 	 */
 	public Question() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param questionId
 	 * @param questionInEnglish
 	 * @param questionInRegional
-	 * @param questionImageInEnglish
-	 * @param questionImageInRegional
+	 * @param questionImageInEnglishURL
+	 * @param questionImageInRegionalURL
 	 * @param numberOfOptions
 	 * @param answer
 	 * @param sectionId
 	 */
 	public Question(Integer questionId, String questionInEnglish, String questionInRegional,
-			Byte[] questionImageInEnglish, Byte[] questionImageInRegional, Integer numberOfOptions, Character answer,
-			Integer sectionId) {
+			String questionImageInEnglishURL, String questionImageInRegionalURL, Integer numberOfOptions,
+			Character answer, Integer sectionId) {
 		this.questionId = questionId;
 		this.questionInEnglish = questionInEnglish;
 		this.questionInRegional = questionInRegional;
-		this.questionImageInEnglish = questionImageInEnglish;
-		this.questionImageInRegional = questionImageInRegional;
+		this.questionImageInEnglishURL = questionImageInEnglishURL;
+		this.questionImageInRegionalURL = questionImageInRegionalURL;
 		this.numberOfOptions = numberOfOptions;
 		this.answer = answer;
 		this.sectionId = sectionId;
@@ -75,28 +74,28 @@ public class Question {
 		this.questionInRegional = questionInRegional;
 	}
 	/**
-	 * @return the questionImageInEnglish
+	 * @return the questionImageInEnglishURL
 	 */
-	public Byte[] getQuestionImageInEnglish() {
-		return questionImageInEnglish;
+	public String getQuestionImageInEnglishURL() {
+		return questionImageInEnglishURL;
 	}
 	/**
-	 * @param questionImageInEnglish the questionImageInEnglish to set
+	 * @param questionImageInEnglishURL the questionImageInEnglishURL to set
 	 */
-	public void setQuestionImageInEnglish(Byte[] questionImageInEnglish) {
-		this.questionImageInEnglish = questionImageInEnglish;
+	public void setQuestionImageInEnglishURL(String questionImageInEnglishURL) {
+		this.questionImageInEnglishURL = questionImageInEnglishURL;
 	}
 	/**
-	 * @return the questionImageInRegional
+	 * @return the questionImageInRegionalURL
 	 */
-	public Byte[] getQuestionImageInRegional() {
-		return questionImageInRegional;
+	public String getQuestionImageInRegionalURL() {
+		return questionImageInRegionalURL;
 	}
 	/**
-	 * @param questionImageInRegional the questionImageInRegional to set
+	 * @param questionImageInRegionalURL the questionImageInRegionalURL to set
 	 */
-	public void setQuestionImageInRegional(Byte[] questionImageInRegional) {
-		this.questionImageInRegional = questionImageInRegional;
+	public void setQuestionImageInRegionalURL(String questionImageInRegionalURL) {
+		this.questionImageInRegionalURL = questionImageInRegionalURL;
 	}
 	/**
 	 * @return the numberOfOptions
@@ -140,8 +139,9 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", questionInEnglish=" + questionInEnglish
-				+ ", questionInRegional=" + questionInRegional + ", numberOfOptions=" + numberOfOptions + ", answer="
-				+ answer + ", sectionId=" + sectionId + "]";
+				+ ", questionInRegional=" + questionInRegional + ", questionImageInEnglishURL="
+				+ questionImageInEnglishURL + ", questionImageInRegionalURL=" + questionImageInRegionalURL
+				+ ", numberOfOptions=" + numberOfOptions + ", answer=" + answer + ", sectionId=" + sectionId + "]";
 	}
 	
 }
