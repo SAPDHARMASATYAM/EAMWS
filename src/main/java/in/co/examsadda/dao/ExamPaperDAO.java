@@ -1,13 +1,37 @@
 package in.co.examsadda.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import in.co.examsadda.entity.PracticePaper;
 import in.co.examsadda.model.ExamPaper;
+import in.co.examsadda.util.ExamsAddaConstants;
 
 public class ExamPaperDAO{
 
+	Connection connection;
 	
-	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) {
+	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId,Integer examId) throws Exception{
+	PreparedStatement findExamPaperstatement = null;
+	ResultSet findExamResultSet = null;
+	ExamPaper examPaper = new ExamPaper();
+	PracticePaper paper = new PracticePaper();
+	try {
+		findExamPaperstatement = connection.prepareStatement(ExamsAddaConstants.FINDEXAMPAPERBYPAPERID);
+		
+		findExamResultSet = findExamPaperstatement.executeQuery();
+		while(findExamResultSet.next()) {
+			paper.setPaperNameInEnglish(findExamResultSet.getString("paperNameInEnglish"));
+			paper.setPaperNameInRegional(findExamResultSet.getString("paperNameInRegional"));
+			paper.setDuration(findExamResultSet.getInt("duration"));
+		}
+		
+	}catch (SQLException sqle) {
+		throw sqle;
+	}
 		return null;
 	}
 
@@ -37,7 +61,7 @@ public class ExamPaperDAO{
 
 	
 	public String deleteExamPaperByExamPaperId(Integer examPaperId) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

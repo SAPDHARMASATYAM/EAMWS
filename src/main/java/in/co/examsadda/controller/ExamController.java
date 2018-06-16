@@ -21,7 +21,7 @@ public class ExamController {
 
 	/*This method is for single practice paper based on practice paper id*/
 	@RequestMapping(value = "/getExamPaperByExamPaperId", method = RequestMethod.GET, produces = "application/json")
-	public ExamPaper getExamPaperByExamPaperId(@RequestParam(name="examPaperId") Integer examPaperId) {
+	public ExamPaper getExamPaperByExamPaperId(@RequestParam(name="examPaperId") Integer examPaperId) throws Exception {
 		return examPaperService.findExamPaperByExamPaperId(examPaperId);
 	}
 	@RequestMapping(value = "/getExamPapersByExamId", method = RequestMethod.GET, produces = "application/json")

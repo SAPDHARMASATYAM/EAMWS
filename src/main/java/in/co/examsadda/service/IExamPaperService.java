@@ -6,7 +6,7 @@ import in.co.examsadda.model.ExamPaper;
 
 public interface IExamPaperService {
 
-	ExamPaper findExamPaperByExamPaperId(Integer examPaperId) ;
+	ExamPaper findExamPaperByExamPaperId(Integer examPaperId,Integer examId) throws Exception ;
 	List<ExamPaper> findExamPapersByExamId(Integer examId);
 	String saveExamPaper(ExamPaper examPaper);
 	String saveExamPapers(List<ExamPaper> examPapers);
