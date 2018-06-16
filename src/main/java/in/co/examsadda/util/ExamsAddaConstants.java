@@ -3,6 +3,9 @@ package in.co.examsadda.util;
 public class ExamsAddaConstants {
 
 	public final static String FINDEXAMPAPERBYPAPERID="findExamPaperByExamPaperIdQuery";
+	public final static String FINDSECTIONBYID="findSectionBysectionByIdQuery";
+	public final static String FINDQUESTIONBYID="findquesrtionByIdQuery";
+	
 	public final static String FINDEXAMPAPERSBYEXAMID="findExamPapersByExamIdQuery";
 	public final static String SAVEEXAMPAPER="saveExamPaperQuery";
 	public final static String SAVEEXAMPAPERS="saveExamPapersQuery"; 
