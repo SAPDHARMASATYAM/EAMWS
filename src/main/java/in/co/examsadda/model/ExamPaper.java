@@ -1,5 +1,6 @@
 package in.co.examsadda.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.co.examsadda.entity.PracticePaper;
@@ -12,8 +13,8 @@ public class ExamPaper {
 	 * 
 	 */
 	public ExamPaper() {
-		super();
-		// TODO Auto-generated constructor stub
+		examPaper = new PracticePaper();
+		sections = new ArrayList<ExamSection>();
 	}
 	/**
 	 * @param examPaper

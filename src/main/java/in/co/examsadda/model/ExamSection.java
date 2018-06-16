@@ -1,5 +1,6 @@
 package in.co.examsadda.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.co.examsadda.entity.Section;
@@ -19,8 +20,8 @@ public class ExamSection {
 	 * 
 	 */
 	public ExamSection() {
-		super();
-		// TODO Auto-generated constructor stub
+		section = new Section();
+		questions = new ArrayList<>();
 	}
 	/**
 	 * @return the section

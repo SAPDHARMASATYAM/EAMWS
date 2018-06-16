@@ -12,7 +12,7 @@ public class ExamPaperService implements IExamPaperService {
 	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) {
 	
-		return null;
+		return new ExamPaper();
 	}
 
 	@Override
