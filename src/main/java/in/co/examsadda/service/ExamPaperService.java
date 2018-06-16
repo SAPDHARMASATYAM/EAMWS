@@ -2,17 +2,21 @@ package in.co.examsadda.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import in.co.examsadda.dao.ExamPaperDAO;
 import in.co.examsadda.model.ExamPaper;
 
 @Service
 public class ExamPaperService implements IExamPaperService {
 
+	@Autowired
+	private ExamPaperDAO examPaperServiceImpl;
 	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) {
 	
-		return new ExamPaper();
+		return examPaperServiceImpl.findExamPaperByExamPaperId(examPaperId);
 	}
 
 	@Override

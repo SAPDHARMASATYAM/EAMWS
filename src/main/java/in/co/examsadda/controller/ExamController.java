@@ -19,6 +19,7 @@ public class ExamController {
 	@Autowired
 	private IExamPaperService examPaperService;
 
+	/*This method is for single practice paper based on practice paper id*/
 	@RequestMapping(value = "/getExamPaperByExamPaperId", method = RequestMethod.GET, produces = "application/json")
 	public ExamPaper getExamPaperByExamPaperId(@RequestParam(name="examPaperId") Integer examPaperId) {
 		return examPaperService.findExamPaperByExamPaperId(examPaperId);
@@ -38,8 +39,8 @@ public class ExamController {
 		return examPaperService.saveExamPapers(examPapers);
 	}
 
-	@RequestMapping(value = "/updateExamPaperByExamId", method = RequestMethod.PUT, produces = "application/json")
-	public String updateExamPaperByExamId(@RequestBody ExamPaper examPaper) {
+	@RequestMapping(value = "/updateExamPaperByExamPaperId", method = RequestMethod.PUT, produces = "application/json")
+	public String updateExamPaperByExamPaperId(@RequestBody ExamPaper examPaper) {
 		return examPaperService.updateExamPaperByExamId(examPaper);
 	}
 
