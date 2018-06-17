@@ -1,6 +1,18 @@
 package in.co.examsadda.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="institute")
 public class Institute {
+	@Id
+	@Column(name="instituteId")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer instituteId;
 	private String nameInEnglish;
 	private String nameInRegional;

@@ -1,6 +1,18 @@
 package in.co.examsadda.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="practice_paper")
 public class PracticePaper {
+	@Id
+	@Column(name="paperId")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer paperId;
 	private String paperNameInEnglish;
 	private String paperNameInRegional;
@@ -11,8 +23,6 @@ public class PracticePaper {
 	 * 
 	 */
 	public PracticePaper() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param paperId

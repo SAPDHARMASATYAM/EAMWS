@@ -1,6 +1,12 @@
 package in.co.examsadda.entity;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class UserProfile {
+	
 	private String emailId;
 	private String firstName;
 	private String lastName;
