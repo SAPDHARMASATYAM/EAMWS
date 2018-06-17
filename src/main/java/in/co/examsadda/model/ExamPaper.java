@@ -7,13 +7,13 @@ import in.co.examsadda.entity.PracticePaper;
 
 public class ExamPaper {
 	
-	private PracticePaper examPaper;
+	private PracticePaper practicePaper;
 	private List<ExamSection> sections;
 	/**
 	 * 
 	 */
 	public ExamPaper() {
-		examPaper = new PracticePaper();
+		practicePaper = new PracticePaper();
 		sections = new ArrayList<ExamSection>();
 	}
 	/**
@@ -21,20 +21,20 @@ public class ExamPaper {
 	 * @param sections
 	 */
 	public ExamPaper(PracticePaper examPaper, List<ExamSection> sections) {
-		this.examPaper = examPaper;
+		this.practicePaper = examPaper;
 		this.sections = sections;
 	}
 	/**
 	 * @return the examPaper
 	 */
 	public PracticePaper getExamPaper() {
-		return examPaper;
+		return practicePaper;
 	}
 	/**
 	 * @param examPaper the examPaper to set
 	 */
 	public void setExamPaper(PracticePaper examPaper) {
-		this.examPaper = examPaper;
+		this.practicePaper = examPaper;
 	}
 	/**
 	 * @return the sections
@@ -53,7 +53,7 @@ public class ExamPaper {
 	 */
 	@Override
 	public String toString() {
-		return "ExamPaper [examPaper=" + examPaper + ", sections=" + sections + "]";
+		return "ExamPaper [examPaper=" + practicePaper + ", sections=" + sections + "]";
 	}
 	
 	

@@ -5,18 +5,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import in.co.examsadda.dao.ExamPaperDAO;
+import in.co.examsadda.crud.repository.OptionRepository;
+import in.co.examsadda.crud.repository.QuestionRepository;
+import in.co.examsadda.crud.repository.SectionRepository;
+import in.co.examsadda.entity.PracticePaper;
 import in.co.examsadda.model.ExamPaper;
 
 @Service
 public class ExamPaperService implements IExamPaperService {
+	
+	@Autowired
+	PracticePaperService practicePaperService;
 
-//	@Autowired
-	private ExamPaperDAO examPaperServiceImpl;
+	@Autowired
+	private QuestionRepository questionRepository;
+	@Autowired
+	private OptionRepository optionRepository;
 	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
-	
-		return examPaperServiceImpl.findExamPaperByExamPaperId(examPaperId);
+		ExamPaper examPaper = new ExamPaper();
+		
+		// Reading practice paper details
+		PracticePaper practicePaper = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
+		examPaper.setExamPaper(practicePaper);
+		return examPaper;
 	}
 
 	@Override
