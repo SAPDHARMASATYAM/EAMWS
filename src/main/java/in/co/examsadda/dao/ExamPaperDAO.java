@@ -14,7 +14,7 @@ public class ExamPaperDAO{
 
 	Connection connection;
 	
-	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId,Integer examId) throws Exception{
+	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception{
 	PreparedStatement findExamPaperstatement = null;
 	PreparedStatement findSectionStatement = null;
 	PreparedStatement findQuestionsStatement = null;
@@ -26,7 +26,6 @@ public class ExamPaperDAO{
 		findSectionStatement = connection.prepareStatement(ExamsAddaConstants.FINDSECTIONBYID);
 		findQuestionsStatement = connection.prepareStatement(ExamsAddaConstants.FINDQUESTIONBYID);
 		findExamPaperstatement.setInt(1, examPaperId);
-		findExamPaperstatement.setInt(2, examId);
 		findExamResultSet = findExamPaperstatement.executeQuery();
 		while(findExamResultSet.next()) {
 			paper.setPaperNameInEnglish(findExamResultSet.getString("paperNameInEnglish"));

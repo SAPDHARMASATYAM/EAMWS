@@ -14,9 +14,9 @@ public class ExamPaperService implements IExamPaperService {
 	@Autowired
 	private ExamPaperDAO examPaperServiceImpl;
 	@Override
-	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId,Integer examId) throws Exception {
+	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
 	
-		return examPaperServiceImpl.findExamPaperByExamPaperId(examPaperId,examId);
+		return examPaperServiceImpl.findExamPaperByExamPaperId(examPaperId);
 	}
 
 	@Override
