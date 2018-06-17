@@ -11,7 +11,7 @@ import in.co.examsadda.model.ExamPaper;
 @Service
 public class ExamPaperService implements IExamPaperService {
 
-	@Autowired
+//	@Autowired
 	private ExamPaperDAO examPaperServiceImpl;
 	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {

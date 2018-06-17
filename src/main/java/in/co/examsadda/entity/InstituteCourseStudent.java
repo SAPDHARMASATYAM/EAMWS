@@ -1,9 +1,11 @@
 package in.co.examsadda.entity;
 
+//@Entity
 public class InstituteCourseStudent {
 	private Integer instituteId;
 	private Integer courseId;
 	private Integer studentId;
+	private Boolean active;
 	/**
 	 * 
 	 */
@@ -15,11 +17,13 @@ public class InstituteCourseStudent {
 	 * @param instituteId
 	 * @param courseId
 	 * @param studentId
+	 * @param active
 	 */
-	public InstituteCourseStudent(Integer instituteId, Integer courseId, Integer studentId) {
+	public InstituteCourseStudent(Integer instituteId, Integer courseId, Integer studentId, Boolean active) {
 		this.instituteId = instituteId;
 		this.courseId = courseId;
 		this.studentId = studentId;
+		this.active = active;
 	}
 	/**
 	 * @return the instituteId
@@ -57,13 +61,26 @@ public class InstituteCourseStudent {
 	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
 	}
+	/**
+	 * @return the active
+	 */
+	public Boolean getActive() {
+		return active;
+	}
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "InstituteCourseStudent [instituteId=" + instituteId + ", courseId=" + courseId + ", studentId="
-				+ studentId + "]";
+				+ studentId + ", active=" + active + "]";
 	}
+	
 
 }
