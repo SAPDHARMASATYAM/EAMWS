@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.co.examsadda.model.ExamPaper;
+import in.co.examsadda.service.ExamPaperService;
 import in.co.examsadda.service.IExamPaperService;
 
 @RestController
@@ -17,7 +18,7 @@ import in.co.examsadda.service.IExamPaperService;
 public class ExamController {
 	
 	@Autowired
-	private IExamPaperService examPaperService;
+	private ExamPaperService examPaperService;
 
 	/*This method is for single practice paper based on practice paper id*/
 	@RequestMapping(value = "/getExamPaperByExamPaperId", method = RequestMethod.GET, produces = "application/json")
