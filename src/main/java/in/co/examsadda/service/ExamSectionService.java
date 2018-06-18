@@ -24,7 +24,7 @@ public class ExamSectionService {
 		Section section = sectionRepository.findById(sectionId).get();
 		examSection.setSection(section);
 		List<QuestionOptions> questionsBySectionId = questionService.getQuestionsBySectionId(section.getSectionId());
-		//TODO need to resolve complexity here.
+		// TODO need to resolve complexity here.
 		SectionQuestions sectionQuestions = new SectionQuestions(questionsBySectionId);
 		examSection.setQuestions(sectionQuestions);
 		return examSection;
@@ -33,7 +33,7 @@ public class ExamSectionService {
 	public List<ExamSection> getAllSectionsByPracticepaperId(Integer practicePaperId) {
 		List<ExamSection> sectionsListByExamPaper = new ArrayList<>();
 		List<Section> sectionsListByExam = sectionRepository.findAllByPracticePaperId(practicePaperId);
-		for(Section section: sectionsListByExam) {
+		for (Section section : sectionsListByExam) {
 			ExamSection examSection = getSectionBySectionId(section.getSectionId());
 			sectionsListByExamPaper.add(examSection);
 		}
