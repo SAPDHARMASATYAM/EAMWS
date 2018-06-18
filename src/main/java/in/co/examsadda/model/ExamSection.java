@@ -1,27 +1,24 @@
 package in.co.examsadda.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import in.co.examsadda.entity.Section;
 
 public class ExamSection {
 	private Section section;
-	private List<SectionQuestion> questions;
-	/**
-	 * @param section
-	 * @param questions
-	 */
-	public ExamSection(Section section, List<SectionQuestion> questions) {
-		this.section = section;
-		this.questions = questions;
-	}
+	private SectionQuestions questions;
 	/**
 	 * 
 	 */
 	public ExamSection() {
 		section = new Section();
-		questions = new ArrayList<>();
+		questions = new SectionQuestions();
+	}
+	/**
+	 * @param section
+	 * @param questions
+	 */
+	public ExamSection(Section section, SectionQuestions questions) {
+		this.section = section;
+		this.questions = questions;
 	}
 	/**
 	 * @return the section
@@ -38,13 +35,13 @@ public class ExamSection {
 	/**
 	 * @return the questions
 	 */
-	public List<SectionQuestion> getQuestions() {
+	public SectionQuestions getQuestions() {
 		return questions;
 	}
 	/**
 	 * @param questions the questions to set
 	 */
-	public void setQuestions(List<SectionQuestion> questions) {
+	public void setQuestions(SectionQuestions questions) {
 		this.questions = questions;
 	}
 	/* (non-Javadoc)

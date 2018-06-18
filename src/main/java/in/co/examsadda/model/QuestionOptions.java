@@ -1,24 +1,27 @@
 package in.co.examsadda.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.co.examsadda.entity.Option;
 import in.co.examsadda.entity.Question;
 
-public class SectionQuestion {
+public class QuestionOptions {
+	
 	private Question question;
 	private List<Option> options;
 	/**
 	 * 
 	 */
-	public SectionQuestion() {
-		super();
+	public QuestionOptions() {
+		question = new Question();
+		options = new ArrayList<>();
 	}
 	/**
 	 * @param question
 	 * @param options
 	 */
-	public SectionQuestion(Question question, List<Option> options) {
+	public QuestionOptions(Question question, List<Option> options) {
 		this.question = question;
 		this.options = options;
 	}
@@ -51,7 +54,7 @@ public class SectionQuestion {
 	 */
 	@Override
 	public String toString() {
-		return "SectionQuestion [question=" + question + ", options=" + options + "]";
+		return "QuestionOption [question=" + question + ", options=" + options + "]";
 	}
 	
 }
