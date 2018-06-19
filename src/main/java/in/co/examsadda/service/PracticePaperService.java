@@ -18,19 +18,21 @@ public class PracticePaperService {
 	private PracticePaperRepository practicePaperRepository;
 	@Autowired
 	private ExamSectionService examSectionService;
-	public ExamPaper getPracticePaperByPracticePaperId(Integer examPaperId){	
+
+	public ExamPaper getPracticePaperByPracticePaperId(Integer examPaperId) {
 		ExamPaper examPaper = new ExamPaper();
-		 PracticePaper practicePaper = practicePaperRepository.findById(examPaperId).get();
-		 examPaper.setExamPaper(practicePaper);
-		 List<ExamSection> allSectionsByPracticepaperId = examSectionService.getAllSectionsByPracticepaperId(practicePaper.getPaperId());
-		 examPaper.setSections(allSectionsByPracticepaperId);
+		PracticePaper practicePaper = practicePaperRepository.findById(examPaperId).get();
+		examPaper.setExamPaper(practicePaper);
+		List<ExamSection> allSectionsByPracticepaperId = examSectionService
+				.getAllSectionsByPracticepaperId(practicePaper.getPaperId());
+		examPaper.setSections(allSectionsByPracticepaperId);
 		return examPaper;
 	}
-	
-	public List<ExamPaper> getPracticePapersByCourseId(Integer courseId){	
-		 List<ExamPaper> practicePapersLisByCourseId = new ArrayList<ExamPaper>();
+
+	public List<ExamPaper> getPracticePapersByCourseId(Integer courseId) {
+		List<ExamPaper> practicePapersLisByCourseId = new ArrayList<ExamPaper>();
 		List<PracticePaper> practicePapersLisByCourse = practicePaperRepository.findAllByCourseId(courseId);
-		for(PracticePaper practicePaper : practicePapersLisByCourse) {
+		for (PracticePaper practicePaper : practicePapersLisByCourse) {
 			ExamPaper examPaper = getPracticePaperByPracticePaperId(practicePaper.getPaperId());
 			practicePapersLisByCourseId.add(examPaper);
 		}

@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 	@Id
-	@Column(name="emailId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "emailId")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String emailId;
 	private String password;
 	private String securityQuestion1;
@@ -23,6 +23,7 @@ public class User {
 	private String lastLogin;
 	private Boolean active;
 	private Integer addressId;
+
 	/**
 	 * 
 	 */
@@ -30,6 +31,7 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @param emailId
 	 * @param password
@@ -56,127 +58,160 @@ public class User {
 		this.active = active;
 		this.addressId = addressId;
 	}
+
 	/**
 	 * @return the emailId
 	 */
 	public String getEmailId() {
 		return emailId;
 	}
+
 	/**
-	 * @param emailId the emailId to set
+	 * @param emailId
+	 *            the emailId to set
 	 */
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
+
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	/**
 	 * @return the securityQuestion1
 	 */
 	public String getSecurityQuestion1() {
 		return securityQuestion1;
 	}
+
 	/**
-	 * @param securityQuestion1 the securityQuestion1 to set
+	 * @param securityQuestion1
+	 *            the securityQuestion1 to set
 	 */
 	public void setSecurityQuestion1(String securityQuestion1) {
 		this.securityQuestion1 = securityQuestion1;
 	}
+
 	/**
 	 * @return the securotyQuestionAnswer1
 	 */
 	public String getSecurotyQuestionAnswer1() {
 		return securotyQuestionAnswer1;
 	}
+
 	/**
-	 * @param securotyQuestionAnswer1 the securotyQuestionAnswer1 to set
+	 * @param securotyQuestionAnswer1
+	 *            the securotyQuestionAnswer1 to set
 	 */
 	public void setSecurotyQuestionAnswer1(String securotyQuestionAnswer1) {
 		this.securotyQuestionAnswer1 = securotyQuestionAnswer1;
 	}
+
 	/**
 	 * @return the securityQuestion2
 	 */
 	public String getSecurityQuestion2() {
 		return securityQuestion2;
 	}
+
 	/**
-	 * @param securityQuestion2 the securityQuestion2 to set
+	 * @param securityQuestion2
+	 *            the securityQuestion2 to set
 	 */
 	public void setSecurityQuestion2(String securityQuestion2) {
 		this.securityQuestion2 = securityQuestion2;
 	}
+
 	/**
 	 * @return the securotyQuestionAnswer2
 	 */
 	public String getSecurotyQuestionAnswer2() {
 		return securotyQuestionAnswer2;
 	}
+
 	/**
-	 * @param securotyQuestionAnswer2 the securotyQuestionAnswer2 to set
+	 * @param securotyQuestionAnswer2
+	 *            the securotyQuestionAnswer2 to set
 	 */
 	public void setSecurotyQuestionAnswer2(String securotyQuestionAnswer2) {
 		this.securotyQuestionAnswer2 = securotyQuestionAnswer2;
 	}
+
 	/**
 	 * @return the dateOfRegistraion
 	 */
 	public String getDateOfRegistraion() {
 		return dateOfRegistraion;
 	}
+
 	/**
-	 * @param dateOfRegistraion the dateOfRegistraion to set
+	 * @param dateOfRegistraion
+	 *            the dateOfRegistraion to set
 	 */
 	public void setDateOfRegistraion(String dateOfRegistraion) {
 		this.dateOfRegistraion = dateOfRegistraion;
 	}
+
 	/**
 	 * @return the lastLogin
 	 */
 	public String getLastLogin() {
 		return lastLogin;
 	}
+
 	/**
-	 * @param lastLogin the lastLogin to set
+	 * @param lastLogin
+	 *            the lastLogin to set
 	 */
 	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
+
 	/**
 	 * @return the active
 	 */
 	public Boolean getActive() {
 		return active;
 	}
+
 	/**
-	 * @param active the active to set
+	 * @param active
+	 *            the active to set
 	 */
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
+
 	/**
 	 * @return the addressId
 	 */
 	public Integer getAddressId() {
 		return addressId;
 	}
+
 	/**
-	 * @param addressId the addressId to set
+	 * @param addressId
+	 *            the addressId to set
 	 */
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -186,5 +221,5 @@ public class User {
 				+ ", securotyQuestionAnswer2=" + securotyQuestionAnswer2 + ", dateOfRegistraion=" + dateOfRegistraion
 				+ ", lastLogin=" + lastLogin + ", active=" + active + ", addressId=" + addressId + "]";
 	}
-	
+
 }

@@ -12,11 +12,12 @@ import in.co.examsadda.entity.Option;
 public class OptionsService {
 	@Autowired
 	private OptionRepository optionRepository;
-	
+
 	public Option getOptionByOptionId(Integer optionId) {
 		return optionRepository.findById(optionId).get();
 	}
-	public List<Option> getOptionsByQuestionId(Integer questionId){
+
+	public List<Option> getOptionsByQuestionId(Integer questionId) {
 		return optionRepository.findAllByQuestionId(questionId);
 	}
 }

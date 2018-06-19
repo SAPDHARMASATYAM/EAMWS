@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="section")
+@Table(name = "section")
 public class Section {
-	
+
 	@Id
-	@Column(name="sectionId")
+	@Column(name = "sectionId")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer sectionId;
 	private String nameInEnglish;
@@ -20,6 +20,7 @@ public class Section {
 	private Integer numberOfQuestions;
 	private Boolean active;
 	private Integer practicePaperId;
+
 	/**
 	 * 
 	 */
@@ -27,6 +28,7 @@ public class Section {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @param sectionId
 	 * @param nameInEnglish
@@ -44,79 +46,100 @@ public class Section {
 		this.active = active;
 		this.practicePaperId = practicePaperId;
 	}
+
 	/**
 	 * @return the sectionId
 	 */
 	public Integer getSectionId() {
 		return sectionId;
 	}
+
 	/**
-	 * @param sectionId the sectionId to set
+	 * @param sectionId
+	 *            the sectionId to set
 	 */
 	public void setSectionId(Integer sectionId) {
 		this.sectionId = sectionId;
 	}
+
 	/**
 	 * @return the nameInEnglish
 	 */
 	public String getNameInEnglish() {
 		return nameInEnglish;
 	}
+
 	/**
-	 * @param nameInEnglish the nameInEnglish to set
+	 * @param nameInEnglish
+	 *            the nameInEnglish to set
 	 */
 	public void setNameInEnglish(String nameInEnglish) {
 		this.nameInEnglish = nameInEnglish;
 	}
+
 	/**
 	 * @return the nameInRegional
 	 */
 	public String getNameInRegional() {
 		return nameInRegional;
 	}
+
 	/**
-	 * @param nameInRegional the nameInRegional to set
+	 * @param nameInRegional
+	 *            the nameInRegional to set
 	 */
 	public void setNameInRegional(String nameInRegional) {
 		this.nameInRegional = nameInRegional;
 	}
+
 	/**
 	 * @return the numberOfQuestions
 	 */
 	public Integer getNumberOfQuestions() {
 		return numberOfQuestions;
 	}
+
 	/**
-	 * @param numberOfQuestions the numberOfQuestions to set
+	 * @param numberOfQuestions
+	 *            the numberOfQuestions to set
 	 */
 	public void setNumberOfQuestions(Integer numberOfQuestions) {
 		this.numberOfQuestions = numberOfQuestions;
 	}
+
 	/**
 	 * @return the active
 	 */
 	public Boolean getActive() {
 		return active;
 	}
+
 	/**
-	 * @param active the active to set
+	 * @param active
+	 *            the active to set
 	 */
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
+
 	/**
 	 * @return the practicePaperId
 	 */
 	public Integer getPracticePaperId() {
 		return practicePaperId;
 	}
+
 	/**
-	 * @param practicePaperId the practicePaperId to set
+	 * @param practicePaperId
+	 *            the practicePaperId to set
 	 */
 	public void setPracticePaperId(Integer practicePaperId) {
 		this.practicePaperId = practicePaperId;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

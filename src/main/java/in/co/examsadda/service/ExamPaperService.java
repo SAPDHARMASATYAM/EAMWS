@@ -8,15 +8,14 @@ import org.springframework.stereotype.Service;
 import in.co.examsadda.model.ExamPaper;
 
 @Service
-public class ExamPaperService implements IExamPaperService{
+public class ExamPaperService implements IExamPaperService {
 
 	@Autowired
 	PracticePaperService practicePaperService;
-	ExamPaper examPaper;
+
 	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
-		 examPaper = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
-		return examPaper;
+		return practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
 	}
 
 	@Override
@@ -78,5 +77,5 @@ public class ExamPaperService implements IExamPaperService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

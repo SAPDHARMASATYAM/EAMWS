@@ -11,22 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import in.co.examsadda.model.ExamPaper;
 import in.co.examsadda.service.ExamPaperService;
-import in.co.examsadda.service.IExamPaperService;
 
 @RestController
 @RequestMapping("exam")
 public class ExamController {
-	
+
 	@Autowired
 	private ExamPaperService examPaperService;
 
-	/*This method is for single practice paper based on practice paper id*/
+	/* This method is for single practice paper based on practice paper id */
 	@RequestMapping(value = "/getExamPaperByExamPaperId", method = RequestMethod.GET, produces = "application/json")
-	public ExamPaper getExamPaperByExamPaperId(@RequestParam(name="examPaperId") Integer examPaperId) throws Exception {
+	public ExamPaper getExamPaperByExamPaperId(@RequestParam(name = "examPaperId") Integer examPaperId)
+			throws Exception {
 		return examPaperService.findExamPaperByExamPaperId(examPaperId);
 	}
+
 	@RequestMapping(value = "/getExamPapersByExamId", method = RequestMethod.GET, produces = "application/json")
-	public List<ExamPaper> getExamPapersByExamId(@RequestParam(name="examId")Integer examId) {
+	public List<ExamPaper> getExamPapersByExamId(@RequestParam(name = "examId") Integer examId) {
 		return examPaperService.findExamPapersByExamId(examId);
 	}
 

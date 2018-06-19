@@ -13,16 +13,18 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepository;
-	
-	public User userLogin(User user){
-		Optional<User> loginResponse = userRepository.findByEmailIdAndPasswordAndActive(user.getEmailId(), user.getPassword(), true);
-		if(loginResponse!= null && loginResponse.isPresent()) {
-		return loginResponse.get();
-		}else {
+
+	public User userLogin(User user) {
+		Optional<User> loginResponse = userRepository.findByEmailIdAndPasswordAndActive(user.getEmailId(),
+				user.getPassword(), true);
+		if (loginResponse != null && loginResponse.isPresent()) {
+			return loginResponse.get();
+		} else {
 			throw new RuntimeException("Login Failed");
 		}
 	}
-	public int updatePasswordByEmailId(String password, String emailId){
+
+	public int updatePasswordByEmailId(String password, String emailId) {
 		return 1;// userRepository.updatePasswordByEmailId(password, emailId);
 	}
 }

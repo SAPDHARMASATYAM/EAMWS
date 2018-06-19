@@ -12,12 +12,12 @@ import in.co.examsadda.service.UserService;
 @RestController
 @RequestMapping("user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
-	public User findByEmailIdAndPasswordAndActive(@RequestBody User user) throws Exception{
+	public User findByEmailIdAndPasswordAndActive(@RequestBody User user) throws Exception {
 		return userService.userLogin(user);
 	}
 }

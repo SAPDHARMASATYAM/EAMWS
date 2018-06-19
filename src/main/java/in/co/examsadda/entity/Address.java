@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="address")
+@Table(name = "address")
 public class Address {
 
 	@Id
-	@Column(name="addressId")
+	@Column(name = "addressId")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer addressId;
 	private String doorNumber;
@@ -62,7 +62,8 @@ public class Address {
 	}
 
 	/**
-	 * @param addressId the addressId to set
+	 * @param addressId
+	 *            the addressId to set
 	 */
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
@@ -76,7 +77,8 @@ public class Address {
 	}
 
 	/**
-	 * @param doorNumber the doorNumber to set
+	 * @param doorNumber
+	 *            the doorNumber to set
 	 */
 	public void setDoorNumber(String doorNumber) {
 		this.doorNumber = doorNumber;
@@ -90,7 +92,8 @@ public class Address {
 	}
 
 	/**
-	 * @param street the street to set
+	 * @param street
+	 *            the street to set
 	 */
 	public void setStreet(String street) {
 		this.street = street;
@@ -104,7 +107,8 @@ public class Address {
 	}
 
 	/**
-	 * @param locality the locality to set
+	 * @param locality
+	 *            the locality to set
 	 */
 	public void setLocality(String locality) {
 		this.locality = locality;
@@ -118,7 +122,8 @@ public class Address {
 	}
 
 	/**
-	 * @param city the city to set
+	 * @param city
+	 *            the city to set
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -132,7 +137,8 @@ public class Address {
 	}
 
 	/**
-	 * @param town the town to set
+	 * @param town
+	 *            the town to set
 	 */
 	public void setTown(String town) {
 		this.town = town;
@@ -146,7 +152,8 @@ public class Address {
 	}
 
 	/**
-	 * @param state the state to set
+	 * @param state
+	 *            the state to set
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -160,7 +167,8 @@ public class Address {
 	}
 
 	/**
-	 * @param country the country to set
+	 * @param country
+	 *            the country to set
 	 */
 	public void setCountry(String country) {
 		this.country = country;
@@ -174,13 +182,16 @@ public class Address {
 	}
 
 	/**
-	 * @param pinCode the pinCode to set
+	 * @param pinCode
+	 *            the pinCode to set
 	 */
 	public void setPinCode(String pinCode) {
 		this.pinCode = pinCode;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

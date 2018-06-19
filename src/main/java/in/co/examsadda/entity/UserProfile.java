@@ -1,17 +1,13 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class UserProfile {
-	
+
 	private String emailId;
 	private String firstName;
 	private String lastName;
 	private String mobile;
 	private String gender;
+
 	/**
 	 * 
 	 */
@@ -19,6 +15,7 @@ public class UserProfile {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @param emailId
 	 * @param firstName
@@ -33,67 +30,85 @@ public class UserProfile {
 		this.mobile = mobile;
 		this.gender = gender;
 	}
+
 	/**
 	 * @return the emailId
 	 */
 	public String getEmailId() {
 		return emailId;
 	}
+
 	/**
-	 * @param emailId the emailId to set
+	 * @param emailId
+	 *            the emailId to set
 	 */
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
 	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
+
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	/**
 	 * @return the lastName
 	 */
 	public String getLastName() {
 		return lastName;
 	}
+
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	/**
 	 * @return the mobile
 	 */
 	public String getMobile() {
 		return mobile;
 	}
+
 	/**
-	 * @param mobile the mobile to set
+	 * @param mobile
+	 *            the mobile to set
 	 */
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
+
 	/**
 	 * @return the gender
 	 */
 	public String getGender() {
 		return gender;
 	}
+
 	/**
-	 * @param gender the gender to set
+	 * @param gender
+	 *            the gender to set
 	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -101,5 +116,5 @@ public class UserProfile {
 		return "UserProfile [emailId=" + emailId + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile="
 				+ mobile + ", gender=" + gender + "]";
 	}
-	
+
 }

@@ -5,17 +5,16 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 public class DataSource {
-	static Connection connection=null;
+	static Connection connection = null;
 	static Properties properties;
-	
-	
+
 	public static Connection getConnection() throws Exception {
 		System.out.println("Inside getConnection method");
 		String driverClass;
-		String url=null;
-		String useName=null;
-		String password=null;
-		
+		String url = null;
+		String useName = null;
+		String password = null;
+
 		try {
 			properties = PropertiesUtil.getProperties();
 			driverClass = properties.getProperty("jdbc.DriverClass");
@@ -27,7 +26,7 @@ public class DataSource {
 		} catch (Exception e) {
 			throw e;
 		}
-		
+
 		return connection;
 	}
 }

@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CourseService  {
-	
+public class CourseService {
+
 	@Autowired
 	PracticePaperService practicePaperService;
-	
-	
+
 }

@@ -6,6 +6,7 @@ public class InstituteCourse {
 	private String effectiveDate;
 	private String terminationDate;
 	private Boolean active;
+
 	/**
 	 * 
 	 */
@@ -13,6 +14,7 @@ public class InstituteCourse {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @param instituteId
 	 * @param courseId
@@ -28,67 +30,85 @@ public class InstituteCourse {
 		this.terminationDate = terminationDate;
 		this.active = active;
 	}
+
 	/**
 	 * @return the instituteId
 	 */
 	public Integer getInstituteId() {
 		return instituteId;
 	}
+
 	/**
-	 * @param instituteId the instituteId to set
+	 * @param instituteId
+	 *            the instituteId to set
 	 */
 	public void setInstituteId(Integer instituteId) {
 		this.instituteId = instituteId;
 	}
+
 	/**
 	 * @return the courseId
 	 */
 	public Integer getCourseId() {
 		return courseId;
 	}
+
 	/**
-	 * @param courseId the courseId to set
+	 * @param courseId
+	 *            the courseId to set
 	 */
 	public void setCourseId(Integer courseId) {
 		this.courseId = courseId;
 	}
+
 	/**
 	 * @return the effectiveDate
 	 */
 	public String getEffectiveDate() {
 		return effectiveDate;
 	}
+
 	/**
-	 * @param effectiveDate the effectiveDate to set
+	 * @param effectiveDate
+	 *            the effectiveDate to set
 	 */
 	public void setEffectiveDate(String effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
+
 	/**
 	 * @return the terminationDate
 	 */
 	public String getTerminationDate() {
 		return terminationDate;
 	}
+
 	/**
-	 * @param terminationDate the terminationDate to set
+	 * @param terminationDate
+	 *            the terminationDate to set
 	 */
 	public void setTerminationDate(String terminationDate) {
 		this.terminationDate = terminationDate;
 	}
+
 	/**
 	 * @return the active
 	 */
 	public Boolean getActive() {
 		return active;
 	}
+
 	/**
-	 * @param active the active to set
+	 * @param active
+	 *            the active to set
 	 */
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -96,5 +116,5 @@ public class InstituteCourse {
 		return "InstituteCourse [instituteId=" + instituteId + ", courseId=" + courseId + ", effectiveDate="
 				+ effectiveDate + ", terminationDate=" + terminationDate + ", active=" + active + "]";
 	}
-	
+
 }

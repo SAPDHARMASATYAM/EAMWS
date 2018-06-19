@@ -8,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="option")
+@Table(name = "option")
 public class Option {
 	@Id
-	@Column(name="optionId")
+	@Column(name = "optionId")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer optionId;
 	private Character optionIndicator;
@@ -21,11 +21,13 @@ public class Option {
 	private String optionValueInRegional;
 	private Integer questionId;
 	private Boolean active;
+
 	/**
 	 * 
 	 */
 	public Option() {
 	}
+
 	/**
 	 * @param optionId
 	 * @param optionIndicator
@@ -48,103 +50,130 @@ public class Option {
 		this.questionId = questionId;
 		this.active = active;
 	}
+
 	/**
 	 * @return the optionId
 	 */
 	public Integer getOptionId() {
 		return optionId;
 	}
+
 	/**
-	 * @param optionId the optionId to set
+	 * @param optionId
+	 *            the optionId to set
 	 */
 	public void setOptionId(Integer optionId) {
 		this.optionId = optionId;
 	}
+
 	/**
 	 * @return the optionIndicator
 	 */
 	public Character getOptionIndicator() {
 		return optionIndicator;
 	}
+
 	/**
-	 * @param optionIndicator the optionIndicator to set
+	 * @param optionIndicator
+	 *            the optionIndicator to set
 	 */
 	public void setOptionIndicator(Character optionIndicator) {
 		this.optionIndicator = optionIndicator;
 	}
+
 	/**
 	 * @return the optionValueInEnglish
 	 */
 	public String getOptionValueInEnglish() {
 		return optionValueInEnglish;
 	}
+
 	/**
-	 * @param optionValueInEnglish the optionValueInEnglish to set
+	 * @param optionValueInEnglish
+	 *            the optionValueInEnglish to set
 	 */
 	public void setOptionValueInEnglish(String optionValueInEnglish) {
 		this.optionValueInEnglish = optionValueInEnglish;
 	}
+
 	/**
 	 * @return the optionImageInEnglishURL
 	 */
 	public String getOptionImageInEnglishURL() {
 		return optionImageInEnglishURL;
 	}
+
 	/**
-	 * @param optionImageInEnglishURL the optionImageInEnglishURL to set
+	 * @param optionImageInEnglishURL
+	 *            the optionImageInEnglishURL to set
 	 */
 	public void setOptionImageInEnglishURL(String optionImageInEnglishURL) {
 		this.optionImageInEnglishURL = optionImageInEnglishURL;
 	}
+
 	/**
 	 * @return the optionImageRegionalURL
 	 */
 	public String getOptionImageRegionalURL() {
 		return optionImageRegionalURL;
 	}
+
 	/**
-	 * @param optionImageRegionalURL the optionImageRegionalURL to set
+	 * @param optionImageRegionalURL
+	 *            the optionImageRegionalURL to set
 	 */
 	public void setOptionImageRegionalURL(String optionImageRegionalURL) {
 		this.optionImageRegionalURL = optionImageRegionalURL;
 	}
+
 	/**
 	 * @return the optionValueInRegional
 	 */
 	public String getOptionValueInRegional() {
 		return optionValueInRegional;
 	}
+
 	/**
-	 * @param optionValueInRegional the optionValueInRegional to set
+	 * @param optionValueInRegional
+	 *            the optionValueInRegional to set
 	 */
 	public void setOptionValueInRegional(String optionValueInRegional) {
 		this.optionValueInRegional = optionValueInRegional;
 	}
+
 	/**
 	 * @return the questionId
 	 */
 	public Integer getQuestionId() {
 		return questionId;
 	}
+
 	/**
-	 * @param questionId the questionId to set
+	 * @param questionId
+	 *            the questionId to set
 	 */
 	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
+
 	/**
 	 * @return the active
 	 */
 	public Boolean getActive() {
 		return active;
 	}
+
 	/**
-	 * @param active the active to set
+	 * @param active
+	 *            the active to set
 	 */
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -154,5 +183,5 @@ public class Option {
 				+ ", optionImageRegionalURL=" + optionImageRegionalURL + ", optionValueInRegional="
 				+ optionValueInRegional + ", questionId=" + questionId + ", active=" + active + "]";
 	}
-	
+
 }

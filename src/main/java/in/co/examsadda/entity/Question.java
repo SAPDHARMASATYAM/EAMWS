@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="question")
+@Table(name = "question")
 public class Question {
-	
+
 	@Id
-	@Column(name="questionId")
+	@Column(name = "questionId")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer questionId;
 	private String questionInEnglish;
@@ -22,12 +22,14 @@ public class Question {
 	private Integer numberOfOptions;
 	private Character answer;
 	private Integer sectionId;
+
 	/**
 	 * 
 	 */
 	public Question() {
 		super();
 	}
+
 	/**
 	 * @param questionId
 	 * @param questionInEnglish
@@ -50,103 +52,130 @@ public class Question {
 		this.answer = answer;
 		this.sectionId = sectionId;
 	}
+
 	/**
 	 * @return the questionId
 	 */
 	public Integer getQuestionId() {
 		return questionId;
 	}
+
 	/**
-	 * @param questionId the questionId to set
+	 * @param questionId
+	 *            the questionId to set
 	 */
 	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
+
 	/**
 	 * @return the questionInEnglish
 	 */
 	public String getQuestionInEnglish() {
 		return questionInEnglish;
 	}
+
 	/**
-	 * @param questionInEnglish the questionInEnglish to set
+	 * @param questionInEnglish
+	 *            the questionInEnglish to set
 	 */
 	public void setQuestionInEnglish(String questionInEnglish) {
 		this.questionInEnglish = questionInEnglish;
 	}
+
 	/**
 	 * @return the questionInRegional
 	 */
 	public String getQuestionInRegional() {
 		return questionInRegional;
 	}
+
 	/**
-	 * @param questionInRegional the questionInRegional to set
+	 * @param questionInRegional
+	 *            the questionInRegional to set
 	 */
 	public void setQuestionInRegional(String questionInRegional) {
 		this.questionInRegional = questionInRegional;
 	}
+
 	/**
 	 * @return the questionImageInEnglishURL
 	 */
 	public String getQuestionImageInEnglishURL() {
 		return questionImageInEnglishURL;
 	}
+
 	/**
-	 * @param questionImageInEnglishURL the questionImageInEnglishURL to set
+	 * @param questionImageInEnglishURL
+	 *            the questionImageInEnglishURL to set
 	 */
 	public void setQuestionImageInEnglishURL(String questionImageInEnglishURL) {
 		this.questionImageInEnglishURL = questionImageInEnglishURL;
 	}
+
 	/**
 	 * @return the questionImageInRegionalURL
 	 */
 	public String getQuestionImageInRegionalURL() {
 		return questionImageInRegionalURL;
 	}
+
 	/**
-	 * @param questionImageInRegionalURL the questionImageInRegionalURL to set
+	 * @param questionImageInRegionalURL
+	 *            the questionImageInRegionalURL to set
 	 */
 	public void setQuestionImageInRegionalURL(String questionImageInRegionalURL) {
 		this.questionImageInRegionalURL = questionImageInRegionalURL;
 	}
+
 	/**
 	 * @return the numberOfOptions
 	 */
 	public Integer getNumberOfOptions() {
 		return numberOfOptions;
 	}
+
 	/**
-	 * @param numberOfOptions the numberOfOptions to set
+	 * @param numberOfOptions
+	 *            the numberOfOptions to set
 	 */
 	public void setNumberOfOptions(Integer numberOfOptions) {
 		this.numberOfOptions = numberOfOptions;
 	}
+
 	/**
 	 * @return the answer
 	 */
 	public Character getAnswer() {
 		return answer;
 	}
+
 	/**
-	 * @param answer the answer to set
+	 * @param answer
+	 *            the answer to set
 	 */
 	public void setAnswer(Character answer) {
 		this.answer = answer;
 	}
+
 	/**
 	 * @return the sectionId
 	 */
 	public Integer getSectionId() {
 		return sectionId;
 	}
+
 	/**
-	 * @param sectionId the sectionId to set
+	 * @param sectionId
+	 *            the sectionId to set
 	 */
 	public void setSectionId(Integer sectionId) {
 		this.sectionId = sectionId;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -156,5 +185,5 @@ public class Question {
 				+ questionImageInEnglishURL + ", questionImageInRegionalURL=" + questionImageInRegionalURL
 				+ ", numberOfOptions=" + numberOfOptions + ", answer=" + answer + ", sectionId=" + sectionId + "]";
 	}
-	
+
 }
