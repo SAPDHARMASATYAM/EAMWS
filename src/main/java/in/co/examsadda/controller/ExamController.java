@@ -26,8 +26,8 @@ public class ExamController {
 		return examPaperService.findExamPaperByExamPaperId(examPaperId);
 	}
 
-	@RequestMapping(value = "/getExamPapersByExamId", method = RequestMethod.GET, produces = "application/json")
-	public List<ExamPaper> getExamPapersByExamId(@RequestParam(name = "examId") Integer examId) {
+	@RequestMapping(value = "/getExamPapersByCourseId", method = RequestMethod.GET, produces = "application/json")
+	public List<ExamPaper> getExamPapersByCourseId(@RequestParam(name = "examId") Integer examId) {
 		return examPaperService.findExamPapersByExamId(examId);
 	}
 

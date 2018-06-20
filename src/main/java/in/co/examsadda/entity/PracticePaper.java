@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "practice_paper")
 public class PracticePaper {
 	@Id
-	@Column(name = "paperId")
+//	@Column(name = "paperId")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer paperId;
 	private String paperNameInEnglish;

@@ -11,17 +11,27 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User {
 	@Id
-	@Column(name = "emailId")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@Access(AccessType.PROPERTY)
+	@Column(name="emailId")
 	private String emailId;
+	@Column(name="password")
 	private String password;
+	@Column(name="securityQuestion1")
 	private String securityQuestion1;
+	@Column(name="securotyQuestionAnswer1")
 	private String securotyQuestionAnswer1;
+	@Column(name="securityQuestion2")
 	private String securityQuestion2;
+	@Column(name="securotyQuestionAnswer2")
 	private String securotyQuestionAnswer2;
+	@Column(name="dateOfRegistraion")
 	private String dateOfRegistraion;
+	@Column(name="lastLogin")
 	private String lastLogin;
+	@Column(name="active")
 	private Boolean active;
+	@Column(name="addressId")
 	private Integer addressId;
 
 	/**
@@ -62,6 +72,8 @@ public class User {
 	/**
 	 * @return the emailId
 	 */
+
+	@Column(name = "emailId")
 	public String getEmailId() {
 		return emailId;
 	}
