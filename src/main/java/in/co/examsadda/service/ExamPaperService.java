@@ -8,73 +8,52 @@ import org.springframework.stereotype.Service;
 import in.co.examsadda.model.ExamPaper;
 
 @Service
-public class ExamPaperService implements IExamPaperService {
+public class ExamPaperService{
 
 	@Autowired
 	PracticePaperService practicePaperService;
 
-	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
 		return practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
 	}
 
-	@Override
 	public List<ExamPaper> findExamPapersByExamId(Integer examId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String saveExamPaper(ExamPaper examPaper) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String saveExamPapers(List<ExamPaper> examPapers) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String updateExamPaperByExamId(ExamPaper examPaper) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String deleteExamPaperByExamPaperId(Integer examPaperId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String deleteExamPapersByExamId(Integer examId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String activateExamPaperByExamPaperId(Integer examPaperId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String deactivateExamPaperByExamPaperId(Integer examPaperId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String activateExamPapersByExamId(Integer examId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String deactivateExamPapersByExamId(Integer examId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

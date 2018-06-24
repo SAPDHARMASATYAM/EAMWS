@@ -9,7 +9,6 @@ import in.co.examsadda.crud.repository.SectionRepository;
 import in.co.examsadda.entity.Section;
 import in.co.examsadda.model.ExamSection;
 import in.co.examsadda.model.QuestionOptions;
-import in.co.examsadda.model.SectionQuestions;
 
 @Service
 public class ExamSectionService {
@@ -23,9 +22,7 @@ public class ExamSectionService {
 		Section section = sectionRepository.findById(sectionId).get();
 		examSection.setSection(section);
 		List<QuestionOptions> questionsBySectionId = questionService.getQuestionsBySectionId(section.getSectionId());
-		// TODO need to resolve complexity here.
-		SectionQuestions sectionQuestions = new SectionQuestions(questionsBySectionId);
-		examSection.setQuestions(sectionQuestions);
+		examSection.setQuestions(questionsBySectionId);
 		return examSection;
 	}
 
