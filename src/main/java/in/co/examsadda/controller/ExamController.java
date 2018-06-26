@@ -3,6 +3,7 @@ package in.co.examsadda.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,10 +21,11 @@ public class ExamController {
 	private ExamPaperService examPaperService;
 
 	/* This method is for single practice paper based on practice paper id */
-	@RequestMapping(value = "/getExamPaperByExamPaperId", method = RequestMethod.GET, produces = "application/json")
-	public ExamPaper getExamPaperByExamPaperId(@RequestParam(name = "examPaperId") Integer examPaperId)
+	@RequestMapping(value = "/getExamPaperByExamPaperId/{examPaperId}", method = RequestMethod.GET, produces = "application/json")
+	public ExamPaper getExamPaperByExamPaperId(@PathVariable(name = "examPaperId") Integer examPaperId)
 			throws Exception {
-		return examPaperService.findExamPaperByExamPaperId(examPaperId);
+//		return examPaperService.findExamPaperByExamPaperId(examPaperId);
+		return new in.co.examsadda.util.ExamController().getExamPaperByExamPaperId(examPaperId);
 	}
 
 	@RequestMapping(value = "/getExamPapersByCourseId", method = RequestMethod.GET, produces = "application/json")

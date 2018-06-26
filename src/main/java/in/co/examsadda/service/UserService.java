@@ -25,4 +25,12 @@ public class UserService {
 	public int updatePasswordByEmailId(String password, String emailId) {
 		return 1;// userRepository.updatePasswordByEmailId(password, emailId);
 	}
+
+	public User getUserByEmailIdId(String emailId) {
+		return userRepository.findById(emailId).get();
+	}
+
+	public User registerUser(User user) {
+		return userRepository.save(user);
+	}
 }

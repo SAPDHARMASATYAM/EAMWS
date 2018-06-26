@@ -22,10 +22,10 @@ public class PracticePaperService {
 	public ExamPaper getPracticePaperByPracticePaperId(Integer examPaperId) {
 		ExamPaper examPaper = new ExamPaper();
 		PracticePaper practicePaper = practicePaperRepository.findById(examPaperId).get();
-		examPaper.setExamPaper(practicePaper);
-		List<ExamSection> allSectionsByPracticepaperId = examSectionService
-				.getAllSectionsByPracticepaperId(practicePaper.getPaperId());
-		examPaper.setSections(allSectionsByPracticepaperId);
+//		examPaper.setExamPaper(practicePaper);
+//		List<ExamSection> allSectionsByPracticepaperId = examSectionService
+//				.getAllSectionsByPracticepaperId(practicePaper.getPaperId());
+//		examPaper.setSections(allSectionsByPracticepaperId);
 		return examPaper;
 	}
 

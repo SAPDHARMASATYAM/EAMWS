@@ -24,7 +24,6 @@ public class Institute {
 	 */
 	public Institute() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
