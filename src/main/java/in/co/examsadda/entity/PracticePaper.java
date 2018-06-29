@@ -25,19 +25,19 @@ public class PracticePaper implements Serializable {
 	private String instituteIdFk;
 
 	@Column(name="is_practice_paper_active", nullable=false)
-	private byte isPracticePaperActive;
+	private boolean isPracticePaperActive;
 
 	@Column(name="number_of_sections_in_this_practice_paper", nullable=false)
-	private byte numberOfSectionsInThisPracticePaper;
+	private boolean numberOfSectionsInThisPracticePaper;
 
 	@Column(name="practice_paper_duration", nullable=false)
-	private byte practicePaperDuration;
+	private boolean practicePaperDuration;
 
-	@Lob
+	
 	@Column(name="practice_paper_name_in_english", nullable=false)
 	private String practicePaperNameInEnglish;
 
-	@Lob
+	
 	@Column(name="practice_paper_name_in_regional", nullable=false)
 	private String practicePaperNameInRegional;
 
@@ -68,27 +68,27 @@ public class PracticePaper implements Serializable {
 		this.instituteIdFk = instituteIdFk;
 	}
 
-	public byte getIsPracticePaperActive() {
+	public boolean getIsPracticePaperActive() {
 		return this.isPracticePaperActive;
 	}
 
-	public void setIsPracticePaperActive(byte isPracticePaperActive) {
+	public void setIsPracticePaperActive(boolean isPracticePaperActive) {
 		this.isPracticePaperActive = isPracticePaperActive;
 	}
 
-	public byte getNumberOfSectionsInThisPracticePaper() {
+	public boolean getNumberOfSectionsInThisPracticePaper() {
 		return this.numberOfSectionsInThisPracticePaper;
 	}
 
-	public void setNumberOfSectionsInThisPracticePaper(byte numberOfSectionsInThisPracticePaper) {
+	public void setNumberOfSectionsInThisPracticePaper(boolean numberOfSectionsInThisPracticePaper) {
 		this.numberOfSectionsInThisPracticePaper = numberOfSectionsInThisPracticePaper;
 	}
 
-	public byte getPracticePaperDuration() {
+	public boolean getPracticePaperDuration() {
 		return this.practicePaperDuration;
 	}
 
-	public void setPracticePaperDuration(byte practicePaperDuration) {
+	public void setPracticePaperDuration(boolean practicePaperDuration) {
 		this.practicePaperDuration = practicePaperDuration;
 	}
 

@@ -22,27 +22,27 @@ public class Question implements Serializable {
 	private String answerForThisQuestion;
 
 	@Column(name="is_question_active", nullable=false)
-	private byte isQuestionActive;
+	private boolean isQuestionActive;
 
 	@Column(name="is_question_has_image", nullable=false)
-	private byte isQuestionHasImage;
+	private boolean isQuestionHasImage;
 
 	@Column(name="practice_paper_id_fk", nullable=false)
 	private int practicePaperIdFk;
 
-	@Lob
+	
 	@Column(name="question_in_english", nullable=false)
 	private String questionInEnglish;
 
-	@Lob
+	
 	@Column(name="question_in_english_image_url", nullable=false)
 	private String questionInEnglishImageUrl;
 
-	@Lob
+	
 	@Column(name="question_in_regional", nullable=false)
 	private String questionInRegional;
 
-	@Lob
+	
 	@Column(name="question_in_regional_image_url", nullable=false)
 	private String questionInRegionalImageUrl;
 
@@ -71,19 +71,19 @@ public class Question implements Serializable {
 		this.answerForThisQuestion = answerForThisQuestion;
 	}
 
-	public byte getIsQuestionActive() {
+	public boolean getIsQuestionActive() {
 		return this.isQuestionActive;
 	}
 
-	public void setIsQuestionActive(byte isQuestionActive) {
+	public void setIsQuestionActive(boolean isQuestionActive) {
 		this.isQuestionActive = isQuestionActive;
 	}
 
-	public byte getIsQuestionHasImage() {
+	public boolean getIsQuestionHasImage() {
 		return this.isQuestionHasImage;
 	}
 
-	public void setIsQuestionHasImage(byte isQuestionHasImage) {
+	public void setIsQuestionHasImage(boolean isQuestionHasImage) {
 		this.isQuestionHasImage = isQuestionHasImage;
 	}
 

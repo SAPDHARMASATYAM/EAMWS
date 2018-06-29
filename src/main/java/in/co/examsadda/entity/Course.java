@@ -18,19 +18,19 @@ public class Course implements Serializable {
 	@Column(name="course_id", unique=true, nullable=false)
 	private int courseId;
 
-	@Lob
+	
 	@Column(name="course_name_in_english", nullable=false)
 	private String courseNameInEnglish;
 
-	@Lob
+	
 	@Column(name="course_name_in_regional", nullable=false)
 	private String courseNameInRegional;
 
 	@Column(name="is_course_active", nullable=false)
-	private byte isCourseActive;
+	private boolean isCourseActive;
 
 	@Column(name="number_of_practice_papers_in_this_course", nullable=false)
-	private byte numberOfPracticePapersInThisCourse;
+	private boolean numberOfPracticePapersInThisCourse;
 
 	public Course() {
 	}
@@ -59,19 +59,19 @@ public class Course implements Serializable {
 		this.courseNameInRegional = courseNameInRegional;
 	}
 
-	public byte getIsCourseActive() {
+	public boolean getIsCourseActive() {
 		return this.isCourseActive;
 	}
 
-	public void setIsCourseActive(byte isCourseActive) {
+	public void setIsCourseActive(boolean isCourseActive) {
 		this.isCourseActive = isCourseActive;
 	}
 
-	public byte getNumberOfPracticePapersInThisCourse() {
+	public boolean getNumberOfPracticePapersInThisCourse() {
 		return this.numberOfPracticePapersInThisCourse;
 	}
 
-	public void setNumberOfPracticePapersInThisCourse(byte numberOfPracticePapersInThisCourse) {
+	public void setNumberOfPracticePapersInThisCourse(boolean numberOfPracticePapersInThisCourse) {
 		this.numberOfPracticePapersInThisCourse = numberOfPracticePapersInThisCourse;
 	}
 

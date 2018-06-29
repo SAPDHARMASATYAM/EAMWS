@@ -20,7 +20,7 @@ public class User implements Serializable {
 	private String emailId;
 
 	@Column(name="is_user_active", nullable=false)
-	private byte isUserActive;
+	private boolean isUserActive;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="last_login", nullable=false)
@@ -40,11 +40,11 @@ public class User implements Serializable {
 		this.emailId = emailId;
 	}
 
-	public byte getIsUserActive() {
+	public boolean getIsUserActive() {
 		return this.isUserActive;
 	}
 
-	public void setIsUserActive(byte isUserActive) {
+	public void setIsUserActive(boolean isUserActive) {
 		this.isUserActive = isUserActive;
 	}
 

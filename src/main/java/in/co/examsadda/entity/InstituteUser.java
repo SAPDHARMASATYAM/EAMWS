@@ -27,7 +27,7 @@ public class InstituteUser implements Serializable {
 	private Date dateOnRegistrationEnding;
 
 	@Column(name="is_institute_user_active", nullable=false)
-	private byte isInstituteUserActive;
+	private boolean isInstituteUserActive;
 
 	@Column(name="registration_id", nullable=false)
 	private int registrationId;
@@ -59,11 +59,11 @@ public class InstituteUser implements Serializable {
 		this.dateOnRegistrationEnding = dateOnRegistrationEnding;
 	}
 
-	public byte getIsInstituteUserActive() {
+	public boolean getIsInstituteUserActive() {
 		return this.isInstituteUserActive;
 	}
 
-	public void setIsInstituteUserActive(byte isInstituteUserActive) {
+	public void setIsInstituteUserActive(boolean isInstituteUserActive) {
 		this.isInstituteUserActive = isInstituteUserActive;
 	}
 

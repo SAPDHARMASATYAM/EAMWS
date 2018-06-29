@@ -19,27 +19,27 @@ public class Option implements Serializable {
 	private String option_Id;
 
 	@Column(name="is_option_active", nullable=false)
-	private byte isOptionActive;
+	private boolean isOptionActive;
 
 	@Column(name="is_option_has_image", nullable=false)
-	private byte isOptionHasImage;
+	private boolean isOptionHasImage;
 
 	@Column(name="option_indicator", nullable=false, length=1)
 	private String optionIndicator;
 
-	@Lob
+	
 	@Column(name="option_value_in_english", nullable=false)
 	private String optionValueInEnglish;
 
-	@Lob
+	
 	@Column(name="option_value_in_english_image_url", nullable=false)
 	private String optionValueInEnglishImageUrl;
 
-	@Lob
+	
 	@Column(name="option_value_in_regional", nullable=false)
 	private String optionValueInRegional;
 
-	@Lob
+	
 	@Column(name="option_value_in_regional_image_url", nullable=false)
 	private String optionValueInRegionalImageUrl;
 
@@ -60,19 +60,19 @@ public class Option implements Serializable {
 		this.option_Id = option_Id;
 	}
 
-	public byte getIsOptionActive() {
+	public boolean getIsOptionActive() {
 		return this.isOptionActive;
 	}
 
-	public void setIsOptionActive(byte isOptionActive) {
+	public void setIsOptionActive(boolean isOptionActive) {
 		this.isOptionActive = isOptionActive;
 	}
 
-	public byte getIsOptionHasImage() {
+	public boolean getIsOptionHasImage() {
 		return this.isOptionHasImage;
 	}
 
-	public void setIsOptionHasImage(byte isOptionHasImage) {
+	public void setIsOptionHasImage(boolean isOptionHasImage) {
 		this.isOptionHasImage = isOptionHasImage;
 	}
 

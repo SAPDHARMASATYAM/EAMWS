@@ -25,7 +25,7 @@ public class UserProfile implements Serializable {
 	private String gender;
 
 	@Column(name="is_user_profile_active", nullable=false)
-	private byte isUserProfileActive;
+	private boolean isUserProfileActive;
 
 	@Column(name="last_name", nullable=false, length=50)
 	private String lastName;
@@ -72,11 +72,11 @@ public class UserProfile implements Serializable {
 		this.gender = gender;
 	}
 
-	public byte getIsUserProfileActive() {
+	public boolean getIsUserProfileActive() {
 		return this.isUserProfileActive;
 	}
 
-	public void setIsUserProfileActive(byte isUserProfileActive) {
+	public void setIsUserProfileActive(boolean isUserProfileActive) {
 		this.isUserProfileActive = isUserProfileActive;
 	}
 

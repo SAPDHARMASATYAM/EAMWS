@@ -18,16 +18,16 @@ public class Institute implements Serializable {
 	@Column(name="institute_id", unique=true, nullable=false, length=100)
 	private String instituteId;
 
-	@Lob
+	
 	@Column(name="institute_name_in_english", nullable=false)
 	private String instituteNameInEnglish;
 
-	@Lob
+	
 	@Column(name="institute_name_in_regional", nullable=false)
 	private String instituteNameInRegional;
 
 	@Column(name="is_institute_active", nullable=false)
-	private byte isInstituteActive;
+	private boolean isInstituteActive;
 
 	public Institute() {
 	}
@@ -56,11 +56,11 @@ public class Institute implements Serializable {
 		this.instituteNameInRegional = instituteNameInRegional;
 	}
 
-	public byte getIsInstituteActive() {
+	public boolean getIsInstituteActive() {
 		return this.isInstituteActive;
 	}
 
-	public void setIsInstituteActive(byte isInstituteActive) {
+	public void setIsInstituteActive(boolean isInstituteActive) {
 		this.isInstituteActive = isInstituteActive;
 	}
 

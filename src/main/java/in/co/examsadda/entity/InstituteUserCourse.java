@@ -34,7 +34,7 @@ public class InstituteUserCourse implements Serializable {
 	private String instituteIdFk;
 
 	@Column(name="is_course_active", nullable=false)
-	private byte isCourseActive;
+	private boolean isCourseActive;
 
 	@Column(name="user_id_fk", nullable=false, length=100)
 	private String userIdFk;
@@ -82,11 +82,11 @@ public class InstituteUserCourse implements Serializable {
 		this.instituteIdFk = instituteIdFk;
 	}
 
-	public byte getIsCourseActive() {
+	public boolean getIsCourseActive() {
 		return this.isCourseActive;
 	}
 
-	public void setIsCourseActive(byte isCourseActive) {
+	public void setIsCourseActive(boolean isCourseActive) {
 		this.isCourseActive = isCourseActive;
 	}
 

@@ -22,7 +22,7 @@ public class Section implements Serializable {
 	private int courseIdFk;
 
 	@Column(name="is_section_active", nullable=false)
-	private byte isSectionActive;
+	private boolean isSectionActive;
 
 	@Column(name="number_of_questions_in_this_section", nullable=false)
 	private int numberOfQuestionsInThisSection;
@@ -30,19 +30,15 @@ public class Section implements Serializable {
 	@Column(name="practice_paper_id_fk", nullable=false)
 	private int practicePaperIdFk;
 
-	@Lob
 	@Column(name="section_description_in_english", nullable=false)
 	private String sectionDescriptionInEnglish;
 
-	@Lob
 	@Column(name="section_description_in_regional", nullable=false)
 	private String sectionDescriptionInRegional;
 
-	@Lob
 	@Column(name="section_name_in_english", nullable=false)
 	private String sectionNameInEnglish;
 
-	@Lob
 	@Column(name="section_name_in_regional", nullable=false)
 	private String sectionNameInRegional;
 
@@ -65,11 +61,11 @@ public class Section implements Serializable {
 		this.courseIdFk = courseIdFk;
 	}
 
-	public byte getIsSectionActive() {
+	public boolean getIsSectionActive() {
 		return this.isSectionActive;
 	}
 
-	public void setIsSectionActive(byte isSectionActive) {
+	public void setIsSectionActive(boolean isSectionActive) {
 		this.isSectionActive = isSectionActive;
 	}
 
