@@ -12,29 +12,30 @@ import in.co.examsadda.entity.Question;
 import in.co.examsadda.model.QuestionOptions;
 
 @Service
-public class QuestionService {
+public class QuestionServiceBean {
 
 	@Autowired
 	private QuestionRepository questionRepository;
 	@Autowired
-	private OptionsService optionsService;
+	private OptionsServiceBean optionsService;
 
 	public QuestionOptions getQuestionByquestionId(Integer questionId) {
 		QuestionOptions questionOptions = new QuestionOptions();
 		Question question = questionRepository.findById(questionId).get();
 		questionOptions.setQuestion(question);
-		List<Option> optionsByQuestionId = optionsService.getOptionsByQuestionId(question.getQuestionId());
-		questionOptions.setOptions(optionsByQuestionId);
+//		List<Option> optionsByQuestionId = optionsService.getOptionsByQuestionId(question.getQuestionId());
+//		questionOptions.setOptions(optionsByQuestionId);
 		return questionOptions;
 	}
 
 	public List<QuestionOptions> getQuestionsBySectionId(Integer sectionId) {
-		List<QuestionOptions> questionsBySectionId = new ArrayList<>();
-		List<Question> questionsBySection = questionRepository.findAllBySectionId(sectionId);
-		for (Question question : questionsBySection) {
-			QuestionOptions questionOptions = getQuestionByquestionId(question.getQuestionId());
-			questionsBySectionId.add(questionOptions);
-		}
-		return questionsBySectionId;
+//		List<QuestionOptions> questionsBySectionId = new ArrayList<>();
+//		List<Question> questionsBySection = questionRepository.findAllBySectionId(sectionId);
+//		for (Question question : questionsBySection) {
+////			QuestionOptions questionOptions = getQuestionByquestionId(question.getQuestionId());
+////			questionsBySectionId.add(questionOptions);
+//		}
+//		return questionsBySectionId;
+		return null;
 	}
 }

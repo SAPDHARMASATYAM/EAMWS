@@ -25,7 +25,7 @@ public class ExamController {
 	public ExamPaper getExamPaperByExamPaperId(@PathVariable(name = "examPaperId") Integer examPaperId)
 			throws Exception {
 //		return examPaperService.findExamPaperByExamPaperId(examPaperId);
-		return new in.co.examsadda.util.ExamController().getExamPaperByExamPaperId(examPaperId);
+		return null;// new in.co.examsadda.util.ExamController().getExamPaperByExamPaperId(examPaperId);
 	}
 
 	@RequestMapping(value = "/getExamPapersByCourseId", method = RequestMethod.GET, produces = "application/json")

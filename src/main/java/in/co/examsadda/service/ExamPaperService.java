@@ -2,59 +2,30 @@ package in.co.examsadda.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import in.co.examsadda.model.ExamPaper;
 
-@Service
-public class ExamPaperService{
+public interface ExamPaperService {
 
-	@Autowired
-	PracticePaperService practicePaperService;
+	ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception;
 
-	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
-		return practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
-	}
+	List<ExamPaper> findExamPapersByExamId(Integer examId);
 
-	public List<ExamPaper> findExamPapersByExamId(Integer examId) {
-		return null;
-	}
+	String saveExamPaper(ExamPaper examPaper);
 
-	public String saveExamPaper(ExamPaper examPaper) {
-		return null;
-	}
+	String saveExamPapers(List<ExamPaper> examPapers);
 
-	public String saveExamPapers(List<ExamPaper> examPapers) {
-		return null;
-	}
+	String updateExamPaperByExamId(ExamPaper examPaper);
 
-	public String updateExamPaperByExamId(ExamPaper examPaper) {
-		return null;
-	}
+	String deleteExamPaperByExamPaperId(Integer examPaperId);
 
-	public String deleteExamPaperByExamPaperId(Integer examPaperId) {
-		return null;
-	}
+	String deleteExamPapersByExamId(Integer examId);
 
-	public String deleteExamPapersByExamId(Integer examId) {
-		return null;
-	}
+	String activateExamPaperByExamPaperId(Integer examPaperId);
 
-	public String activateExamPaperByExamPaperId(Integer examPaperId) {
-		return null;
-	}
+	String deactivateExamPaperByExamPaperId(Integer examPaperId);
 
-	public String deactivateExamPaperByExamPaperId(Integer examPaperId) {
-		return null;
-	}
+	String activateExamPapersByExamId(Integer examId);
 
-	public String activateExamPapersByExamId(Integer examId) {
-		return null;
-	}
-
-	public String deactivateExamPapersByExamId(Integer examId) {
-		return null;
-	}
+	String deactivateExamPapersByExamId(Integer examId);
 
 }

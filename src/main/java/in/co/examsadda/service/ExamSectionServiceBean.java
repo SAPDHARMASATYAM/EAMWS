@@ -11,11 +11,11 @@ import in.co.examsadda.model.ExamSection;
 import in.co.examsadda.model.QuestionOptions;
 
 @Service
-public class ExamSectionService {
+public class ExamSectionServiceBean {
 	@Autowired
 	private SectionRepository sectionRepository;
 	@Autowired
-	private QuestionService questionService;
+	private QuestionServiceBean questionService;
 
 	public ExamSection getSectionBySectionId(Integer sectionId) {
 		ExamSection examSection = new ExamSection();
@@ -27,13 +27,14 @@ public class ExamSectionService {
 	}
 
 	public List<ExamSection> getAllSectionsByPracticepaperId(Integer practicePaperId) {
-		List<ExamSection> sectionsListByExamPaper = new ArrayList<>();
-		List<Section> sectionsListByExam = sectionRepository.findAllByPracticePaperId(practicePaperId);
-		for (Section section : sectionsListByExam) {
-			ExamSection examSection = getSectionBySectionId(section.getSectionId());
-			sectionsListByExamPaper.add(examSection);
-		}
-		return sectionsListByExamPaper;
+//		List<ExamSection> sectionsListByExamPaper = new ArrayList<>();
+//		List<Section> sectionsListByExam = sectionRepository.findAllByPracticePaperId(practicePaperId);
+//		for (Section section : sectionsListByExam) {
+//			ExamSection examSection = getSectionBySectionId(section.getSectionId());
+//			sectionsListByExamPaper.add(examSection);
+//		}
+//		return sectionsListByExamPaper;
+		return null;
 	}
 
 }

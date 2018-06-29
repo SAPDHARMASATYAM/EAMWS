@@ -26,9 +26,9 @@ public class ExamPaperDAO {
 			findExamPaperstatement.setInt(1, examPaperId);
 			findExamResultSet = findExamPaperstatement.executeQuery();
 			while (findExamResultSet.next()) {
-				paper.setPaperNameInEnglish(findExamResultSet.getString("paperNameInEnglish"));
-				paper.setPaperNameInRegional(findExamResultSet.getString("paperNameInRegional"));
-				paper.setDuration(findExamResultSet.getInt("duration"));
+				paper.setPracticePaperNameInEnglish(findExamResultSet.getString("paperNameInEnglish"));
+				paper.setPracticePaperNameInRegional(findExamResultSet.getString("paperNameInRegional"));
+				paper.setPracticePaperDuration(findExamResultSet.getInt("duration"));
 			}
 
 		} catch (SQLException sqle) {

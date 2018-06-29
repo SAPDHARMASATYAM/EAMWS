@@ -31,7 +31,7 @@ public class PracticePaper implements Serializable {
 	private boolean numberOfSectionsInThisPracticePaper;
 
 	@Column(name="practice_paper_duration", nullable=false)
-	private boolean practicePaperDuration;
+	private int practicePaperDuration;
 
 	
 	@Column(name="practice_paper_name_in_english", nullable=false)
@@ -84,11 +84,11 @@ public class PracticePaper implements Serializable {
 		this.numberOfSectionsInThisPracticePaper = numberOfSectionsInThisPracticePaper;
 	}
 
-	public boolean getPracticePaperDuration() {
+	public int getPracticePaperDuration() {
 		return this.practicePaperDuration;
 	}
 
-	public void setPracticePaperDuration(boolean practicePaperDuration) {
+	public void setPracticePaperDuration(int practicePaperDuration) {
 		this.practicePaperDuration = practicePaperDuration;
 	}
 

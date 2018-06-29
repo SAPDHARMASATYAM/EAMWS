@@ -8,5 +8,5 @@ import in.co.examsadda.entity.Option;
 
 public interface OptionRepository extends CrudRepository<Option, Integer> {
 
-	public List<Option> findAllByQuestionId(Integer questionId);
+	public List<Option> findAllByQuestionIdFk(Integer questionId);
 }

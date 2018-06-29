@@ -8,6 +8,6 @@ import in.co.examsadda.entity.Section;
 
 public interface SectionRepository extends CrudRepository<Section, Integer> {
 
-	public List<Section> findAllByPracticePaperId(Integer practicePaperId);
+//	public List<Section> findAllByPracticePaperId(Integer practicePaperId);
 
 }

@@ -8,5 +8,5 @@ import in.co.examsadda.entity.Question;
 
 public interface QuestionRepository extends CrudRepository<Question, Integer> {
 
-	public List<Question> findAllBySectionId(Integer sectionId);
+//	public List<Question> findAllBySectionId(Integer sectionId);
 }
