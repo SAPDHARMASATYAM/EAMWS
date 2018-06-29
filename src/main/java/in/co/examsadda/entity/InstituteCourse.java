@@ -1,98 +1,78 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
 
+
+/**
+ * The persistent class for the institute_course database table.
+ * 
+ */
 @Entity
-@Table(name="inistitute_course")
-public class InstituteCourse {
-	
-	@Id
-	@Column(name = "Institute_course_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer icId;
-	private Integer instituteId;
-	private Integer courseId;
-	private String effectiveDate;
-	private String terminationDate;
-	private Boolean active;
+@Table(name="institute_course")
+@NamedQuery(name="InstituteCourse.findAll", query="SELECT i FROM InstituteCourse i")
+public class InstituteCourse implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
+	@EmbeddedId
+	private InstituteCoursePK id;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="date_of_registration", nullable=false)
+	private Date dateOfRegistration;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="date_on_ending", nullable=false)
+	private Date dateOnEnding;
+
+	@Column(name="is_institute_course_active", nullable=false)
+	private byte isInstituteCourseActive;
+
+	@Column(name="registration_id", nullable=false)
+	private int registrationId;
+
 	public InstituteCourse() {
-		super();
 	}
 
-	public InstituteCourse(Integer icId, Integer instituteId, Integer courseId, String effectiveDate,
-			String terminationDate, Boolean active) {
-		super();
-		this.icId = icId;
-		this.instituteId = instituteId;
-		this.courseId = courseId;
-		this.effectiveDate = effectiveDate;
-		this.terminationDate = terminationDate;
-		this.active = active;
+	public InstituteCoursePK getId() {
+		return this.id;
 	}
 
-	public Integer getIcId() {
-		return icId;
+	public void setId(InstituteCoursePK id) {
+		this.id = id;
 	}
 
-	public void setIcId(Integer icId) {
-		this.icId = icId;
+	public Date getDateOfRegistration() {
+		return this.dateOfRegistration;
 	}
 
-	public Integer getInstituteId() {
-		return instituteId;
+	public void setDateOfRegistration(Date dateOfRegistration) {
+		this.dateOfRegistration = dateOfRegistration;
 	}
 
-	public void setInstituteId(Integer instituteId) {
-		this.instituteId = instituteId;
+	public Date getDateOnEnding() {
+		return this.dateOnEnding;
 	}
 
-	public Integer getCourseId() {
-		return courseId;
+	public void setDateOnEnding(Date dateOnEnding) {
+		this.dateOnEnding = dateOnEnding;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public byte getIsInstituteCourseActive() {
+		return this.isInstituteCourseActive;
 	}
 
-	public String getEffectiveDate() {
-		return effectiveDate;
+	public void setIsInstituteCourseActive(byte isInstituteCourseActive) {
+		this.isInstituteCourseActive = isInstituteCourseActive;
 	}
 
-	public void setEffectiveDate(String effectiveDate) {
-		this.effectiveDate = effectiveDate;
+	public int getRegistrationId() {
+		return this.registrationId;
 	}
 
-	public String getTerminationDate() {
-		return terminationDate;
-	}
-
-	public void setTerminationDate(String terminationDate) {
-		this.terminationDate = terminationDate;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	@Override
-	public String toString() {
-		return "InstituteCourse [icId=" + icId + ", instituteId=" + instituteId + ", courseId=" + courseId
-				+ ", effectiveDate=" + effectiveDate + ", terminationDate=" + terminationDate + ", active=" + active
-				+ "]";
+	public void setRegistrationId(int registrationId) {
+		this.registrationId = registrationId;
 	}
 
 }

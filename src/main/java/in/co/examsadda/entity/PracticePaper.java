@@ -1,148 +1,111 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the practice_paper database table.
+ * 
+ */
 @Entity
-@Table(name = "practice_paper")
-public class PracticePaper {
-	@Id
-//	@Column(name = "paperId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer paperId;
-	private String paperNameInEnglish;
-	private String paperNameInRegional;
-	private Integer duration;
-	private Integer courseId;
-	private Boolean active;
+@Table(name="practice_paper")
+@NamedQuery(name="PracticePaper.findAll", query="SELECT p FROM PracticePaper p")
+public class PracticePaper implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
+	@Id
+	@Column(name="practice_paper_id", unique=true, nullable=false)
+	private int practicePaperId;
+
+	@Column(name="course_id_fk", nullable=false)
+	private int courseIdFk;
+
+	@Column(name="institute_id_fk", nullable=false, length=100)
+	private String instituteIdFk;
+
+	@Column(name="is_practice_paper_active", nullable=false)
+	private byte isPracticePaperActive;
+
+	@Column(name="number_of_sections_in_this_practice_paper", nullable=false)
+	private byte numberOfSectionsInThisPracticePaper;
+
+	@Column(name="practice_paper_duration", nullable=false)
+	private byte practicePaperDuration;
+
+	@Lob
+	@Column(name="practice_paper_name_in_english", nullable=false)
+	private String practicePaperNameInEnglish;
+
+	@Lob
+	@Column(name="practice_paper_name_in_regional", nullable=false)
+	private String practicePaperNameInRegional;
+
 	public PracticePaper() {
 	}
 
-	/**
-	 * @param paperId
-	 * @param paperNameInEnglish
-	 * @param paperNameInRegional
-	 * @param duration
-	 * @param courseId
-	 * @param active
-	 */
-	public PracticePaper(Integer paperId, String paperNameInEnglish, String paperNameInRegional, Integer duration,
-			Integer courseId, Boolean active) {
-		this.paperId = paperId;
-		this.paperNameInEnglish = paperNameInEnglish;
-		this.paperNameInRegional = paperNameInRegional;
-		this.duration = duration;
-		this.courseId = courseId;
-		this.active = active;
+	public int getPracticePaperId() {
+		return this.practicePaperId;
 	}
 
-	/**
-	 * @return the paperId
-	 */
-	public Integer getPaperId() {
-		return paperId;
+	public void setPracticePaperId(int practicePaperId) {
+		this.practicePaperId = practicePaperId;
 	}
 
-	/**
-	 * @param paperId
-	 *            the paperId to set
-	 */
-	public void setPaperId(Integer paperId) {
-		this.paperId = paperId;
+	public int getCourseIdFk() {
+		return this.courseIdFk;
 	}
 
-	/**
-	 * @return the paperNameInEnglish
-	 */
-	public String getPaperNameInEnglish() {
-		return paperNameInEnglish;
+	public void setCourseIdFk(int courseIdFk) {
+		this.courseIdFk = courseIdFk;
 	}
 
-	/**
-	 * @param paperNameInEnglish
-	 *            the paperNameInEnglish to set
-	 */
-	public void setPaperNameInEnglish(String paperNameInEnglish) {
-		this.paperNameInEnglish = paperNameInEnglish;
+	public String getInstituteIdFk() {
+		return this.instituteIdFk;
 	}
 
-	/**
-	 * @return the paperNameInRegional
-	 */
-	public String getPaperNameInRegional() {
-		return paperNameInRegional;
+	public void setInstituteIdFk(String instituteIdFk) {
+		this.instituteIdFk = instituteIdFk;
 	}
 
-	/**
-	 * @param paperNameInRegional
-	 *            the paperNameInRegional to set
-	 */
-	public void setPaperNameInRegional(String paperNameInRegional) {
-		this.paperNameInRegional = paperNameInRegional;
+	public byte getIsPracticePaperActive() {
+		return this.isPracticePaperActive;
 	}
 
-	/**
-	 * @return the duration
-	 */
-	public Integer getDuration() {
-		return duration;
+	public void setIsPracticePaperActive(byte isPracticePaperActive) {
+		this.isPracticePaperActive = isPracticePaperActive;
 	}
 
-	/**
-	 * @param duration
-	 *            the duration to set
-	 */
-	public void setDuration(Integer duration) {
-		this.duration = duration;
+	public byte getNumberOfSectionsInThisPracticePaper() {
+		return this.numberOfSectionsInThisPracticePaper;
 	}
 
-	/**
-	 * @return the courseId
-	 */
-	public Integer getCourseId() {
-		return courseId;
+	public void setNumberOfSectionsInThisPracticePaper(byte numberOfSectionsInThisPracticePaper) {
+		this.numberOfSectionsInThisPracticePaper = numberOfSectionsInThisPracticePaper;
 	}
 
-	/**
-	 * @param courseId
-	 *            the courseId to set
-	 */
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public byte getPracticePaperDuration() {
+		return this.practicePaperDuration;
 	}
 
-	/**
-	 * @return the active
-	 */
-	public Boolean getActive() {
-		return active;
+	public void setPracticePaperDuration(byte practicePaperDuration) {
+		this.practicePaperDuration = practicePaperDuration;
 	}
 
-	/**
-	 * @param active
-	 *            the active to set
-	 */
-	public void setActive(Boolean active) {
-		this.active = active;
+	public String getPracticePaperNameInEnglish() {
+		return this.practicePaperNameInEnglish;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PracticePaper [paperId=" + paperId + ", paperNameInEnglish=" + paperNameInEnglish
-				+ ", paperNameInRegional=" + paperNameInRegional + ", duration=" + duration + ", courseId=" + courseId
-				+ ", active=" + active + "]";
+	public void setPracticePaperNameInEnglish(String practicePaperNameInEnglish) {
+		this.practicePaperNameInEnglish = practicePaperNameInEnglish;
+	}
+
+	public String getPracticePaperNameInRegional() {
+		return this.practicePaperNameInRegional;
+	}
+
+	public void setPracticePaperNameInRegional(String practicePaperNameInRegional) {
+		this.practicePaperNameInRegional = practicePaperNameInRegional;
 	}
 
 }

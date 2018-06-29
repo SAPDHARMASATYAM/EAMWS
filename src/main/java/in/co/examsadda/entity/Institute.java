@@ -1,131 +1,67 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the institute database table.
+ * 
+ */
 @Entity
-@Table(name = "institute")
-public class Institute {
+@Table(name="institute")
+@NamedQuery(name="Institute.findAll", query="SELECT i FROM Institute i")
+public class Institute implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "instituteId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer instituteId;
-	private String nameInEnglish;
-	private String nameInRegional;
-	private Integer addressId;
-	private Boolean active;
+	@Column(name="institute_id", unique=true, nullable=false, length=100)
+	private String instituteId;
 
-	/**
-	 * 
-	 */
+	@Lob
+	@Column(name="institute_name_in_english", nullable=false)
+	private String instituteNameInEnglish;
+
+	@Lob
+	@Column(name="institute_name_in_regional", nullable=false)
+	private String instituteNameInRegional;
+
+	@Column(name="is_institute_active", nullable=false)
+	private byte isInstituteActive;
+
 	public Institute() {
-		super();
 	}
 
-	/**
-	 * @param instituteId
-	 * @param nameInEnglish
-	 * @param nameInRegional
-	 * @param addressId
-	 * @param active
-	 */
-	public Institute(Integer instituteId, String nameInEnglish, String nameInRegional, Integer addressId,
-			Boolean active) {
-		this.instituteId = instituteId;
-		this.nameInEnglish = nameInEnglish;
-		this.nameInRegional = nameInRegional;
-		this.addressId = addressId;
-		this.active = active;
+	public String getInstituteId() {
+		return this.instituteId;
 	}
 
-	/**
-	 * @return the instituteId
-	 */
-	public Integer getInstituteId() {
-		return instituteId;
-	}
-
-	/**
-	 * @param instituteId
-	 *            the instituteId to set
-	 */
-	public void setInstituteId(Integer instituteId) {
+	public void setInstituteId(String instituteId) {
 		this.instituteId = instituteId;
 	}
 
-	/**
-	 * @return the nameInEnglish
-	 */
-	public String getNameInEnglish() {
-		return nameInEnglish;
+	public String getInstituteNameInEnglish() {
+		return this.instituteNameInEnglish;
 	}
 
-	/**
-	 * @param nameInEnglish
-	 *            the nameInEnglish to set
-	 */
-	public void setNameInEnglish(String nameInEnglish) {
-		this.nameInEnglish = nameInEnglish;
+	public void setInstituteNameInEnglish(String instituteNameInEnglish) {
+		this.instituteNameInEnglish = instituteNameInEnglish;
 	}
 
-	/**
-	 * @return the nameInRegional
-	 */
-	public String getNameInRegional() {
-		return nameInRegional;
+	public String getInstituteNameInRegional() {
+		return this.instituteNameInRegional;
 	}
 
-	/**
-	 * @param nameInRegional
-	 *            the nameInRegional to set
-	 */
-	public void setNameInRegional(String nameInRegional) {
-		this.nameInRegional = nameInRegional;
+	public void setInstituteNameInRegional(String instituteNameInRegional) {
+		this.instituteNameInRegional = instituteNameInRegional;
 	}
 
-	/**
-	 * @return the addressId
-	 */
-	public Integer getAddressId() {
-		return addressId;
+	public byte getIsInstituteActive() {
+		return this.isInstituteActive;
 	}
 
-	/**
-	 * @param addressId
-	 *            the addressId to set
-	 */
-	public void setAddressId(Integer addressId) {
-		this.addressId = addressId;
-	}
-
-	/**
-	 * @return the active
-	 */
-	public Boolean getActive() {
-		return active;
-	}
-
-	/**
-	 * @param active
-	 *            the active to set
-	 */
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Institute [instituteId=" + instituteId + ", nameInEnglish=" + nameInEnglish + ", nameInRegional="
-				+ nameInRegional + ", addressId=" + addressId + ", active=" + active + "]";
+	public void setIsInstituteActive(byte isInstituteActive) {
+		this.isInstituteActive = isInstituteActive;
 	}
 
 }

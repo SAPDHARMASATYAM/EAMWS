@@ -1,152 +1,124 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the section database table.
+ * 
+ */
 @Entity
-@Table(name = "section")
-public class Section {
+@Table(name="section")
+@NamedQuery(name="Section.findAll", query="SELECT s FROM Section s")
+public class Section implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "sectionId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer sectionId;
-	private String nameInEnglish;
-	private String nameInRegional;
-	private Integer numberOfQuestions;
-	private Boolean active;
-	private Integer practicePaperId;
+	@Column(name="section_id", unique=true, nullable=false)
+	private int sectionId;
 
-	/**
-	 * 
-	 */
+	@Column(name="course_id_fk", nullable=false)
+	private int courseIdFk;
+
+	@Column(name="is_section_active", nullable=false)
+	private byte isSectionActive;
+
+	@Column(name="number_of_questions_in_this_section", nullable=false)
+	private int numberOfQuestionsInThisSection;
+
+	@Column(name="practice_paper_id_fk", nullable=false)
+	private int practicePaperIdFk;
+
+	@Lob
+	@Column(name="section_description_in_english", nullable=false)
+	private String sectionDescriptionInEnglish;
+
+	@Lob
+	@Column(name="section_description_in_regional", nullable=false)
+	private String sectionDescriptionInRegional;
+
+	@Lob
+	@Column(name="section_name_in_english", nullable=false)
+	private String sectionNameInEnglish;
+
+	@Lob
+	@Column(name="section_name_in_regional", nullable=false)
+	private String sectionNameInRegional;
+
 	public Section() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param sectionId
-	 * @param nameInEnglish
-	 * @param nameInRegional
-	 * @param numberOfQuestions
-	 * @param active
-	 * @param practicePaperId
-	 */
-	public Section(Integer sectionId, String nameInEnglish, String nameInRegional, Integer numberOfQuestions,
-			Boolean active, Integer practicePaperId) {
-		this.sectionId = sectionId;
-		this.nameInEnglish = nameInEnglish;
-		this.nameInRegional = nameInRegional;
-		this.numberOfQuestions = numberOfQuestions;
-		this.active = active;
-		this.practicePaperId = practicePaperId;
+	public int getSectionId() {
+		return this.sectionId;
 	}
 
-	/**
-	 * @return the sectionId
-	 */
-	public Integer getSectionId() {
-		return sectionId;
-	}
-
-	/**
-	 * @param sectionId
-	 *            the sectionId to set
-	 */
-	public void setSectionId(Integer sectionId) {
+	public void setSectionId(int sectionId) {
 		this.sectionId = sectionId;
 	}
 
-	/**
-	 * @return the nameInEnglish
-	 */
-	public String getNameInEnglish() {
-		return nameInEnglish;
+	public int getCourseIdFk() {
+		return this.courseIdFk;
 	}
 
-	/**
-	 * @param nameInEnglish
-	 *            the nameInEnglish to set
-	 */
-	public void setNameInEnglish(String nameInEnglish) {
-		this.nameInEnglish = nameInEnglish;
+	public void setCourseIdFk(int courseIdFk) {
+		this.courseIdFk = courseIdFk;
 	}
 
-	/**
-	 * @return the nameInRegional
-	 */
-	public String getNameInRegional() {
-		return nameInRegional;
+	public byte getIsSectionActive() {
+		return this.isSectionActive;
 	}
 
-	/**
-	 * @param nameInRegional
-	 *            the nameInRegional to set
-	 */
-	public void setNameInRegional(String nameInRegional) {
-		this.nameInRegional = nameInRegional;
+	public void setIsSectionActive(byte isSectionActive) {
+		this.isSectionActive = isSectionActive;
 	}
 
-	/**
-	 * @return the numberOfQuestions
-	 */
-	public Integer getNumberOfQuestions() {
-		return numberOfQuestions;
+	public int getNumberOfQuestionsInThisSection() {
+		return this.numberOfQuestionsInThisSection;
 	}
 
-	/**
-	 * @param numberOfQuestions
-	 *            the numberOfQuestions to set
-	 */
-	public void setNumberOfQuestions(Integer numberOfQuestions) {
-		this.numberOfQuestions = numberOfQuestions;
+	public void setNumberOfQuestionsInThisSection(int numberOfQuestionsInThisSection) {
+		this.numberOfQuestionsInThisSection = numberOfQuestionsInThisSection;
 	}
 
-	/**
-	 * @return the active
-	 */
-	public Boolean getActive() {
-		return active;
+	public int getPracticePaperIdFk() {
+		return this.practicePaperIdFk;
 	}
 
-	/**
-	 * @param active
-	 *            the active to set
-	 */
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setPracticePaperIdFk(int practicePaperIdFk) {
+		this.practicePaperIdFk = practicePaperIdFk;
 	}
 
-	/**
-	 * @return the practicePaperId
-	 */
-	public Integer getPracticePaperId() {
-		return practicePaperId;
+	public String getSectionDescriptionInEnglish() {
+		return this.sectionDescriptionInEnglish;
 	}
 
-	/**
-	 * @param practicePaperId
-	 *            the practicePaperId to set
-	 */
-	public void setPracticePaperId(Integer practicePaperId) {
-		this.practicePaperId = practicePaperId;
+	public void setSectionDescriptionInEnglish(String sectionDescriptionInEnglish) {
+		this.sectionDescriptionInEnglish = sectionDescriptionInEnglish;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Section [sectionId=" + sectionId + ", nameInEnglish=" + nameInEnglish + ", nameInRegional="
-				+ nameInRegional + ", numberOfQuestions=" + numberOfQuestions + ", active=" + active
-				+ ", practicePaperId=" + practicePaperId + "]";
+	public String getSectionDescriptionInRegional() {
+		return this.sectionDescriptionInRegional;
+	}
+
+	public void setSectionDescriptionInRegional(String sectionDescriptionInRegional) {
+		this.sectionDescriptionInRegional = sectionDescriptionInRegional;
+	}
+
+	public String getSectionNameInEnglish() {
+		return this.sectionNameInEnglish;
+	}
+
+	public void setSectionNameInEnglish(String sectionNameInEnglish) {
+		this.sectionNameInEnglish = sectionNameInEnglish;
+	}
+
+	public String getSectionNameInRegional() {
+		return this.sectionNameInRegional;
+	}
+
+	public void setSectionNameInRegional(String sectionNameInRegional) {
+		this.sectionNameInRegional = sectionNameInRegional;
 	}
 
 }

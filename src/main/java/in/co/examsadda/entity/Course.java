@@ -1,131 +1,78 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the course database table.
+ * 
+ */
 @Entity
-@Table(name = "course")
-public class Course {
+@Table(name="course")
+@NamedQuery(name="Course.findAll", query="SELECT c FROM Course c")
+public class Course implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "courseId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer courseId;
-	private String nameInEnglish;
-	private String nameInTelugu;
-	private Integer numberOfPracticePapers;
-	private Boolean active;
+	@Column(name="course_id", unique=true, nullable=false)
+	private int courseId;
 
-	/**
-	 * 
-	 */
+	@Lob
+	@Column(name="course_name_in_english", nullable=false)
+	private String courseNameInEnglish;
+
+	@Lob
+	@Column(name="course_name_in_regional", nullable=false)
+	private String courseNameInRegional;
+
+	@Column(name="is_course_active", nullable=false)
+	private byte isCourseActive;
+
+	@Column(name="number_of_practice_papers_in_this_course", nullable=false)
+	private byte numberOfPracticePapersInThisCourse;
+
 	public Course() {
-		super();
 	}
 
-	/**
-	 * @param courseId
-	 * @param nameInEnglish
-	 * @param nameInTelugu
-	 * @param numberOfPracticePapers
-	 * @param active
-	 */
-	public Course(Integer courseId, String nameInEnglish, String nameInTelugu, Integer numberOfPracticePapers,
-			Boolean active) {
-		this.courseId = courseId;
-		this.nameInEnglish = nameInEnglish;
-		this.nameInTelugu = nameInTelugu;
-		this.numberOfPracticePapers = numberOfPracticePapers;
-		this.active = active;
+	public int getCourseId() {
+		return this.courseId;
 	}
 
-	/**
-	 * @return the courseId
-	 */
-	public Integer getCourseId() {
-		return courseId;
-	}
-
-	/**
-	 * @param courseId
-	 *            the courseId to set
-	 */
-	public void setCourseId(Integer courseId) {
+	public void setCourseId(int courseId) {
 		this.courseId = courseId;
 	}
 
-	/**
-	 * @return the nameInEnglish
-	 */
-	public String getNameInEnglish() {
-		return nameInEnglish;
+	public String getCourseNameInEnglish() {
+		return this.courseNameInEnglish;
 	}
 
-	/**
-	 * @param nameInEnglish
-	 *            the nameInEnglish to set
-	 */
-	public void setNameInEnglish(String nameInEnglish) {
-		this.nameInEnglish = nameInEnglish;
+	public void setCourseNameInEnglish(String courseNameInEnglish) {
+		this.courseNameInEnglish = courseNameInEnglish;
 	}
 
-	/**
-	 * @return the nameInTelugu
-	 */
-	public String getNameInTelugu() {
-		return nameInTelugu;
+	public String getCourseNameInRegional() {
+		return this.courseNameInRegional;
 	}
 
-	/**
-	 * @param nameInTelugu
-	 *            the nameInTelugu to set
-	 */
-	public void setNameInTelugu(String nameInTelugu) {
-		this.nameInTelugu = nameInTelugu;
+	public void setCourseNameInRegional(String courseNameInRegional) {
+		this.courseNameInRegional = courseNameInRegional;
 	}
 
-	/**
-	 * @return the numberOfPracticePapers
-	 */
-	public Integer getNumberOfPracticePapers() {
-		return numberOfPracticePapers;
+	public byte getIsCourseActive() {
+		return this.isCourseActive;
 	}
 
-	/**
-	 * @param numberOfPracticePapers
-	 *            the numberOfPracticePapers to set
-	 */
-	public void setNumberOfPracticePapers(Integer numberOfPracticePapers) {
-		this.numberOfPracticePapers = numberOfPracticePapers;
+	public void setIsCourseActive(byte isCourseActive) {
+		this.isCourseActive = isCourseActive;
 	}
 
-	/**
-	 * @return the active
-	 */
-	public Boolean getActive() {
-		return active;
+	public byte getNumberOfPracticePapersInThisCourse() {
+		return this.numberOfPracticePapersInThisCourse;
 	}
 
-	/**
-	 * @param active
-	 *            the active to set
-	 */
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Course [courseId=" + courseId + ", nameInEnglish=" + nameInEnglish + ", nameInTelugu=" + nameInTelugu
-				+ ", numberOfPracticePapers=" + numberOfPracticePapers + ", active=" + active + "]";
+	public void setNumberOfPracticePapersInThisCourse(byte numberOfPracticePapersInThisCourse) {
+		this.numberOfPracticePapersInThisCourse = numberOfPracticePapersInThisCourse;
 	}
 
 }

@@ -1,120 +1,131 @@
 package in.co.examsadda.entity;
 
-public class UserProfile {
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the user_profile database table.
+ * 
+ */
+@Entity
+@Table(name="user_profile")
+@NamedQuery(name="UserProfile.findAll", query="SELECT u FROM UserProfile u")
+public class UserProfile implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="email_id", unique=true, nullable=false, length=100)
 	private String emailId;
+
+	@Column(name="first_name", nullable=false, length=50)
 	private String firstName;
-	private String lastName;
-	private String mobile;
+
+	@Column(nullable=false, length=10)
 	private String gender;
 
-	/**
-	 * 
-	 */
+	@Column(name="is_user_profile_active", nullable=false)
+	private byte isUserProfileActive;
+
+	@Column(name="last_name", nullable=false, length=50)
+	private String lastName;
+
+	@Column(nullable=false, length=10)
+	private String mobile;
+
+	@Column(name="secret_question_1", nullable=false, length=100)
+	private String secretQuestion1;
+
+	@Column(name="secret_question_2", nullable=false, length=100)
+	private String secretQuestion2;
+
+	@Column(name="secret_question_answer_1", nullable=false, length=100)
+	private String secretQuestionAnswer1;
+
+	@Column(name="secret_question_answer_2", nullable=false, length=100)
+	private String secretQuestionAnswer2;
+
 	public UserProfile() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param emailId
-	 * @param firstName
-	 * @param lastName
-	 * @param mobile
-	 * @param gender
-	 */
-	public UserProfile(String emailId, String firstName, String lastName, String mobile, String gender) {
-		this.emailId = emailId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.mobile = mobile;
-		this.gender = gender;
-	}
-
-	/**
-	 * @return the emailId
-	 */
 	public String getEmailId() {
-		return emailId;
+		return this.emailId;
 	}
 
-	/**
-	 * @param emailId
-	 *            the emailId to set
-	 */
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
 
-	/**
-	 * @return the firstName
-	 */
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 
-	/**
-	 * @param firstName
-	 *            the firstName to set
-	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @param lastName
-	 *            the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	/**
-	 * @return the mobile
-	 */
-	public String getMobile() {
-		return mobile;
-	}
-
-	/**
-	 * @param mobile
-	 *            the mobile to set
-	 */
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	/**
-	 * @return the gender
-	 */
 	public String getGender() {
-		return gender;
+		return this.gender;
 	}
 
-	/**
-	 * @param gender
-	 *            the gender to set
-	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "UserProfile [emailId=" + emailId + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile="
-				+ mobile + ", gender=" + gender + "]";
+	public byte getIsUserProfileActive() {
+		return this.isUserProfileActive;
+	}
+
+	public void setIsUserProfileActive(byte isUserProfileActive) {
+		this.isUserProfileActive = isUserProfileActive;
+	}
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getMobile() {
+		return this.mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getSecretQuestion1() {
+		return this.secretQuestion1;
+	}
+
+	public void setSecretQuestion1(String secretQuestion1) {
+		this.secretQuestion1 = secretQuestion1;
+	}
+
+	public String getSecretQuestion2() {
+		return this.secretQuestion2;
+	}
+
+	public void setSecretQuestion2(String secretQuestion2) {
+		this.secretQuestion2 = secretQuestion2;
+	}
+
+	public String getSecretQuestionAnswer1() {
+		return this.secretQuestionAnswer1;
+	}
+
+	public void setSecretQuestionAnswer1(String secretQuestionAnswer1) {
+		this.secretQuestionAnswer1 = secretQuestionAnswer1;
+	}
+
+	public String getSecretQuestionAnswer2() {
+		return this.secretQuestionAnswer2;
+	}
+
+	public void setSecretQuestionAnswer2(String secretQuestionAnswer2) {
+		this.secretQuestionAnswer2 = secretQuestionAnswer2;
 	}
 
 }

@@ -1,187 +1,135 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the option database table.
+ * 
+ */
 @Entity
-@Table(name = "option")
-public class Option {
-	@Id
-	@Column(name = "optionId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer optionId;
-	private Character optionIndicator;
-	private String optionValueInEnglish;
-	private String optionImageInEnglishURL;
-	private String optionImageRegionalURL;
-	private String optionValueInRegional;
-	private Integer questionId;
-	private Boolean active;
+@Table(name="option")
+@NamedQuery(name="Option.findAll", query="SELECT o FROM Option o")
+public class Option implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
+	@Id
+	@Column(unique=true, nullable=false)
+	private String option_Id;
+
+	@Column(name="is_option_active", nullable=false)
+	private byte isOptionActive;
+
+	@Column(name="is_option_has_image", nullable=false)
+	private byte isOptionHasImage;
+
+	@Column(name="option_indicator", nullable=false, length=1)
+	private String optionIndicator;
+
+	@Lob
+	@Column(name="option_value_in_english", nullable=false)
+	private String optionValueInEnglish;
+
+	@Lob
+	@Column(name="option_value_in_english_image_url", nullable=false)
+	private String optionValueInEnglishImageUrl;
+
+	@Lob
+	@Column(name="option_value_in_regional", nullable=false)
+	private String optionValueInRegional;
+
+	@Lob
+	@Column(name="option_value_in_regional_image_url", nullable=false)
+	private String optionValueInRegionalImageUrl;
+
+	@Column(name="question_id_fk", nullable=false)
+	private java.math.BigInteger questionIdFk;
+
+	@Column(name="section_id_fk", nullable=false)
+	private int sectionIdFk;
+
 	public Option() {
 	}
 
-	/**
-	 * @param optionId
-	 * @param optionIndicator
-	 * @param optionValueInEnglish
-	 * @param optionImageInEnglishURL
-	 * @param optionImageRegionalURL
-	 * @param optionValueInRegional
-	 * @param questionId
-	 * @param active
-	 */
-	public Option(Integer optionId, Character optionIndicator, String optionValueInEnglish,
-			String optionImageInEnglishURL, String optionImageRegionalURL, String optionValueInRegional,
-			Integer questionId, Boolean active) {
-		this.optionId = optionId;
-		this.optionIndicator = optionIndicator;
-		this.optionValueInEnglish = optionValueInEnglish;
-		this.optionImageInEnglishURL = optionImageInEnglishURL;
-		this.optionImageRegionalURL = optionImageRegionalURL;
-		this.optionValueInRegional = optionValueInRegional;
-		this.questionId = questionId;
-		this.active = active;
+	public String getOption_Id() {
+		return this.option_Id;
 	}
 
-	/**
-	 * @return the optionId
-	 */
-	public Integer getOptionId() {
-		return optionId;
+	public void setOption_Id(String option_Id) {
+		this.option_Id = option_Id;
 	}
 
-	/**
-	 * @param optionId
-	 *            the optionId to set
-	 */
-	public void setOptionId(Integer optionId) {
-		this.optionId = optionId;
+	public byte getIsOptionActive() {
+		return this.isOptionActive;
 	}
 
-	/**
-	 * @return the optionIndicator
-	 */
-	public Character getOptionIndicator() {
-		return optionIndicator;
+	public void setIsOptionActive(byte isOptionActive) {
+		this.isOptionActive = isOptionActive;
 	}
 
-	/**
-	 * @param optionIndicator
-	 *            the optionIndicator to set
-	 */
-	public void setOptionIndicator(Character optionIndicator) {
+	public byte getIsOptionHasImage() {
+		return this.isOptionHasImage;
+	}
+
+	public void setIsOptionHasImage(byte isOptionHasImage) {
+		this.isOptionHasImage = isOptionHasImage;
+	}
+
+	public String getOptionIndicator() {
+		return this.optionIndicator;
+	}
+
+	public void setOptionIndicator(String optionIndicator) {
 		this.optionIndicator = optionIndicator;
 	}
 
-	/**
-	 * @return the optionValueInEnglish
-	 */
 	public String getOptionValueInEnglish() {
-		return optionValueInEnglish;
+		return this.optionValueInEnglish;
 	}
 
-	/**
-	 * @param optionValueInEnglish
-	 *            the optionValueInEnglish to set
-	 */
 	public void setOptionValueInEnglish(String optionValueInEnglish) {
 		this.optionValueInEnglish = optionValueInEnglish;
 	}
 
-	/**
-	 * @return the optionImageInEnglishURL
-	 */
-	public String getOptionImageInEnglishURL() {
-		return optionImageInEnglishURL;
+	public String getOptionValueInEnglishImageUrl() {
+		return this.optionValueInEnglishImageUrl;
 	}
 
-	/**
-	 * @param optionImageInEnglishURL
-	 *            the optionImageInEnglishURL to set
-	 */
-	public void setOptionImageInEnglishURL(String optionImageInEnglishURL) {
-		this.optionImageInEnglishURL = optionImageInEnglishURL;
+	public void setOptionValueInEnglishImageUrl(String optionValueInEnglishImageUrl) {
+		this.optionValueInEnglishImageUrl = optionValueInEnglishImageUrl;
 	}
 
-	/**
-	 * @return the optionImageRegionalURL
-	 */
-	public String getOptionImageRegionalURL() {
-		return optionImageRegionalURL;
-	}
-
-	/**
-	 * @param optionImageRegionalURL
-	 *            the optionImageRegionalURL to set
-	 */
-	public void setOptionImageRegionalURL(String optionImageRegionalURL) {
-		this.optionImageRegionalURL = optionImageRegionalURL;
-	}
-
-	/**
-	 * @return the optionValueInRegional
-	 */
 	public String getOptionValueInRegional() {
-		return optionValueInRegional;
+		return this.optionValueInRegional;
 	}
 
-	/**
-	 * @param optionValueInRegional
-	 *            the optionValueInRegional to set
-	 */
 	public void setOptionValueInRegional(String optionValueInRegional) {
 		this.optionValueInRegional = optionValueInRegional;
 	}
 
-	/**
-	 * @return the questionId
-	 */
-	public Integer getQuestionId() {
-		return questionId;
+	public String getOptionValueInRegionalImageUrl() {
+		return this.optionValueInRegionalImageUrl;
 	}
 
-	/**
-	 * @param questionId
-	 *            the questionId to set
-	 */
-	public void setQuestionId(Integer questionId) {
-		this.questionId = questionId;
+	public void setOptionValueInRegionalImageUrl(String optionValueInRegionalImageUrl) {
+		this.optionValueInRegionalImageUrl = optionValueInRegionalImageUrl;
 	}
 
-	/**
-	 * @return the active
-	 */
-	public Boolean getActive() {
-		return active;
+	public java.math.BigInteger getQuestionIdFk() {
+		return this.questionIdFk;
 	}
 
-	/**
-	 * @param active
-	 *            the active to set
-	 */
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setQuestionIdFk(java.math.BigInteger questionIdFk) {
+		this.questionIdFk = questionIdFk;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Option [optionId=" + optionId + ", optionIndicator=" + optionIndicator + ", optionValueInEnglish="
-				+ optionValueInEnglish + ", optionImageInEnglishURL=" + optionImageInEnglishURL
-				+ ", optionImageRegionalURL=" + optionImageRegionalURL + ", optionValueInRegional="
-				+ optionValueInRegional + ", questionId=" + questionId + ", active=" + active + "]";
+	public int getSectionIdFk() {
+		return this.sectionIdFk;
+	}
+
+	public void setSectionIdFk(int sectionIdFk) {
+		this.sectionIdFk = sectionIdFk;
 	}
 
 }

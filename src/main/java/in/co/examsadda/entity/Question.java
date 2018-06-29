@@ -1,141 +1,146 @@
 package in.co.examsadda.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
+
+/**
+ * The persistent class for the question database table.
+ * 
+ */
 @Entity
-@Table(name = "question")
-public class Question {
+@Table(name="question")
+@NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
+public class Question implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "questionId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer questionId;
-	private String questionInEnglish;
-	private String questionInRegional;
-	private String questionImageInEnglishURL;
-	private String questionImageInRegionalURL;
-	private Integer numberOfOptions;
-	private Character answer;
-	private Integer sectionId;
-    private Boolean active;
-    private Boolean isQuestionHasImage;
+	@Column(name="question_id", unique=true, nullable=false)
+	private String questionId;
 
-	/**
-	 * 
-	 */
+	@Column(name="answer_for_this_question", nullable=false, length=1)
+	private String answerForThisQuestion;
+
+	@Column(name="is_question_active", nullable=false)
+	private byte isQuestionActive;
+
+	@Column(name="is_question_has_image", nullable=false)
+	private byte isQuestionHasImage;
+
+	@Column(name="practice_paper_id_fk", nullable=false)
+	private int practicePaperIdFk;
+
+	@Lob
+	@Column(name="question_in_english", nullable=false)
+	private String questionInEnglish;
+
+	@Lob
+	@Column(name="question_in_english_image_url", nullable=false)
+	private String questionInEnglishImageUrl;
+
+	@Lob
+	@Column(name="question_in_regional", nullable=false)
+	private String questionInRegional;
+
+	@Lob
+	@Column(name="question_in_regional_image_url", nullable=false)
+	private String questionInRegionalImageUrl;
+
+	@Column(name="section_id_fk", nullable=false)
+	private int sectionIdFk;
+
+	@Column(name="user_answer_for_this_question", nullable=false, length=1)
+	private String userAnswerForThisQuestion;
+
 	public Question() {
-		super();
 	}
 
-	public Question(Integer questionId, String questionInEnglish, String questionInRegional,
-			String questionImageInEnglishURL, String questionImageInRegionalURL, Integer numberOfOptions,
-			Character answer, Integer sectionId, Boolean active, Boolean isQuestionHasImage) {
-		super();
+	public String getQuestionId() {
+		return this.questionId;
+	}
+
+	public void setQuestionId(String questionId) {
 		this.questionId = questionId;
-		this.questionInEnglish = questionInEnglish;
-		this.questionInRegional = questionInRegional;
-		this.questionImageInEnglishURL = questionImageInEnglishURL;
-		this.questionImageInRegionalURL = questionImageInRegionalURL;
-		this.numberOfOptions = numberOfOptions;
-		this.answer = answer;
-		this.sectionId = sectionId;
-		this.active = active;
+	}
+
+	public String getAnswerForThisQuestion() {
+		return this.answerForThisQuestion;
+	}
+
+	public void setAnswerForThisQuestion(String answerForThisQuestion) {
+		this.answerForThisQuestion = answerForThisQuestion;
+	}
+
+	public byte getIsQuestionActive() {
+		return this.isQuestionActive;
+	}
+
+	public void setIsQuestionActive(byte isQuestionActive) {
+		this.isQuestionActive = isQuestionActive;
+	}
+
+	public byte getIsQuestionHasImage() {
+		return this.isQuestionHasImage;
+	}
+
+	public void setIsQuestionHasImage(byte isQuestionHasImage) {
 		this.isQuestionHasImage = isQuestionHasImage;
 	}
 
-	public Integer getQuestionId() {
-		return questionId;
+	public int getPracticePaperIdFk() {
+		return this.practicePaperIdFk;
 	}
 
-	public void setQuestionId(Integer questionId) {
-		this.questionId = questionId;
+	public void setPracticePaperIdFk(int practicePaperIdFk) {
+		this.practicePaperIdFk = practicePaperIdFk;
 	}
 
 	public String getQuestionInEnglish() {
-		return questionInEnglish;
+		return this.questionInEnglish;
 	}
 
 	public void setQuestionInEnglish(String questionInEnglish) {
 		this.questionInEnglish = questionInEnglish;
 	}
 
+	public String getQuestionInEnglishImageUrl() {
+		return this.questionInEnglishImageUrl;
+	}
+
+	public void setQuestionInEnglishImageUrl(String questionInEnglishImageUrl) {
+		this.questionInEnglishImageUrl = questionInEnglishImageUrl;
+	}
+
 	public String getQuestionInRegional() {
-		return questionInRegional;
+		return this.questionInRegional;
 	}
 
 	public void setQuestionInRegional(String questionInRegional) {
 		this.questionInRegional = questionInRegional;
 	}
 
-	public String getQuestionImageInEnglishURL() {
-		return questionImageInEnglishURL;
+	public String getQuestionInRegionalImageUrl() {
+		return this.questionInRegionalImageUrl;
 	}
 
-	public void setQuestionImageInEnglishURL(String questionImageInEnglishURL) {
-		this.questionImageInEnglishURL = questionImageInEnglishURL;
+	public void setQuestionInRegionalImageUrl(String questionInRegionalImageUrl) {
+		this.questionInRegionalImageUrl = questionInRegionalImageUrl;
 	}
 
-	public String getQuestionImageInRegionalURL() {
-		return questionImageInRegionalURL;
+	public int getSectionIdFk() {
+		return this.sectionIdFk;
 	}
 
-	public void setQuestionImageInRegionalURL(String questionImageInRegionalURL) {
-		this.questionImageInRegionalURL = questionImageInRegionalURL;
+	public void setSectionIdFk(int sectionIdFk) {
+		this.sectionIdFk = sectionIdFk;
 	}
 
-	public Integer getNumberOfOptions() {
-		return numberOfOptions;
+	public String getUserAnswerForThisQuestion() {
+		return this.userAnswerForThisQuestion;
 	}
 
-	public void setNumberOfOptions(Integer numberOfOptions) {
-		this.numberOfOptions = numberOfOptions;
+	public void setUserAnswerForThisQuestion(String userAnswerForThisQuestion) {
+		this.userAnswerForThisQuestion = userAnswerForThisQuestion;
 	}
 
-	public Character getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(Character answer) {
-		this.answer = answer;
-	}
-
-	public Integer getSectionId() {
-		return sectionId;
-	}
-
-	public void setSectionId(Integer sectionId) {
-		this.sectionId = sectionId;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	public Boolean getIsQuestionHasImage() {
-		return isQuestionHasImage;
-	}
-
-	public void setIsQuestionHasImage(Boolean isQuestionHasImage) {
-		this.isQuestionHasImage = isQuestionHasImage;
-	}
-
-	@Override
-	public String toString() {
-		return "Question [questionId=" + questionId + ", questionInEnglish=" + questionInEnglish
-				+ ", questionInRegional=" + questionInRegional + ", questionImageInEnglishURL="
-				+ questionImageInEnglishURL + ", questionImageInRegionalURL=" + questionImageInRegionalURL
-				+ ", numberOfOptions=" + numberOfOptions + ", answer=" + answer + ", sectionId=" + sectionId
-				+ ", active=" + active + ", isQuestionHasImage=" + isQuestionHasImage + "]";
-	}
-
-	
 }
