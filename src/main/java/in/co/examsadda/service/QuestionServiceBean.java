@@ -11,8 +11,8 @@ public class QuestionServiceBean implements QuestionService {
 
 	@Autowired
 	private QuestionRepository questionRepository;
-	@Autowired
-	private OptionsServiceBean optionsService;
+//	@Autowired
+//	private OptionsService optionsService;
 
 	@Override
 	public QuestionOptions getQuestionByquestionId(Integer questionId) {
