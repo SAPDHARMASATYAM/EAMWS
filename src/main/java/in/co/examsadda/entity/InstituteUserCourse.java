@@ -2,6 +2,9 @@ package in.co.examsadda.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.data.domain.Persistable;
+
 import java.util.Date;
 
 
@@ -12,7 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name="institute_user_course")
 @NamedQuery(name="InstituteUserCourse.findAll", query="SELECT i FROM InstituteUserCourse i")
-public class InstituteUserCourse implements Serializable {
+public class InstituteUserCourse implements Serializable, Persistable<String>  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,6 +42,10 @@ public class InstituteUserCourse implements Serializable {
 	@Column(name="user_id_fk", nullable=false, length=100)
 	private String userIdFk;
 
+	@Transient
+	private boolean isNew = false;
+
+	
 	public InstituteUserCourse() {
 	}
 
@@ -96,6 +103,24 @@ public class InstituteUserCourse implements Serializable {
 
 	public void setUserIdFk(String userIdFk) {
 		this.userIdFk = userIdFk;
+	}
+
+	@Override
+	public String getId() {
+		return this.getUserIdFk();
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setCourseActive(boolean isCourseActive) {
+		this.isCourseActive = isCourseActive;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 }

@@ -3,6 +3,8 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the section database table.
@@ -11,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="section")
 @NamedQuery(name="Section.findAll", query="SELECT s FROM Section s")
-public class Section implements Serializable {
+public class Section implements Serializable, Persistable<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -42,6 +44,21 @@ public class Section implements Serializable {
 	@Column(name="section_name_in_regional", nullable=false)
 	private String sectionNameInRegional;
 
+	@Transient
+	private boolean isNew = false;
+	
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	@Override
+	public Integer getId() {
+		return this.sectionId;
+	}
 	public Section() {
 	}
 

@@ -3,6 +3,8 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the question database table.
@@ -11,12 +13,12 @@ import javax.persistence.*;
 @Entity
 @Table(name="question")
 @NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
-public class Question implements Serializable {
+public class Question implements Serializable, Persistable<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="question_id", unique=true, nullable=false)
-	private String questionId;
+	private Integer questionId;
 
 	@Column(name="answer_for_this_question", nullable=false, length=1)
 	private String answerForThisQuestion;
@@ -51,15 +53,18 @@ public class Question implements Serializable {
 
 	@Column(name="user_answer_for_this_question", nullable=false, length=1)
 	private String userAnswerForThisQuestion;
-
+	
+	@Transient
+	private boolean isNew = false;
+	
 	public Question() {
 	}
 
-	public String getQuestionId() {
+	public Integer getQuestionId() {
 		return this.questionId;
 	}
 
-	public void setQuestionId(String questionId) {
+	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
 
@@ -141,6 +146,17 @@ public class Question implements Serializable {
 
 	public void setUserAnswerForThisQuestion(String userAnswerForThisQuestion) {
 		this.userAnswerForThisQuestion = userAnswerForThisQuestion;
+	}
+
+	@Override
+	public Integer getId() {
+		return this.questionId;
+	}
+
+	@Override
+	public boolean isNew() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

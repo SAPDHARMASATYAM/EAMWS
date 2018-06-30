@@ -3,6 +3,8 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the address database table.
@@ -11,12 +13,12 @@ import javax.persistence.*;
 @Entity
 @Table(name="address")
 @NamedQuery(name="Address.findAll", query="SELECT a FROM Address a")
-public class Address implements Serializable {
+public class Address implements Serializable, Persistable<String>  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(unique=true, nullable=false)
-	private int addressId;
+	private String addressId;
 
 	@Column(nullable=false, length=100)
 	private String city;
@@ -42,14 +44,25 @@ public class Address implements Serializable {
 	@Column(nullable=false, length=100)
 	private String town;
 
+	@Transient
+	private boolean isNew = false;
+	
 	public Address() {
 	}
 
-	public int getAddressId() {
+	public boolean isNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+
+	public String getAddressId() {
 		return this.addressId;
 	}
 
-	public void setAddressId(int addressId) {
+	public void setAddressId(String addressId) {
 		this.addressId = addressId;
 	}
 
@@ -115,6 +128,11 @@ public class Address implements Serializable {
 
 	public void setTown(String town) {
 		this.town = town;
+	}
+
+	@Override
+	public String getId() {
+		return this.getAddressId();
 	}
 
 }

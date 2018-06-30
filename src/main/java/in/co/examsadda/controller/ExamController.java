@@ -30,7 +30,7 @@ public class ExamController {
 
 	@RequestMapping(value = "/getExamPapersByCourseId", method = RequestMethod.GET, produces = "application/json")
 	public List<ExamPaper> getExamPapersByCourseId(@RequestParam(name = "examId") Integer examId) {
-		return examPaperService.findExamPapersByExamId(examId);
+		return examPaperService.findExamPapersByCourseId(examId);
 	}
 
 	@RequestMapping(value = "/saveExamPaper", method = RequestMethod.POST, produces = "application/json")

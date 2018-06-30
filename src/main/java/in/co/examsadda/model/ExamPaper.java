@@ -8,14 +8,14 @@ import in.co.examsadda.entity.PracticePaper;
 public class ExamPaper {
 
     private PracticePaper practicePaper;
-    private List<SectionQuestions> sections;
+    private List<ExamSection> sections;
 
     /**
      *
      */
     public ExamPaper() {
         practicePaper = new PracticePaper();
-        sections = new ArrayList<SectionQuestions>();
+        sections = new ArrayList<ExamSection>();
     }
 
     public PracticePaper getPracticePaper() {
@@ -26,11 +26,11 @@ public class ExamPaper {
         this.practicePaper = practicePaper;
     }
 
-    public List<SectionQuestions> getSections() {
+    public List<ExamSection> getSections() {
         return sections;
     }
 
-    public void setSections(List<SectionQuestions> sections) {
+    public void setSections(List<ExamSection> sections) {
         this.sections = sections;
     }
 

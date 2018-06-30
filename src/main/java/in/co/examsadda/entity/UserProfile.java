@@ -3,47 +3,51 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
 
 /**
  * The persistent class for the user_profile database table.
  * 
  */
 @Entity
-@Table(name="user_profile")
-@NamedQuery(name="UserProfile.findAll", query="SELECT u FROM UserProfile u")
-public class UserProfile implements Serializable {
+@Table(name = "user_profile")
+@NamedQuery(name = "UserProfile.findAll", query = "SELECT u FROM UserProfile u")
+public class UserProfile implements Serializable, Persistable<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="email_id", unique=true, nullable=false, length=100)
+	@Column(name = "email_id", unique = true, nullable = false, length = 100)
 	private String emailId;
 
-	@Column(name="first_name", nullable=false, length=50)
+	@Column(name = "first_name", nullable = false, length = 50)
 	private String firstName;
 
-	@Column(nullable=false, length=10)
+	@Column(nullable = false, length = 10)
 	private String gender;
 
-	@Column(name="is_user_profile_active", nullable=false)
+	@Column(name = "is_user_profile_active", nullable = false)
 	private boolean isUserProfileActive;
 
-	@Column(name="last_name", nullable=false, length=50)
+	@Column(name = "last_name", nullable = false, length = 50)
 	private String lastName;
 
-	@Column(nullable=false, length=10)
+	@Column(nullable = false, length = 10)
 	private String mobile;
 
-	@Column(name="secret_question_1", nullable=false, length=100)
+	@Column(name = "secret_question_1", nullable = false, length = 100)
 	private String secretQuestion1;
 
-	@Column(name="secret_question_2", nullable=false, length=100)
+	@Column(name = "secret_question_2", nullable = false, length = 100)
 	private String secretQuestion2;
 
-	@Column(name="secret_question_answer_1", nullable=false, length=100)
+	@Column(name = "secret_question_answer_1", nullable = false, length = 100)
 	private String secretQuestionAnswer1;
 
-	@Column(name="secret_question_answer_2", nullable=false, length=100)
+	@Column(name = "secret_question_answer_2", nullable = false, length = 100)
 	private String secretQuestionAnswer2;
+
+	@Transient
+	private boolean isNew = false;
 
 	public UserProfile() {
 	}
@@ -126,6 +130,20 @@ public class UserProfile implements Serializable {
 
 	public void setSecretQuestionAnswer2(String secretQuestionAnswer2) {
 		this.secretQuestionAnswer2 = secretQuestionAnswer2;
+	}
+
+	@Override
+	public String getId() {
+		return this.getEmailId();
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 }

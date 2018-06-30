@@ -6,19 +6,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.co.examsadda.entity.User;
+import in.co.examsadda.entity.PracticePaper;
+
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-public interface UserService {
+public interface PracticePaperService {
 
-	User userLogin(String emailId, String password);
+	PracticePaper getPracticePaperByPracticePaperId(int practicePaperId);
 
-	List<User> getUsersByActiveIndicator(Boolean active);
+	List<PracticePaper> getPracticePapersByCourseId(int courseId);
 
-	int updatePasswordByEmailId(String password, String emailId);
-
-	User getUserByEmailIdId(String emailId);
-
-	User registerUser(User user);
+	List<PracticePaper> getPracticePapersByByInstituteIdAndCourseId(String instituteId, int courseId);
 
 }

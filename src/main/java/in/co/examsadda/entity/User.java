@@ -1,55 +1,71 @@
 package in.co.examsadda.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.springframework.data.domain.Persistable;
 
 /**
  * The persistent class for the user database table.
  * 
  */
 @Entity
-@Table(name="user")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+@Table(name = "user")
+@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+public class User implements Serializable, Persistable<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="email_id", unique=true, nullable=false, length=100)
+	@Column(name = "email_id", unique = true, nullable = false, length = 100)
 	private String emailId;
 
-	@Column(name="is_user_active", nullable=false)
+	@Column(name = "is_user_active", nullable = false)
 	private boolean isUserActive;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="last_login", nullable=false)
+	@Column(name = "last_login", nullable = false)
 	private Date lastLogin;
 
-	@Column(nullable=false, length=15)
+	@Column(nullable = false, length = 15)
 	private String password;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date_of_registration", nullable = true)
+	private Date datOfRegistration;
+
+	@Transient
+	private boolean isNew = false;
 
 	public User() {
 	}
 
 	public String getEmailId() {
-		return this.emailId;
+		return emailId;
 	}
 
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
 
-	public boolean getIsUserActive() {
-		return this.isUserActive;
+	public boolean isUserActive() {
+		return isUserActive;
 	}
 
-	public void setIsUserActive(boolean isUserActive) {
+	public void setUserActive(boolean isUserActive) {
 		this.isUserActive = isUserActive;
 	}
 
 	public Date getLastLogin() {
-		return this.lastLogin;
+		return lastLogin;
 	}
 
 	public void setLastLogin(Date lastLogin) {
@@ -57,17 +73,43 @@ public class User implements Serializable {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	public Date getDatOfRegistration() {
+		return datOfRegistration;
+	}
+
+	public void setDatOfRegistration(Date datOfRegistration) {
+		this.datOfRegistration = datOfRegistration;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String getId() {
+		return this.getEmailId();
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+
 	@Override
 	public String toString() {
 		return "User [emailId=" + emailId + ", isUserActive=" + isUserActive + ", lastLogin=" + lastLogin
-				+ ", password=" + password + "]";
+				+ ", password=" + password + ", datOfRegistration=" + datOfRegistration + ", isNew=" + isNew + "]";
 	}
 
 }

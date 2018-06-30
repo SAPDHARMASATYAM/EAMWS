@@ -3,6 +3,8 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the practice_paper database table.
@@ -11,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="practice_paper")
 @NamedQuery(name="PracticePaper.findAll", query="SELECT p FROM PracticePaper p")
-public class PracticePaper implements Serializable {
+public class PracticePaper implements Serializable, Persistable<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -41,6 +43,9 @@ public class PracticePaper implements Serializable {
 	@Column(name="practice_paper_name_in_regional", nullable=false)
 	private String practicePaperNameInRegional;
 
+	@Transient
+	private boolean isNew = false;
+	
 	public PracticePaper() {
 	}
 
@@ -106,6 +111,24 @@ public class PracticePaper implements Serializable {
 
 	public void setPracticePaperNameInRegional(String practicePaperNameInRegional) {
 		this.practicePaperNameInRegional = practicePaperNameInRegional;
+	}
+
+	@Override
+	public Integer getId() {
+		return this.practicePaperId;
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setPracticePaperActive(boolean isPracticePaperActive) {
+		this.isPracticePaperActive = isPracticePaperActive;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 }

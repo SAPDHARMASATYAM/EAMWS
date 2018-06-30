@@ -3,20 +3,22 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the option database table.
  * 
  */
 @Entity
-@Table(name="option")
+@Table(name="options")
 @NamedQuery(name="Option.findAll", query="SELECT o FROM Option o")
-public class Option implements Serializable {
+public class Option implements Serializable, Persistable<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(unique=true, nullable=false)
-	private String option_Id;
+	private int option_Id;
 
 	@Column(name="is_option_active", nullable=false)
 	private boolean isOptionActive;
@@ -49,14 +51,17 @@ public class Option implements Serializable {
 	@Column(name="section_id_fk", nullable=false)
 	private int sectionIdFk;
 
+	@Transient
+	private boolean isNew = false;
+
 	public Option() {
 	}
 
-	public String getOption_Id() {
+	public int getOption_Id() {
 		return this.option_Id;
 	}
 
-	public void setOption_Id(String option_Id) {
+	public void setOption_Id(int option_Id) {
 		this.option_Id = option_Id;
 	}
 
@@ -130,6 +135,28 @@ public class Option implements Serializable {
 
 	public void setSectionIdFk(int sectionIdFk) {
 		this.sectionIdFk = sectionIdFk;
+	}
+
+	@Override
+	public Integer getId() {
+		return this.option_Id;
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setOptionActive(boolean isOptionActive) {
+		this.isOptionActive = isOptionActive;
+	}
+
+	public void setOptionHasImage(boolean isOptionHasImage) {
+		this.isOptionHasImage = isOptionHasImage;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 }

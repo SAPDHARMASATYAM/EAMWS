@@ -3,6 +3,8 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the institute database table.
@@ -11,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="institute")
 @NamedQuery(name="Institute.findAll", query="SELECT i FROM Institute i")
-public class Institute implements Serializable {
+public class Institute implements Serializable, Persistable<String>  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,6 +30,21 @@ public class Institute implements Serializable {
 
 	@Column(name="is_institute_active", nullable=false)
 	private boolean isInstituteActive;
+
+	@Transient
+	private boolean isNew = false;
+
+	public boolean isNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+
+	public void setInstituteActive(boolean isInstituteActive) {
+		this.isInstituteActive = isInstituteActive;
+	}
 
 	public Institute() {
 	}
@@ -62,6 +79,11 @@ public class Institute implements Serializable {
 
 	public void setIsInstituteActive(boolean isInstituteActive) {
 		this.isInstituteActive = isInstituteActive;
+	}
+
+	@Override
+	public String getId() {
+		return this.getInstituteId();
 	}
 
 }

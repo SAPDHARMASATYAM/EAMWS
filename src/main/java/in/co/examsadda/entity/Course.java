@@ -3,6 +3,8 @@ package in.co.examsadda.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.data.domain.Persistable;
+
 
 /**
  * The persistent class for the course database table.
@@ -11,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="course")
 @NamedQuery(name="Course.findAll", query="SELECT c FROM Course c")
-public class Course implements Serializable {
+public class Course implements Serializable, Persistable<Integer>  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,6 +34,10 @@ public class Course implements Serializable {
 	@Column(name="number_of_practice_papers_in_this_course", nullable=false)
 	private boolean numberOfPracticePapersInThisCourse;
 
+
+	@Transient
+	private boolean isNew = false;
+	
 	public Course() {
 	}
 
@@ -73,6 +79,24 @@ public class Course implements Serializable {
 
 	public void setNumberOfPracticePapersInThisCourse(boolean numberOfPracticePapersInThisCourse) {
 		this.numberOfPracticePapersInThisCourse = numberOfPracticePapersInThisCourse;
+	}
+
+	@Override
+	public Integer getId() {
+		return this.courseId;
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public void setCourseActive(boolean isCourseActive) {
+		this.isCourseActive = isCourseActive;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 }

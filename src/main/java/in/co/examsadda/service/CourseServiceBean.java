@@ -12,7 +12,7 @@ import in.co.examsadda.entity.Course;
 public class CourseServiceBean {
 
 	@Autowired
-	private PracticePaperServiceBean practicePaperService;
+	private PracticePaperService practicePaperService;
 	@Autowired
 	private CourseRepository courseRepository;
 	

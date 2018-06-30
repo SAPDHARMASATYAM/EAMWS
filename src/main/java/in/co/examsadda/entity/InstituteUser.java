@@ -1,8 +1,18 @@
 package in.co.examsadda.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.springframework.data.domain.Persistable;
 
 
 /**
@@ -12,11 +22,11 @@ import java.util.Date;
 @Entity
 @Table(name="institute_user")
 @NamedQuery(name="InstituteUser.findAll", query="SELECT i FROM InstituteUser i")
-public class InstituteUser implements Serializable {
+public class InstituteUser implements Serializable, Persistable<InstituteUserPK>  {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private InstituteUserPK id;
+	private InstituteUserPK pkId;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="date_of_registration", nullable=false)
@@ -31,18 +41,14 @@ public class InstituteUser implements Serializable {
 
 	@Column(name="registration_id", nullable=false)
 	private int registrationId;
+	
+	@Transient
+	private boolean isNew = false;
 
 	public InstituteUser() {
 	}
 
-	public InstituteUserPK getId() {
-		return this.id;
-	}
-
-	public void setId(InstituteUserPK id) {
-		this.id = id;
-	}
-
+	
 	public Date getDateOfRegistration() {
 		return this.dateOfRegistration;
 	}
@@ -75,4 +81,38 @@ public class InstituteUser implements Serializable {
 		this.registrationId = registrationId;
 	}
 
+
+	public InstituteUserPK getPkId() {
+		return pkId;
+	}
+
+
+	public void setPkId(InstituteUserPK pkId) {
+		this.pkId = pkId;
+	}
+
+
+	public void setInstituteUserActive(boolean isInstituteUserActive) {
+		this.isInstituteUserActive = isInstituteUserActive;
+	}
+
+
+	@Override
+	public InstituteUserPK getId() {
+		return this.getPkId();
+	}
+
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	
+	
+	
 }

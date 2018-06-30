@@ -3,23 +3,30 @@ package in.co.examsadda.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import in.co.examsadda.entity.PracticePaper;
 import in.co.examsadda.model.ExamPaper;
+import in.co.examsadda.model.ExamSection;
 
-@Service
 public class ExamPaperServiceBean implements ExamPaperService{
 
 	@Autowired
-	PracticePaperServiceBean practicePaperService;
-
+	private PracticePaperService practicePaperService;
+	@Autowired
+	private ExamSectionsService examSectionsService;
 	@Override
 	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
-		return null;//practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
+		ExamPaper examPaper = new ExamPaper();
+		PracticePaper practicePaper=null;
+		List<ExamSection> sections = null;
+		practicePaper = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
+		sections = examSectionsService.getAllSectionsByPracticepaperId(examPaperId);
+		examPaper.setPracticePaper(practicePaper);
+		examPaper.setSections(sections);
+		return examPaper;
 	}
 
 	@Override
-	public List<ExamPaper> findExamPapersByExamId(Integer examId) {
+	public List<ExamPaper> findExamPapersByCourseId(Integer courseId) {
 		return null;
 	}
 
