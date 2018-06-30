@@ -3,10 +3,16 @@ package in.co.examsadda.crud.repository;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import in.co.examsadda.entity.Question;
 
+@Repository
 public interface QuestionRepository extends CrudRepository<Question, Integer> {
-
-//	public List<Question> findAllBySectionId(Integer sectionId);
+	
+	public Question findByQuestionId(Integer questionId);
+	
+	public List<Question> findAllBySectionId(Integer sectionId);
+	
+	public List<Question> findAllByPracticePaperIdFk(int practicePaperId);
 }

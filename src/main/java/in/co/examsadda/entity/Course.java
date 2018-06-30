@@ -32,7 +32,7 @@ public class Course implements Serializable, Persistable<Integer>  {
 	private boolean isCourseActive;
 
 	@Column(name="number_of_practice_papers_in_this_course", nullable=false)
-	private boolean numberOfPracticePapersInThisCourse;
+	private int numberOfPracticePapersInThisCourse;
 
 
 	@Transient
@@ -73,11 +73,11 @@ public class Course implements Serializable, Persistable<Integer>  {
 		this.isCourseActive = isCourseActive;
 	}
 
-	public boolean getNumberOfPracticePapersInThisCourse() {
+	public int getNumberOfPracticePapersInThisCourse() {
 		return this.numberOfPracticePapersInThisCourse;
 	}
 
-	public void setNumberOfPracticePapersInThisCourse(boolean numberOfPracticePapersInThisCourse) {
+	public void setNumberOfPracticePapersInThisCourse(int numberOfPracticePapersInThisCourse) {
 		this.numberOfPracticePapersInThisCourse = numberOfPracticePapersInThisCourse;
 	}
 

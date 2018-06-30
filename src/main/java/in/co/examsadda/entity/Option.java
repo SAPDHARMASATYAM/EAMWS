@@ -5,50 +5,45 @@ import javax.persistence.*;
 
 import org.springframework.data.domain.Persistable;
 
-
 /**
  * The persistent class for the option database table.
  * 
  */
 @Entity
-@Table(name="options")
-@NamedQuery(name="Option.findAll", query="SELECT o FROM Option o")
+@Table(name = "options")
+@NamedQuery(name = "Option.findAll", query = "SELECT o FROM Option o")
 public class Option implements Serializable, Persistable<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(unique=true, nullable=false)
-	private int option_Id;
+	@Column(name = "option_Id", unique = true, nullable = false)
+	private int optionId;
 
-	@Column(name="is_option_active", nullable=false)
+	@Column(name = "is_option_active", nullable = false)
 	private boolean isOptionActive;
 
-	@Column(name="is_option_has_image", nullable=false)
+	@Column(name = "is_option_has_image", nullable = false)
 	private boolean isOptionHasImage;
 
-	@Column(name="option_indicator", nullable=false, length=1)
+	@Column(name = "option_indicator", nullable = false, length = 1)
 	private String optionIndicator;
 
-	
-	@Column(name="option_value_in_english", nullable=false)
+	@Column(name = "option_value_in_english", nullable = false)
 	private String optionValueInEnglish;
 
-	
-	@Column(name="option_value_in_english_image_url", nullable=false)
+	@Column(name = "option_value_in_english_image_url", nullable = false)
 	private String optionValueInEnglishImageUrl;
 
-	
-	@Column(name="option_value_in_regional", nullable=false)
+	@Column(name = "option_value_in_regional", nullable = false)
 	private String optionValueInRegional;
 
-	
-	@Column(name="option_value_in_regional_image_url", nullable=false)
+	@Column(name = "option_value_in_regional_image_url", nullable = false)
 	private String optionValueInRegionalImageUrl;
 
-	@Column(name="question_id_fk", nullable=false)
+	@Column(name = "question_id_fk", nullable = false)
 	private java.math.BigInteger questionIdFk;
 
-	@Column(name="section_id_fk", nullable=false)
+	@Column(name = "section_id_fk", nullable = false)
 	private int sectionIdFk;
 
 	@Transient
@@ -57,12 +52,12 @@ public class Option implements Serializable, Persistable<Integer> {
 	public Option() {
 	}
 
-	public int getOption_Id() {
-		return this.option_Id;
+	public int getOptionId() {
+		return optionId;
 	}
 
-	public void setOption_Id(int option_Id) {
-		this.option_Id = option_Id;
+	public void setOptionId(int optionId) {
+		this.optionId = optionId;
 	}
 
 	public boolean getIsOptionActive() {
@@ -139,7 +134,7 @@ public class Option implements Serializable, Persistable<Integer> {
 
 	@Override
 	public Integer getId() {
-		return this.option_Id;
+		return this.optionId;
 	}
 
 	@Override
