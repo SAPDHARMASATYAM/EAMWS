@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.co.examsadda.entity.User;
+
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface UserService {

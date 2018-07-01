@@ -13,8 +13,8 @@ import in.co.examsadda.model.ExamSection;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface ExamSectionsService {
 
-	ExamSection getSectionBySectionId(Integer sectionId);
+	ExamSection getExamSectionBySectionId(Integer sectionId);
 
-	List<ExamSection> getAllSectionsByPracticepaperId(Integer practicePaperId);
+	List<ExamSection> getAllExamSectionsByPracticepaperId(Integer practicePaperId);
 
 }

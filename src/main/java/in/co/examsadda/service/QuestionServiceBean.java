@@ -1,38 +1,32 @@
 package in.co.examsadda.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import in.co.examsadda.crud.repository.QuestionRepository;
 import in.co.examsadda.entity.Question;
-import in.co.examsadda.model.QuestionOptions;
 
+@Service
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class QuestionServiceBean implements QuestionService {
 
 	@Autowired
 	private QuestionRepository questionRepository;
-//	@Autowired
-//	private OptionsService optionsService;
 
 	@Override
-	public QuestionOptions getQuestionByquestionId(Integer questionId) {
-		QuestionOptions questionOptions = new QuestionOptions();
-		Question question = questionRepository.findById(questionId).get();
-		questionOptions.setQuestion(question);
-//		List<Option> optionsByQuestionId = optionsService.getOptionsByQuestionId(question.getQuestionId());
-//		questionOptions.setOptions(optionsByQuestionId);
-		return questionOptions;
+	public Question getQuestionByquestionId(BigInteger questionId) {
+		Question questionByQuestionId = questionRepository.findByQuestionId(questionId.intValue());
+		return questionByQuestionId;
 	}
 
 	@Override
-	public List<QuestionOptions> getQuestionsBySectionId(Integer sectionId) {
-//		List<QuestionOptions> questionsBySectionId = new ArrayList<>();
-//		List<Question> questionsBySection = questionRepository.findAllBySectionId(sectionId);
-//		for (Question question : questionsBySection) {
-////			QuestionOptions questionOptions = getQuestionByquestionId(question.getQuestionId());
-////			questionsBySectionId.add(questionOptions);
-//		}
-//		return questionsBySectionId;
-		return null;
+	public List<Question> getQuestionsBySectionId(int sectionId) {
+		List<Question> questionsBySectionId = questionRepository.findAllBySectionIdFk(sectionId);
+		return questionsBySectionId;
 	}
 }

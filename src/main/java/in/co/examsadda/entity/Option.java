@@ -1,6 +1,8 @@
 package in.co.examsadda.entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+
 import javax.persistence.*;
 
 import org.springframework.data.domain.Persistable;
@@ -12,12 +14,12 @@ import org.springframework.data.domain.Persistable;
 @Entity
 @Table(name = "options")
 @NamedQuery(name = "Option.findAll", query = "SELECT o FROM Option o")
-public class Option implements Serializable, Persistable<Integer> {
+public class Option implements Serializable, Persistable<BigInteger> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "option_Id", unique = true, nullable = false)
-	private int optionId;
+	private BigInteger optionId;
 
 	@Column(name = "is_option_active", nullable = false)
 	private boolean isOptionActive;
@@ -52,11 +54,11 @@ public class Option implements Serializable, Persistable<Integer> {
 	public Option() {
 	}
 
-	public int getOptionId() {
+	public BigInteger getOptionId() {
 		return optionId;
 	}
 
-	public void setOptionId(int optionId) {
+	public void setOptionId(BigInteger optionId) {
 		this.optionId = optionId;
 	}
 
@@ -133,7 +135,7 @@ public class Option implements Serializable, Persistable<Integer> {
 	}
 
 	@Override
-	public Integer getId() {
+	public BigInteger getId() {
 		return this.optionId;
 	}
 
