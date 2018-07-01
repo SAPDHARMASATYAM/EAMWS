@@ -2,11 +2,8 @@ package in.co.examsadda.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import in.co.examsadda.entity.Option;
 
-@Service
 public interface OptionsService {
 
 	Option getOptionByOptionId(Integer optionId);
@@ -14,5 +11,9 @@ public interface OptionsService {
 	List<Option> getOptionsByQuestionId(Integer questionId);
 
 	boolean saveQuestionOptions(List<Option> questionOptions);
+
+	Option saveOption(Option option);
+
+	List<Option> getAllOptionsByQuestionId(int questionId);
 
 }

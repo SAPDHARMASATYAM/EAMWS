@@ -31,13 +31,13 @@ public class Option implements Serializable, Persistable<Integer> {
 	@Column(name = "option_value_in_english", nullable = false)
 	private String optionValueInEnglish;
 
-	@Column(name = "option_value_in_english_image_url", nullable = false)
+	@Column(name = "option_value_in_english_image_url", nullable = true)
 	private String optionValueInEnglishImageUrl;
 
 	@Column(name = "option_value_in_regional", nullable = false)
 	private String optionValueInRegional;
 
-	@Column(name = "option_value_in_regional_image_url", nullable = false)
+	@Column(name = "option_value_in_regional_image_url", nullable = true)
 	private String optionValueInRegionalImageUrl;
 
 	@Column(name = "question_id_fk", nullable = false)

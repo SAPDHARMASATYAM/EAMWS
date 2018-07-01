@@ -43,7 +43,7 @@ public class User implements Serializable, Persistable<String> {
 	private Date datOfRegistration;
 
 	@Transient
-	private boolean isNew = false;
+	private boolean isNew = true;
 
 	public User() {
 	}
