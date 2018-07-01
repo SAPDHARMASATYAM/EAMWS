@@ -23,6 +23,7 @@ public class OptionServiceTest {
 		
 		option.setIsOptionActive(true);
 		option.setIsOptionHasImage(false);
+		
 		option.setNew(true);
 		option.setOptionIndicator("A");
 		option.setOptionValueInEnglish("Option : A");
