@@ -1,5 +1,6 @@
 package in.co.examsadda.service;
 
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,10 +21,6 @@ public class OptionsServiceBean implements OptionsService {
 	}
 
 	@Override
-	public List<Option> getOptionsByQuestionId(Integer questionId) {
-		return optionRepository.findAllByQuestionIdFk(questionId);
-	}
-	@Override
 	public boolean saveQuestionOptions(List<Option> questionOptions) {
 		Iterator<Option> saveQuestionOptionsResponse = optionRepository.saveAll(questionOptions).iterator();
 		return (saveQuestionOptionsResponse.hasNext())?true:false;
@@ -36,7 +33,7 @@ public class OptionsServiceBean implements OptionsService {
 	}
 	
 	@Override
-	public List<Option> getAllOptionsByQuestionId(int questionId){
+	public List<Option> getAllOptionsByQuestionId(BigInteger questionId){
 		List<Option> allOptionsByQuestionId = optionRepository.findAllByQuestionIdFk(questionId);
 		return allOptionsByQuestionId;
 	}

@@ -154,4 +154,14 @@ public class Option implements Serializable, Persistable<Integer> {
 		this.isNew = isNew;
 	}
 
+	@Override
+	public String toString() {
+		return "Option [optionId=" + optionId + ", isOptionActive=" + isOptionActive + ", isOptionHasImage="
+				+ isOptionHasImage + ", optionIndicator=" + optionIndicator + ", optionValueInEnglish="
+				+ optionValueInEnglish + ", optionValueInEnglishImageUrl=" + optionValueInEnglishImageUrl
+				+ ", optionValueInRegional=" + optionValueInRegional + ", optionValueInRegionalImageUrl="
+				+ optionValueInRegionalImageUrl + ", questionIdFk=" + questionIdFk + ", sectionIdFk=" + sectionIdFk
+				+ ", isNew=" + isNew + "]";
+	}
+
 }
