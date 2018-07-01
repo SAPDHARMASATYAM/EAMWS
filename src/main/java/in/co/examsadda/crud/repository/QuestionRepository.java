@@ -12,7 +12,7 @@ public interface QuestionRepository extends CrudRepository<Question, Integer> {
 	
 	public Question findByQuestionId(Integer questionId);
 	
-	public List<Question> findAllBySectionId(Integer sectionId);
+	public List<Question> findAllBySectionIdFk(int sectionIda);
 	
 	public List<Question> findAllByPracticePaperIdFk(int practicePaperId);
 }

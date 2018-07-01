@@ -19,9 +19,9 @@ public interface UserRepository extends CrudRepository<User, String> {
 	public User findByEmailIdAndPasswordAndIsUserActive (String emailId, String password, Boolean active);
 
 	public List<User> findAllByIsUserActive(Boolean active);
-	
-	 @Modifying
-	 @Query("update user set password = :password where emailId = :emailId and active = true")
-	 int updatePasswordByEmailId(@Param("password") String password, @Param("emailId") String emailId);
+//	
+//	 @Modifying
+//	 @Query("update user set password = :password where emailId = :emailId and active = true")
+//	 int updatePasswordByEmailId(@Param("password") String password, @Param("emailId") String emailId);
 
 }
