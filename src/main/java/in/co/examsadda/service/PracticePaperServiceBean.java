@@ -28,7 +28,7 @@ public class PracticePaperServiceBean implements PracticePaperService {
 	}
 	
 	@Override
-	public List<PracticePaper> getPracticePapersByByInstituteIdAndCourseId(String instituteId ,int courseId) {
+	public List<PracticePaper> getPracticePapersByInstituteIdAndCourseId(String instituteId ,int courseId) {
 		List<PracticePaper> practicePapersByInstituteIdAndCourseId = practicePaperRepository.findAllByInstituteIdFkAndCourseIdFk(instituteId, courseId);
 		return practicePapersByInstituteIdAndCourseId;
 	}

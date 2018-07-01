@@ -16,6 +16,6 @@ public interface PracticePaperService {
 
 	List<PracticePaper> getPracticePapersByCourseId(int courseId);
 
-	List<PracticePaper> getPracticePapersByByInstituteIdAndCourseId(String instituteId, int courseId);
+	List<PracticePaper> getPracticePapersByInstituteIdAndCourseId(String instituteId, int courseId);
 
 }

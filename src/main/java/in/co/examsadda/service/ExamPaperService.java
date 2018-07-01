@@ -12,9 +12,9 @@ import in.co.examsadda.model.ExamPaper;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface ExamPaperService {
 
-	ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception;
+	ExamPaper getExamPaperByExamPaperId(Integer examPaperId) throws Exception;
 
-	List<ExamPaper> findExamPapersByCourseId(Integer examId);
+	List<ExamPaper> getExamPapersByInstituteIdAndCourseId(Integer examId, String instituteId) throws Exception;
 
 	String saveExamPaper(ExamPaper examPaper);
 

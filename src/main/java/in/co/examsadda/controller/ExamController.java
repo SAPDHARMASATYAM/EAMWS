@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.co.examsadda.model.ExamPaper;
@@ -24,13 +23,14 @@ public class ExamController {
 	@RequestMapping(value = "/getExamPaperByExamPaperId/{examPaperId}", method = RequestMethod.GET, produces = "application/json")
 	public ExamPaper getExamPaperByExamPaperId(@PathVariable(name = "examPaperId") Integer examPaperId)
 			throws Exception {
-//		return examPaperService.findExamPaperByExamPaperId(examPaperId);
-		return null;// new in.co.examsadda.util.ExamController().getExamPaperByExamPaperId(examPaperId);
+		ExamPaper examPaperByExamPaperId = examPaperService.getExamPaperByExamPaperId(examPaperId);
+		return examPaperByExamPaperId;
 	}
 
-	@RequestMapping(value = "/getExamPapersByCourseId", method = RequestMethod.GET, produces = "application/json")
-	public List<ExamPaper> getExamPapersByCourseId(@RequestParam(name = "examId") Integer examId) {
-		return examPaperService.findExamPapersByCourseId(examId);
+	@RequestMapping(value = "/getExamPapersByCourseId/{instituteId}/{courseId}", method = RequestMethod.GET, produces = "application/json")
+	public List<ExamPaper> getExamPapersByCourseId(@PathVariable(name = "instituteId") String instituteId, @PathVariable(name = "courseId") Integer courseId) throws Exception {
+		List<ExamPaper> examPapersByIstituteIdAndCourseId = examPaperService.getExamPapersByInstituteIdAndCourseId(courseId, instituteId);
+		return examPapersByIstituteIdAndCourseId;
 	}
 
 	@RequestMapping(value = "/saveExamPaper", method = RequestMethod.POST, produces = "application/json")

@@ -1,5 +1,6 @@
 package in.co.examsadda.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ExamPaperServiceBean implements ExamPaperService{
 	@Autowired
 	private ExamSectionsService examSectionsService;
 	@Override
-	public ExamPaper findExamPaperByExamPaperId(Integer examPaperId) throws Exception {
+	public ExamPaper getExamPaperByExamPaperId(Integer examPaperId) throws Exception {
 		ExamPaper examPaper = new ExamPaper();
 		PracticePaper practicePaperByPracticePaperId = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
 		examPaper.setPracticePaper(practicePaperByPracticePaperId);
@@ -30,9 +31,13 @@ public class ExamPaperServiceBean implements ExamPaperService{
 	}
 
 	@Override
-	public List<ExamPaper> findExamPapersByCourseId(Integer courseId) {
-		
-		return null;
+	public List<ExamPaper> getExamPapersByInstituteIdAndCourseId(Integer courseId, String instituteId) throws Exception {
+		List<ExamPaper> examPapersByIstituteIdAndCourseId = new ArrayList<ExamPaper>();
+		List<PracticePaper> practicePapersByByInstituteIdAndCourseId = practicePaperService.getPracticePapersByInstituteIdAndCourseId(instituteId, courseId);
+		for (PracticePaper practicePaper : practicePapersByByInstituteIdAndCourseId) {
+			examPapersByIstituteIdAndCourseId.add(getExamPaperByExamPaperId(practicePaper.getPracticePaperId()));
+		}
+		return examPapersByIstituteIdAndCourseId;
 	}
 
 	@Override
