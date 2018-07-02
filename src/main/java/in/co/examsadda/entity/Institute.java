@@ -17,6 +17,7 @@ public class Institute implements Serializable, Persistable<String>  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="institute_id", unique=true, nullable=false, length=100)
 	private String instituteId;
 

@@ -17,6 +17,7 @@ public class Address implements Serializable, Persistable<String>  {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
 	private String addressId;
 
