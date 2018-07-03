@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import in.co.examsadda.crud.repository.SectionRepository;
 import in.co.examsadda.entity.Section;
+import in.co.examsadda.jpa.repository.SectionRepository;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
