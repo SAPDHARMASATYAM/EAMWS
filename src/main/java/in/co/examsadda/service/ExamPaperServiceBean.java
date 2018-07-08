@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.co.examsadda.entity.PracticePaper;
+import in.co.examsadda.entity.Section;
 import in.co.examsadda.model.ExamPaper;
 import in.co.examsadda.model.ExamSection;
 
@@ -20,69 +21,60 @@ public class ExamPaperServiceBean implements ExamPaperService{
 	private PracticePaperService practicePaperService;
 	@Autowired
 	private ExamSectionsService examSectionsService;
+
 	@Override
 	public ExamPaper getExamPaperByExamPaperId(Integer examPaperId) throws Exception {
 		ExamPaper examPaper = new ExamPaper();
-//		PracticePaper practicePaperByPracticePaperId = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
-//		examPaper.setPracticePaper(practicePaperByPracticePaperId);
-		List<ExamSection> allExamSectionsByPracticepaperId = examSectionsService.getAllExamSectionsByPracticepaperId(examPaperId);
-		examPaper.setSections(allExamSectionsByPracticepaperId);
+		PracticePaper practicePaperByPracticePaperIdResponse = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
+		examPaper.setPracticePaper(practicePaperByPracticePaperIdResponse);
+		List<ExamSection> allExamSectionsByPracticepaperIdResponse = examSectionsService.getAllExamSectionsByPracticepaperId(practicePaperByPracticePaperIdResponse.getPracticePaperId());
+		examPaper.setSections(allExamSectionsByPracticepaperIdResponse);
 		return examPaper;
 	}
 
 	@Override
-	public List<ExamPaper> getExamPapersByInstituteIdAndCourseId(Integer courseId, String instituteId) throws Exception {
-		List<ExamPaper> examPapersByIstituteIdAndCourseId = new ArrayList<ExamPaper>();
-//		List<PracticePaper> practicePapersByByInstituteIdAndCourseId = practicePaperService.getPracticePapersByInstituteIdAndCourseId(instituteId, courseId);
-//		for (PracticePaper practicePaper : practicePapersByByInstituteIdAndCourseId) {
-//			examPapersByIstituteIdAndCourseId.add(getExamPaperByExamPaperId(practicePaper.getPracticePaperId()));
-//		}
-		return examPapersByIstituteIdAndCourseId;
+	public List<ExamPaper> getExamPapersByExamIds(List<Integer> examPaperIds ) throws Exception {
+		List<ExamPaper> examPapers = new ArrayList<ExamPaper>();
+		for (Integer examPaperId : examPaperIds) {
+			ExamPaper examPaperByExamPaperId = getExamPaperByExamPaperId(examPaperId);
+			examPapers.add(examPaperByExamPaperId);
+		}
+		return examPapers;
 	}
 
 	@Override
-	public String saveExamPaper(ExamPaper examPaper) {
-		return null;
-	}
+	public ExamPaper saveExamPaper(ExamPaper examPaper) throws Exception {
+		ExamPaper saveExamPaperResponse = new ExamPaper();
 
+		PracticePaper savePracticePaperResponse = practicePaperService.savePracticePaper(examPaper.getPracticePaper());
+		saveExamPaperResponse.setPracticePaper(savePracticePaperResponse);
+		if(savePracticePaperResponse != null) {
+			boolean saveAllExamSectionsResponse = examSectionsService.saveAllExamSections(examPaper.getSections());
+			if(saveAllExamSectionsResponse) {
+//				saveExamPaperResponse = savePracticePaperResponse;
+			}
+		}
+		return saveExamPaperResponse;
+	}
 	@Override
-	public String saveExamPapers(List<ExamPaper> examPapers) {
-		return null;
+	public List<ExamPaper> saveExamPapers(List<ExamPaper> examPapers) throws Exception {
+		List<ExamPaper> examPapersResonse = new ArrayList<ExamPaper>();
+		for(ExamPaper examPaper : examPapers) {
+			PracticePaper savePracticePaperResponse = practicePaperService.savePracticePaper(examPaper.getPracticePaper());
+			if(savePracticePaperResponse !=null) {
+				List<ExamSection> examSections = populatePracticepaperIdInSections(examPaper.getSections(),savePracticePaperResponse);
+				boolean saveAllExamSections = examSectionsService.saveAllExamSections(examSections);
+				System.out.println(saveAllExamSections);
+			
+			}
+		}
+		return examPapersResonse;
 	}
 
-	@Override
-	public String updateExamPaperByExamId(ExamPaper examPaper) {
-		return null;
+	private List<ExamSection> populatePracticepaperIdInSections(List<ExamSection> examSections, PracticePaper practicePaper){
+		for(int i=0;i<examSections.size();i++) {
+			examSections.get(i).getSection().setPracticePaper(practicePaper);
+		}
+		return examSections;
 	}
-
-	@Override
-	public String deleteExamPaperByExamPaperId(Integer examPaperId) {
-		return null;
-	}
-
-	@Override
-	public String deleteExamPapersByExamId(Integer examId) {
-		return null;
-	}
-
-	@Override
-	public String activateExamPaperByExamPaperId(Integer examPaperId) {
-		return null;
-	}
-
-	@Override
-	public String deactivateExamPaperByExamPaperId(Integer examPaperId) {
-		return null;
-	}
-
-	@Override
-	public String activateExamPapersByExamId(Integer examId) {
-		return null;
-	}
-
-	@Override
-	public String deactivateExamPapersByExamId(Integer examId) {
-		return null;
-	}
-
 }

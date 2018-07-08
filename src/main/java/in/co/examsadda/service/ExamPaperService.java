@@ -12,26 +12,10 @@ import in.co.examsadda.model.ExamPaper;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface ExamPaperService {
 
-	ExamPaper getExamPaperByExamPaperId(Integer examPaperId) throws Exception;
+	public ExamPaper getExamPaperByExamPaperId(Integer examPaperId) throws Exception;
+	public List<ExamPaper> getExamPapersByExamIds(List<Integer> examPaperIds ) throws Exception;
 
-	List<ExamPaper> getExamPapersByInstituteIdAndCourseId(Integer examId, String instituteId) throws Exception;
-
-	String saveExamPaper(ExamPaper examPaper);
-
-	String saveExamPapers(List<ExamPaper> examPapers);
-
-	String updateExamPaperByExamId(ExamPaper examPaper);
-
-	String deleteExamPaperByExamPaperId(Integer examPaperId);
-
-	String deleteExamPapersByExamId(Integer examId);
-
-	String activateExamPaperByExamPaperId(Integer examPaperId);
-
-	String deactivateExamPaperByExamPaperId(Integer examPaperId);
-
-	String activateExamPapersByExamId(Integer examId);
-
-	String deactivateExamPapersByExamId(Integer examId);
+	public ExamPaper saveExamPaper(ExamPaper examPaper)throws Exception;
+	public List<ExamPaper> saveExamPapers(List<ExamPaper> examPapers)throws Exception;
 
 }
