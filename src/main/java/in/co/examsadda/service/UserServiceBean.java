@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.co.examsadda.entity.User;
-import in.co.examsadda.jpa.repository.UserRepository;
+import in.co.examsadda.jpa.UserRepository;
 
 
 @Service

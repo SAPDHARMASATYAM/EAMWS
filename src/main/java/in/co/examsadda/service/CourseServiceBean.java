@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.co.examsadda.entity.Course;
-import in.co.examsadda.jpa.repository.CourseRepository;
+import in.co.examsadda.jpa.CourseRepository;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)

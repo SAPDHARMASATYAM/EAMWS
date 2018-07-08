@@ -1,7 +1,7 @@
 /**
  * 
  */
-package in.co.examsadda.jpa.repository;
+package in.co.examsadda.jpa;
 
 import java.util.List;
 

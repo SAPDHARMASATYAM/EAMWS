@@ -1,4 +1,4 @@
-package in.co.examsadda.jpa.repository;
+package in.co.examsadda.jpa;
 
 import java.math.BigInteger;
 import java.util.List;
