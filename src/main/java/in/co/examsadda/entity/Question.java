@@ -14,6 +14,7 @@ import org.springframework.data.domain.Persistable;
 @Table(name="question")
 @NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
 public class Question implements Serializable, Persistable<Long> {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -9,4 +9,5 @@ import in.co.examsadda.entity.PracticePaper;
 public interface PracticePaperRepository extends JpaRepository<PracticePaper, Integer> {
 	
 	
+	
 }
