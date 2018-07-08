@@ -13,13 +13,13 @@ import org.springframework.data.domain.Persistable;
 @Entity
 @Table(name="question")
 @NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
-public class Question implements Serializable, Persistable<Integer> {
+public class Question implements Serializable, Persistable<Long> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="question_id", unique=true, nullable=false)
-	private Integer questionId;
+	private Long questionId;
 
 	@Column(name="answer_for_this_question", nullable=false, length=1)
 	private String answerForThisQuestion;
@@ -49,8 +49,9 @@ public class Question implements Serializable, Persistable<Integer> {
 	@Column(name="question_in_regional_image_url", nullable=false)
 	private String questionInRegionalImageUrl;
 
-	@Column(name="section_id_fk", nullable=false)
-	private int sectionIdFk;
+	@ManyToOne
+	@JoinColumn(name="section_id")
+	private Section section;
 
 	@Column(name="user_answer_for_this_question", nullable=false, length=1)
 	private String userAnswerForThisQuestion;
@@ -61,40 +62,50 @@ public class Question implements Serializable, Persistable<Integer> {
 	public Question() {
 	}
 
-	public Integer getQuestionId() {
-		return this.questionId;
+	@Override
+	public Long getId() {
+		return this.getQuestionId();
 	}
 
-	public void setQuestionId(Integer questionId) {
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
+	public Long getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(Long questionId) {
 		this.questionId = questionId;
 	}
 
 	public String getAnswerForThisQuestion() {
-		return this.answerForThisQuestion;
+		return answerForThisQuestion;
 	}
 
 	public void setAnswerForThisQuestion(String answerForThisQuestion) {
 		this.answerForThisQuestion = answerForThisQuestion;
 	}
 
-	public boolean getIsQuestionActive() {
-		return this.isQuestionActive;
+	public boolean isQuestionActive() {
+		return isQuestionActive;
 	}
 
-	public void setIsQuestionActive(boolean isQuestionActive) {
+	public void setQuestionActive(boolean isQuestionActive) {
 		this.isQuestionActive = isQuestionActive;
 	}
 
-	public boolean getIsQuestionHasImage() {
-		return this.isQuestionHasImage;
+	public boolean isQuestionHasImage() {
+		return isQuestionHasImage;
 	}
 
-	public void setIsQuestionHasImage(boolean isQuestionHasImage) {
+	public void setQuestionHasImage(boolean isQuestionHasImage) {
 		this.isQuestionHasImage = isQuestionHasImage;
 	}
 
 	public int getPracticePaperIdFk() {
-		return this.practicePaperIdFk;
+		return practicePaperIdFk;
 	}
 
 	public void setPracticePaperIdFk(int practicePaperIdFk) {
@@ -102,7 +113,7 @@ public class Question implements Serializable, Persistable<Integer> {
 	}
 
 	public String getQuestionInEnglish() {
-		return this.questionInEnglish;
+		return questionInEnglish;
 	}
 
 	public void setQuestionInEnglish(String questionInEnglish) {
@@ -110,7 +121,7 @@ public class Question implements Serializable, Persistable<Integer> {
 	}
 
 	public String getQuestionInEnglishImageUrl() {
-		return this.questionInEnglishImageUrl;
+		return questionInEnglishImageUrl;
 	}
 
 	public void setQuestionInEnglishImageUrl(String questionInEnglishImageUrl) {
@@ -118,7 +129,7 @@ public class Question implements Serializable, Persistable<Integer> {
 	}
 
 	public String getQuestionInRegional() {
-		return this.questionInRegional;
+		return questionInRegional;
 	}
 
 	public void setQuestionInRegional(String questionInRegional) {
@@ -126,38 +137,42 @@ public class Question implements Serializable, Persistable<Integer> {
 	}
 
 	public String getQuestionInRegionalImageUrl() {
-		return this.questionInRegionalImageUrl;
+		return questionInRegionalImageUrl;
 	}
 
 	public void setQuestionInRegionalImageUrl(String questionInRegionalImageUrl) {
 		this.questionInRegionalImageUrl = questionInRegionalImageUrl;
 	}
 
-	public int getSectionIdFk() {
-		return this.sectionIdFk;
+	public Section getSection() {
+		return section;
 	}
 
-	public void setSectionIdFk(int sectionIdFk) {
-		this.sectionIdFk = sectionIdFk;
+	public void setSection(Section section) {
+		this.section = section;
 	}
 
 	public String getUserAnswerForThisQuestion() {
-		return this.userAnswerForThisQuestion;
+		return userAnswerForThisQuestion;
 	}
 
 	public void setUserAnswerForThisQuestion(String userAnswerForThisQuestion) {
 		this.userAnswerForThisQuestion = userAnswerForThisQuestion;
 	}
 
-	@Override
-	public Integer getId() {
-		return this.questionId;
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 	@Override
-	public boolean isNew() {
-		// TODO Auto-generated method stub
-		return false;
+	public String toString() {
+		return "Question [questionId=" + questionId + ", answerForThisQuestion=" + answerForThisQuestion
+				+ ", isQuestionActive=" + isQuestionActive + ", isQuestionHasImage=" + isQuestionHasImage
+				+ ", practicePaperIdFk=" + practicePaperIdFk + ", questionInEnglish=" + questionInEnglish
+				+ ", questionInEnglishImageUrl=" + questionInEnglishImageUrl + ", questionInRegional="
+				+ questionInRegional + ", questionInRegionalImageUrl=" + questionInRegionalImageUrl + ", section="
+				+ section + ", userAnswerForThisQuestion=" + userAnswerForThisQuestion + "]";
 	}
-
+	
+	
 }

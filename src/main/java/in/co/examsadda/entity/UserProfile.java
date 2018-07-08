@@ -146,4 +146,13 @@ public class UserProfile implements Serializable, Persistable<String> {
 		this.isNew = isNew;
 	}
 
+	@Override
+	public String toString() {
+		return "UserProfile [emailId=" + emailId + ", firstName=" + firstName + ", gender=" + gender
+				+ ", isUserProfileActive=" + isUserProfileActive + ", lastName=" + lastName + ", mobile=" + mobile
+				+ ", secretQuestion1=" + secretQuestion1 + ", secretQuestion2=" + secretQuestion2
+				+ ", secretQuestionAnswer1=" + secretQuestionAnswer1 + ", secretQuestionAnswer2="
+				+ secretQuestionAnswer2 + "]";
+	}
+
 }

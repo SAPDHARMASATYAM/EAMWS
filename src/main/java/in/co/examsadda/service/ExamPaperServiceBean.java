@@ -23,8 +23,8 @@ public class ExamPaperServiceBean implements ExamPaperService{
 	@Override
 	public ExamPaper getExamPaperByExamPaperId(Integer examPaperId) throws Exception {
 		ExamPaper examPaper = new ExamPaper();
-		PracticePaper practicePaperByPracticePaperId = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
-		examPaper.setPracticePaper(practicePaperByPracticePaperId);
+//		PracticePaper practicePaperByPracticePaperId = practicePaperService.getPracticePaperByPracticePaperId(examPaperId);
+//		examPaper.setPracticePaper(practicePaperByPracticePaperId);
 		List<ExamSection> allExamSectionsByPracticepaperId = examSectionsService.getAllExamSectionsByPracticepaperId(examPaperId);
 		examPaper.setSections(allExamSectionsByPracticepaperId);
 		return examPaper;
@@ -33,10 +33,10 @@ public class ExamPaperServiceBean implements ExamPaperService{
 	@Override
 	public List<ExamPaper> getExamPapersByInstituteIdAndCourseId(Integer courseId, String instituteId) throws Exception {
 		List<ExamPaper> examPapersByIstituteIdAndCourseId = new ArrayList<ExamPaper>();
-		List<PracticePaper> practicePapersByByInstituteIdAndCourseId = practicePaperService.getPracticePapersByInstituteIdAndCourseId(instituteId, courseId);
-		for (PracticePaper practicePaper : practicePapersByByInstituteIdAndCourseId) {
-			examPapersByIstituteIdAndCourseId.add(getExamPaperByExamPaperId(practicePaper.getPracticePaperId()));
-		}
+//		List<PracticePaper> practicePapersByByInstituteIdAndCourseId = practicePaperService.getPracticePapersByInstituteIdAndCourseId(instituteId, courseId);
+//		for (PracticePaper practicePaper : practicePapersByByInstituteIdAndCourseId) {
+//			examPapersByIstituteIdAndCourseId.add(getExamPaperByExamPaperId(practicePaper.getPracticePaperId()));
+//		}
 		return examPapersByIstituteIdAndCourseId;
 	}
 

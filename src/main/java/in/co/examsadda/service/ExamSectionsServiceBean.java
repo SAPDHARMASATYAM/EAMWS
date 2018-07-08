@@ -23,21 +23,21 @@ public class ExamSectionsServiceBean implements ExamSectionsService {
 	@Override
 	public ExamSection getExamSectionBySectionId(Integer sectionId) {
 		ExamSection examSection = new ExamSection();
-		Section section = sectionService.getSectionBySectionId(sectionId);
-		examSection.setSection(section);
-		List<QuestionOptions> allQuestionOptionsBySectionId = questionOptionsService.getAllQuestionOptionsBySectionId(sectionId);
-		examSection.setQuestions(allQuestionOptionsBySectionId);
+//		Section section = sectionService.getSectionBySectionId(sectionId);
+//		examSection.setSection(section);
+//		List<QuestionOptions> allQuestionOptionsBySectionId = questionOptionsService.getAllQuestionOptionsBySectionId(sectionId);
+//		examSection.setQuestions(allQuestionOptionsBySectionId);
 		return examSection;
 	}
 
 	@Override
 	public List<ExamSection> getAllExamSectionsByPracticepaperId(Integer practicePaperId) {
 		List<ExamSection> examSectionsByPracticePaperId = new ArrayList<ExamSection>();
-		List<Section> sectionsByPracticePaperId = sectionService.getSectionsByPracticePaperId(practicePaperId);
-		for (Section section : sectionsByPracticePaperId) {
-			ExamSection examSectionBySectionId = getExamSectionBySectionId(section.getSectionId());
-			examSectionsByPracticePaperId.add(examSectionBySectionId);
-		}
+//		List<Section> sectionsByPracticePaperId = sectionService.getSectionsByPracticePaperId(practicePaperId);
+//		for (Section section : sectionsByPracticePaperId) {
+//			ExamSection examSectionBySectionId = getExamSectionBySectionId(section.getSectionId());
+//			examSectionsByPracticePaperId.add(examSectionBySectionId);
+//		}
 		return examSectionsByPracticePaperId;
 	}
 }

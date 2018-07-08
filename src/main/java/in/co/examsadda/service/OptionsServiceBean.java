@@ -18,26 +18,4 @@ public class OptionsServiceBean implements OptionsService {
 	@Autowired
 	private OptionRepository optionRepository;
 
-	@Override
-	public Option getOptionByOptionId(Integer optionId) {
-		return optionRepository.findById(optionId).get();
-	}
-
-	@Override
-	public boolean saveQuestionOptions(List<Option> questionOptions) {
-		Iterator<Option> saveQuestionOptionsResponse = optionRepository.saveAll(questionOptions).iterator();
-		return (saveQuestionOptionsResponse.hasNext())?true:false;
-	}
-	
-	@Override
-	public Option saveOption(Option option) {
-		Option saveResponse = optionRepository.save(option);
-		return saveResponse;
-	}
-	
-	@Override
-	public List<Option> getAllOptionsByQuestionId(BigInteger questionId){
-		List<Option> allOptionsByQuestionId = optionRepository.findAllByQuestionIdFk(questionId);
-		return allOptionsByQuestionId;
-	}
 }

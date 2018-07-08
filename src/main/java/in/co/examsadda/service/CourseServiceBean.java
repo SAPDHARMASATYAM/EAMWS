@@ -1,7 +1,5 @@
 package in.co.examsadda.service;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -36,10 +34,4 @@ public class CourseServiceBean implements CourseService {
 	public void deleteCourse(Course course) {
 		 courseRepository.delete(course);
 	}
-	
-	@Override
-	public Set<Course> getAllCourses(){
-		return (Set<Course>) courseRepository.findAll();
-	}
-	
 }

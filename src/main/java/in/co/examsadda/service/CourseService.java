@@ -1,7 +1,5 @@
 package in.co.examsadda.service;
 
-import java.util.Set;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +17,5 @@ public interface CourseService {
 	Course updateCourse(Course course);
 
 	void deleteCourse(Course course);
-
-	Set<Course> getAllCourses();
 
 }

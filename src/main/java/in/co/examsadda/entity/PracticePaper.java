@@ -21,12 +21,11 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 	@Column(name="practice_paper_id", unique=true, nullable=false)
 	private int practicePaperId;
 
-	@Column(name="course_id_fk", nullable=false)
-	private int courseIdFk;
-
-	@Column(name="institute_id_fk", nullable=false, length=100)
-	private String instituteIdFk;
-
+    //Mapping To Course 
+    @ManyToOne
+    @JoinColumn(name="course_id")
+    private Course course;
+	
 	@Column(name="is_practice_paper_active", nullable=false)
 	private boolean isPracticePaperActive;
 
@@ -36,17 +35,19 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 	@Column(name="practice_paper_duration", nullable=false)
 	private int practicePaperDuration;
 
-	
+	@Transient
+	private int practicePaperCurrentDuration;
+
 	@Column(name="practice_paper_name_in_english", nullable=false)
 	private String practicePaperNameInEnglish;
 
-	
+
 	@Column(name="practice_paper_name_in_regional", nullable=false)
 	private String practicePaperNameInRegional;
 
 	@Transient
 	private boolean isNew = false;
-	
+
 	public PracticePaper() {
 	}
 
@@ -56,22 +57,6 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 
 	public void setPracticePaperId(int practicePaperId) {
 		this.practicePaperId = practicePaperId;
-	}
-
-	public int getCourseIdFk() {
-		return this.courseIdFk;
-	}
-
-	public void setCourseIdFk(int courseIdFk) {
-		this.courseIdFk = courseIdFk;
-	}
-
-	public String getInstituteIdFk() {
-		return this.instituteIdFk;
-	}
-
-	public void setInstituteIdFk(String instituteIdFk) {
-		this.instituteIdFk = instituteIdFk;
 	}
 
 	public boolean getIsPracticePaperActive() {
@@ -130,6 +115,23 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
+	}
+
+	public int getPracticePaperCurrentDuration() {
+		return practicePaperCurrentDuration;
+	}
+
+	public void setPracticePaperCurrentDuration(int practicePaperCurrentDuration) {
+		this.practicePaperCurrentDuration = practicePaperCurrentDuration;
+	}
+
+	@Override
+	public String toString() {
+		return "PracticePaper [practicePaperId=" + practicePaperId + ", course=" + course + ", isPracticePaperActive="
+				+ isPracticePaperActive + ", numberOfSectionsInThisPracticePaper=" + numberOfSectionsInThisPracticePaper
+				+ ", practicePaperDuration=" + practicePaperDuration + ", practicePaperCurrentDuration="
+				+ practicePaperCurrentDuration + ", practicePaperNameInEnglish=" + practicePaperNameInEnglish
+				+ ", practicePaperNameInRegional=" + practicePaperNameInRegional + "]";
 	}
 
 }

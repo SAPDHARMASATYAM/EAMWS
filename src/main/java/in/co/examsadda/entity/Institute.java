@@ -32,6 +32,8 @@ public class Institute implements Serializable, Persistable<String>  {
 	@Column(name="is_institute_active", nullable=false)
 	private boolean isInstituteActive;
 
+	@Column(name="password", nullable=false)
+	private String password;
 	@Transient
 	private boolean isNew = false;
 
@@ -39,19 +41,13 @@ public class Institute implements Serializable, Persistable<String>  {
 		return isNew;
 	}
 
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}
-
-	public void setInstituteActive(boolean isInstituteActive) {
-		this.isInstituteActive = isInstituteActive;
-	}
-
-	public Institute() {
+	@Override
+	public String getId() {
+		return this.getInstituteId();
 	}
 
 	public String getInstituteId() {
-		return this.instituteId;
+		return instituteId;
 	}
 
 	public void setInstituteId(String instituteId) {
@@ -59,7 +55,7 @@ public class Institute implements Serializable, Persistable<String>  {
 	}
 
 	public String getInstituteNameInEnglish() {
-		return this.instituteNameInEnglish;
+		return instituteNameInEnglish;
 	}
 
 	public void setInstituteNameInEnglish(String instituteNameInEnglish) {
@@ -67,24 +63,31 @@ public class Institute implements Serializable, Persistable<String>  {
 	}
 
 	public String getInstituteNameInRegional() {
-		return this.instituteNameInRegional;
+		return instituteNameInRegional;
 	}
 
 	public void setInstituteNameInRegional(String instituteNameInRegional) {
 		this.instituteNameInRegional = instituteNameInRegional;
 	}
 
-	public boolean getIsInstituteActive() {
-		return this.isInstituteActive;
+	public boolean isInstituteActive() {
+		return isInstituteActive;
 	}
 
-	public void setIsInstituteActive(boolean isInstituteActive) {
+	public void setInstituteActive(boolean isInstituteActive) {
 		this.isInstituteActive = isInstituteActive;
 	}
 
-	@Override
-	public String getId() {
-		return this.getInstituteId();
+	public String getPassword() {
+		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	
 }

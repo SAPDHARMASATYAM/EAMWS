@@ -21,17 +21,15 @@ public class Section implements Serializable, Persistable<Integer> {
 	@Column(name="section_id", unique=true, nullable=false)
 	private int sectionId;
 
-	@Column(name="course_id_fk", nullable=false)
-	private int courseIdFk;
-
 	@Column(name="is_section_active", nullable=false)
 	private boolean isSectionActive;
 
 	@Column(name="number_of_questions_in_this_section", nullable=false)
 	private int numberOfQuestionsInThisSection;
 
-	@Column(name="practice_paper_id_fk", nullable=false)
-	private int practicePaperIdFk;
+	@ManyToOne
+	@JoinColumn(name="practice_paper_id")
+	private PracticePaper practicePaper;
 
 	@Column(name="section_description_in_english", nullable=false)
 	private String sectionDescriptionInEnglish;
@@ -53,58 +51,45 @@ public class Section implements Serializable, Persistable<Integer> {
 		return this.isNew;
 	}
 
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}
 	@Override
 	public Integer getId() {
-		return this.sectionId;
-	}
-	public Section() {
+		return this.getSectionId();
 	}
 
 	public int getSectionId() {
-		return this.sectionId;
+		return sectionId;
 	}
 
 	public void setSectionId(int sectionId) {
 		this.sectionId = sectionId;
 	}
 
-	public int getCourseIdFk() {
-		return this.courseIdFk;
+	public boolean isSectionActive() {
+		return isSectionActive;
 	}
 
-	public void setCourseIdFk(int courseIdFk) {
-		this.courseIdFk = courseIdFk;
-	}
-
-	public boolean getIsSectionActive() {
-		return this.isSectionActive;
-	}
-
-	public void setIsSectionActive(boolean isSectionActive) {
+	public void setSectionActive(boolean isSectionActive) {
 		this.isSectionActive = isSectionActive;
 	}
 
 	public int getNumberOfQuestionsInThisSection() {
-		return this.numberOfQuestionsInThisSection;
+		return numberOfQuestionsInThisSection;
 	}
 
 	public void setNumberOfQuestionsInThisSection(int numberOfQuestionsInThisSection) {
 		this.numberOfQuestionsInThisSection = numberOfQuestionsInThisSection;
 	}
 
-	public int getPracticePaperIdFk() {
-		return this.practicePaperIdFk;
+	public PracticePaper getPracticePaper() {
+		return practicePaper;
 	}
 
-	public void setPracticePaperIdFk(int practicePaperIdFk) {
-		this.practicePaperIdFk = practicePaperIdFk;
+	public void setPracticePaper(PracticePaper practicePaper) {
+		this.practicePaper = practicePaper;
 	}
 
 	public String getSectionDescriptionInEnglish() {
-		return this.sectionDescriptionInEnglish;
+		return sectionDescriptionInEnglish;
 	}
 
 	public void setSectionDescriptionInEnglish(String sectionDescriptionInEnglish) {
@@ -112,7 +97,7 @@ public class Section implements Serializable, Persistable<Integer> {
 	}
 
 	public String getSectionDescriptionInRegional() {
-		return this.sectionDescriptionInRegional;
+		return sectionDescriptionInRegional;
 	}
 
 	public void setSectionDescriptionInRegional(String sectionDescriptionInRegional) {
@@ -120,7 +105,7 @@ public class Section implements Serializable, Persistable<Integer> {
 	}
 
 	public String getSectionNameInEnglish() {
-		return this.sectionNameInEnglish;
+		return sectionNameInEnglish;
 	}
 
 	public void setSectionNameInEnglish(String sectionNameInEnglish) {
@@ -128,11 +113,24 @@ public class Section implements Serializable, Persistable<Integer> {
 	}
 
 	public String getSectionNameInRegional() {
-		return this.sectionNameInRegional;
+		return sectionNameInRegional;
 	}
 
 	public void setSectionNameInRegional(String sectionNameInRegional) {
 		this.sectionNameInRegional = sectionNameInRegional;
 	}
 
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+
+	@Override
+	public String toString() {
+		return "Section [sectionId=" + sectionId + ", isSectionActive=" + isSectionActive
+				+ ", numberOfQuestionsInThisSection=" + numberOfQuestionsInThisSection + ", practicePaper="
+				+ practicePaper + ", sectionDescriptionInEnglish=" + sectionDescriptionInEnglish
+				+ ", sectionDescriptionInRegional=" + sectionDescriptionInRegional + ", sectionNameInEnglish="
+				+ sectionNameInEnglish + ", sectionNameInRegional=" + sectionNameInRegional + "]";
+	}
+	
 }

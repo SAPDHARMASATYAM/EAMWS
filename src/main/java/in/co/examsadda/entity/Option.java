@@ -12,13 +12,13 @@ import org.springframework.data.domain.Persistable;
 @Entity
 @Table(name = "options")
 @NamedQuery(name = "Option.findAll", query = "SELECT o FROM Option o")
-public class Option implements Serializable, Persistable<Integer> {
+public class Option implements Serializable, Persistable<Long> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "option_Id", unique = true, nullable = false)
-	private Integer optionId;
+	private Long optionId;
 
 	@Column(name = "is_option_active", nullable = false)
 	private boolean isOptionActive;
@@ -41,11 +41,10 @@ public class Option implements Serializable, Persistable<Integer> {
 	@Column(name = "option_value_in_regional_image_url", nullable = true)
 	private String optionValueInRegionalImageUrl;
 
-	@Column(name = "question_id_fk", nullable = false)
-	private java.math.BigInteger questionIdFk;
 
-	@Column(name = "section_id_fk", nullable = false)
-	private int sectionIdFk;
+	@ManyToOne
+	@JoinColumn(name="question_id")
+	private Question question;
 
 	@Transient
 	private boolean isNew = false;
@@ -53,89 +52,9 @@ public class Option implements Serializable, Persistable<Integer> {
 	public Option() {
 	}
 
-	public Integer getOptionId() {
-		return optionId;
-	}
-
-	public void setOptionId(Integer optionId) {
-		this.optionId = optionId;
-	}
-
-	public boolean getIsOptionActive() {
-		return this.isOptionActive;
-	}
-
-	public void setIsOptionActive(boolean isOptionActive) {
-		this.isOptionActive = isOptionActive;
-	}
-
-	public boolean getIsOptionHasImage() {
-		return this.isOptionHasImage;
-	}
-
-	public void setIsOptionHasImage(boolean isOptionHasImage) {
-		this.isOptionHasImage = isOptionHasImage;
-	}
-
-	public String getOptionIndicator() {
-		return this.optionIndicator;
-	}
-
-	public void setOptionIndicator(String optionIndicator) {
-		this.optionIndicator = optionIndicator;
-	}
-
-	public String getOptionValueInEnglish() {
-		return this.optionValueInEnglish;
-	}
-
-	public void setOptionValueInEnglish(String optionValueInEnglish) {
-		this.optionValueInEnglish = optionValueInEnglish;
-	}
-
-	public String getOptionValueInEnglishImageUrl() {
-		return this.optionValueInEnglishImageUrl;
-	}
-
-	public void setOptionValueInEnglishImageUrl(String optionValueInEnglishImageUrl) {
-		this.optionValueInEnglishImageUrl = optionValueInEnglishImageUrl;
-	}
-
-	public String getOptionValueInRegional() {
-		return this.optionValueInRegional;
-	}
-
-	public void setOptionValueInRegional(String optionValueInRegional) {
-		this.optionValueInRegional = optionValueInRegional;
-	}
-
-	public String getOptionValueInRegionalImageUrl() {
-		return this.optionValueInRegionalImageUrl;
-	}
-
-	public void setOptionValueInRegionalImageUrl(String optionValueInRegionalImageUrl) {
-		this.optionValueInRegionalImageUrl = optionValueInRegionalImageUrl;
-	}
-
-	public java.math.BigInteger getQuestionIdFk() {
-		return this.questionIdFk;
-	}
-
-	public void setQuestionIdFk(java.math.BigInteger questionIdFk) {
-		this.questionIdFk = questionIdFk;
-	}
-
-	public int getSectionIdFk() {
-		return this.sectionIdFk;
-	}
-
-	public void setSectionIdFk(int sectionIdFk) {
-		this.sectionIdFk = sectionIdFk;
-	}
-
 	@Override
-	public Integer getId() {
-		return this.optionId;
+	public Long getId() {
+		return this.getOptionId();
 	}
 
 	@Override
@@ -143,12 +62,76 @@ public class Option implements Serializable, Persistable<Integer> {
 		return this.isNew;
 	}
 
+	public Long getOptionId() {
+		return optionId;
+	}
+
+	public void setOptionId(Long optionId) {
+		this.optionId = optionId;
+	}
+
+	public boolean isOptionActive() {
+		return isOptionActive;
+	}
+
 	public void setOptionActive(boolean isOptionActive) {
 		this.isOptionActive = isOptionActive;
 	}
 
+	public boolean isOptionHasImage() {
+		return isOptionHasImage;
+	}
+
 	public void setOptionHasImage(boolean isOptionHasImage) {
 		this.isOptionHasImage = isOptionHasImage;
+	}
+
+	public String getOptionIndicator() {
+		return optionIndicator;
+	}
+
+	public void setOptionIndicator(String optionIndicator) {
+		this.optionIndicator = optionIndicator;
+	}
+
+	public String getOptionValueInEnglish() {
+		return optionValueInEnglish;
+	}
+
+	public void setOptionValueInEnglish(String optionValueInEnglish) {
+		this.optionValueInEnglish = optionValueInEnglish;
+	}
+
+	public String getOptionValueInEnglishImageUrl() {
+		return optionValueInEnglishImageUrl;
+	}
+
+	public void setOptionValueInEnglishImageUrl(String optionValueInEnglishImageUrl) {
+		this.optionValueInEnglishImageUrl = optionValueInEnglishImageUrl;
+	}
+
+	public String getOptionValueInRegional() {
+		return optionValueInRegional;
+	}
+
+	public void setOptionValueInRegional(String optionValueInRegional) {
+		this.optionValueInRegional = optionValueInRegional;
+	}
+
+	public String getOptionValueInRegionalImageUrl() {
+		return optionValueInRegionalImageUrl;
+	}
+
+	public void setOptionValueInRegionalImageUrl(String optionValueInRegionalImageUrl) {
+		this.optionValueInRegionalImageUrl = optionValueInRegionalImageUrl;
+	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public void setNew(boolean isNew) {
@@ -161,8 +144,8 @@ public class Option implements Serializable, Persistable<Integer> {
 				+ isOptionHasImage + ", optionIndicator=" + optionIndicator + ", optionValueInEnglish="
 				+ optionValueInEnglish + ", optionValueInEnglishImageUrl=" + optionValueInEnglishImageUrl
 				+ ", optionValueInRegional=" + optionValueInRegional + ", optionValueInRegionalImageUrl="
-				+ optionValueInRegionalImageUrl + ", questionIdFk=" + questionIdFk + ", sectionIdFk=" + sectionIdFk
-				+ ", isNew=" + isNew + "]";
+				+ optionValueInRegionalImageUrl + ", question=" + question + "]";
 	}
 
+	
 }
