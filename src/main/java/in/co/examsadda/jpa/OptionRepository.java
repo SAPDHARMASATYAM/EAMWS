@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import in.co.examsadda.entity.Option;
 
 @Repository
-public interface OptionRepository extends JpaRepository<Option, Integer> {
+public interface OptionRepository extends JpaRepository<Option, Long> {
 
 	public List<Option> findAllByQuestionQuestionId(Long questionId);
 }
