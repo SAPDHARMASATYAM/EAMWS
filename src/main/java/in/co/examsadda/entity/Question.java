@@ -30,10 +30,6 @@ public class Question implements Serializable, Persistable<Long> {
 
 	@Column(name="is_question_has_image", nullable=false)
 	private boolean isQuestionHasImage;
-
-	@Column(name="practice_paper_id_fk", nullable=false)
-	private int practicePaperIdFk;
-
 	
 	@Column(name="question_in_english", nullable=false)
 	private String questionInEnglish;
@@ -51,7 +47,7 @@ public class Question implements Serializable, Persistable<Long> {
 	private String questionInRegionalImageUrl;
 
 	@ManyToOne
-	@JoinColumn(name="section_id")
+	@JoinColumn(name="section_id", nullable=false)
 	private Section section;
 
 	@Column(name="user_answer_for_this_question", nullable=false, length=1)
@@ -103,14 +99,6 @@ public class Question implements Serializable, Persistable<Long> {
 
 	public void setQuestionHasImage(boolean isQuestionHasImage) {
 		this.isQuestionHasImage = isQuestionHasImage;
-	}
-
-	public int getPracticePaperIdFk() {
-		return practicePaperIdFk;
-	}
-
-	public void setPracticePaperIdFk(int practicePaperIdFk) {
-		this.practicePaperIdFk = practicePaperIdFk;
 	}
 
 	public String getQuestionInEnglish() {
@@ -165,15 +153,17 @@ public class Question implements Serializable, Persistable<Long> {
 		this.isNew = isNew;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", answerForThisQuestion=" + answerForThisQuestion
 				+ ", isQuestionActive=" + isQuestionActive + ", isQuestionHasImage=" + isQuestionHasImage
-				+ ", practicePaperIdFk=" + practicePaperIdFk + ", questionInEnglish=" + questionInEnglish
-				+ ", questionInEnglishImageUrl=" + questionInEnglishImageUrl + ", questionInRegional="
-				+ questionInRegional + ", questionInRegionalImageUrl=" + questionInRegionalImageUrl + ", section="
-				+ section + ", userAnswerForThisQuestion=" + userAnswerForThisQuestion + "]";
+				+ ", questionInEnglish=" + questionInEnglish + ", questionInEnglishImageUrl="
+				+ questionInEnglishImageUrl + ", questionInRegional=" + questionInRegional
+				+ ", questionInRegionalImageUrl=" + questionInRegionalImageUrl + ", section=" + section
+				+ ", userAnswerForThisQuestion=" + userAnswerForThisQuestion + "]";
 	}
-	
-	
+
 }

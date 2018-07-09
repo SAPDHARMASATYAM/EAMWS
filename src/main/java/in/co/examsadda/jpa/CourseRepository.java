@@ -8,7 +8,4 @@ import in.co.examsadda.entity.Course;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
-	public Course findByCourseId(int courseId);
-	
-	
 }

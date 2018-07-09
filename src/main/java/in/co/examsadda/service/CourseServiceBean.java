@@ -1,6 +1,11 @@
 package in.co.examsadda.service;
 
+import java.util.List;
+
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +22,18 @@ public class CourseServiceBean implements CourseService {
 	
 	@Override
 	public Course addCourse(Course course) {
-		return courseRepository.save(course);
+		Course saveResponse = null;
+		try {
+			saveResponse = courseRepository.save(course);
+		} catch (DataIntegrityViolationException |ConstraintViolationException e) {
+			throw new RuntimeException("Duplicate Entry");
+		}
+		return saveResponse;
 	}
 	
 	@Override
 	public Course getCourse(int courseId) {
-		return courseRepository.findById(courseId).get();
+		return courseRepository.getOne(courseId);
 	}
 	
 	@Override
@@ -33,5 +44,17 @@ public class CourseServiceBean implements CourseService {
 	@Override
 	public void deleteCourse(Course course) {
 		 courseRepository.delete(course);
+	}
+
+	@Override
+	public List<Course> getCoursesByCourseIds(List<Integer> courseIds) {
+		List<Course> findAllCoursesList = courseRepository.findAllById(courseIds);
+		return findAllCoursesList;
+	}
+
+	@Override
+	public List<Course> getAllCourses() {
+		List<Course> allCourses = courseRepository.findAll();
+		return allCourses;
 	}
 }

@@ -1,6 +1,8 @@
 package in.co.examsadda.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 
 import org.springframework.data.domain.Persistable;
@@ -22,28 +24,38 @@ public class Course implements Serializable, Persistable<Integer>  {
 	private int courseId;
 
 	
-	@Column(name="course_name_in_english", nullable=false)
+	@Column(name="course_name_in_english", nullable=false, unique=true)
 	private String courseNameInEnglish;
 
 	
-	@Column(name="course_name_in_regional", nullable=false)
+	@Column(name="course_name_in_regional", nullable=false, unique=true)
 	private String courseNameInRegional;
 
 	@Column(name="is_course_active", nullable=false)
 	private boolean isCourseActive;
 
-	@Column(name="number_of_practice_papers_in_this_course", nullable=false)
-	private int numberOfPracticePapersInThisCourse;
-
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "date_of_course_registration", nullable = false)
+	private Date datOfCourseRegistration;
+	
 	@Transient
 	private boolean isNew = false;
 	
 	public Course() {
 	}
 
+	@Override
+	public Integer getId() {
+		return this.getCourseId();
+	}
+
+	@Override
+	public boolean isNew() {
+		return this.isNew;
+	}
+
 	public int getCourseId() {
-		return this.courseId;
+		return courseId;
 	}
 
 	public void setCourseId(int courseId) {
@@ -51,7 +63,7 @@ public class Course implements Serializable, Persistable<Integer>  {
 	}
 
 	public String getCourseNameInEnglish() {
-		return this.courseNameInEnglish;
+		return courseNameInEnglish;
 	}
 
 	public void setCourseNameInEnglish(String courseNameInEnglish) {
@@ -59,37 +71,15 @@ public class Course implements Serializable, Persistable<Integer>  {
 	}
 
 	public String getCourseNameInRegional() {
-		return this.courseNameInRegional;
+		return courseNameInRegional;
 	}
 
 	public void setCourseNameInRegional(String courseNameInRegional) {
 		this.courseNameInRegional = courseNameInRegional;
 	}
 
-	public boolean getIsCourseActive() {
-		return this.isCourseActive;
-	}
-
-	public void setIsCourseActive(boolean isCourseActive) {
-		this.isCourseActive = isCourseActive;
-	}
-
-	public int getNumberOfPracticePapersInThisCourse() {
-		return this.numberOfPracticePapersInThisCourse;
-	}
-
-	public void setNumberOfPracticePapersInThisCourse(int numberOfPracticePapersInThisCourse) {
-		this.numberOfPracticePapersInThisCourse = numberOfPracticePapersInThisCourse;
-	}
-
-	@Override
-	public Integer getId() {
-		return this.courseId;
-	}
-
-	@Override
-	public boolean isNew() {
-		return this.isNew;
+	public boolean isCourseActive() {
+		return isCourseActive;
 	}
 
 	public void setCourseActive(boolean isCourseActive) {
@@ -98,6 +88,21 @@ public class Course implements Serializable, Persistable<Integer>  {
 
 	public void setNew(boolean isNew) {
 		this.isNew = isNew;
+	}
+
+	public Date getDatOfCourseRegistration() {
+		return datOfCourseRegistration;
+	}
+
+	public void setDatOfCourseRegistration(Date datOfCourseRegistration) {
+		this.datOfCourseRegistration = datOfCourseRegistration;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [courseId=" + courseId + ", courseNameInEnglish=" + courseNameInEnglish
+				+ ", courseNameInRegional=" + courseNameInRegional + ", isCourseActive=" + isCourseActive
+				+ ", datOfCourseRegistration=" + datOfCourseRegistration + "]";
 	}
 
 }

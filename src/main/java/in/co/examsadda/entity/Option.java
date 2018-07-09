@@ -41,9 +41,8 @@ public class Option implements Serializable, Persistable<Long> {
 	@Column(name = "option_value_in_regional_image_url", nullable = true)
 	private String optionValueInRegionalImageUrl;
 
-
 	@ManyToOne
-	@JoinColumn(name="question_id")
+	@JoinColumn(name="question_id", nullable=false)
 	private Question question;
 
 	@Transient

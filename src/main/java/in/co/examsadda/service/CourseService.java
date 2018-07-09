@@ -1,5 +1,7 @@
 package in.co.examsadda.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,12 +12,12 @@ import in.co.examsadda.entity.Course;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public interface CourseService {
 
-	Course addCourse(Course course);
+	public Course addCourse(Course course);
+	public Course getCourse(int courseId);
+	public List<Course> getCoursesByCourseIds(List<Integer> courseIds);
+	public List<Course> getAllCourses();
 
-	Course getCourse(int courseId);
-
-	Course updateCourse(Course course);
-
-	void deleteCourse(Course course);
+	public Course updateCourse(Course course);
+	public void deleteCourse(Course course);
 
 }

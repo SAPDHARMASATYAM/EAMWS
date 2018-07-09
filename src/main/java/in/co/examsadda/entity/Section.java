@@ -28,7 +28,7 @@ public class Section implements Serializable, Persistable<Integer> {
 	private int numberOfQuestionsInThisSection;
 
 	@ManyToOne
-	@JoinColumn(name="practice_paper_id")
+	@JoinColumn(name="practice_paper_id", nullable=false)
 	private PracticePaper practicePaper;
 
 	@Column(name="section_description_in_english", nullable=false)
