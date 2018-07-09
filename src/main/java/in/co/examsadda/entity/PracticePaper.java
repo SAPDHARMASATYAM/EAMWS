@@ -30,7 +30,7 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 	private boolean isPracticePaperActive;
 
 	@Column(name="number_of_sections_in_this_practice_paper", nullable=false)
-	private boolean numberOfSectionsInThisPracticePaper;
+	private int numberOfSectionsInThisPracticePaper;
 
 	@Column(name="practice_paper_duration", nullable=false)
 	private int practicePaperDuration;
@@ -67,11 +67,11 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 		this.isPracticePaperActive = isPracticePaperActive;
 	}
 
-	public boolean getNumberOfSectionsInThisPracticePaper() {
+	public int getNumberOfSectionsInThisPracticePaper() {
 		return this.numberOfSectionsInThisPracticePaper;
 	}
 
-	public void setNumberOfSectionsInThisPracticePaper(boolean numberOfSectionsInThisPracticePaper) {
+	public void setNumberOfSectionsInThisPracticePaper(int numberOfSectionsInThisPracticePaper) {
 		this.numberOfSectionsInThisPracticePaper = numberOfSectionsInThisPracticePaper;
 	}
 
