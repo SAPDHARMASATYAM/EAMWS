@@ -20,6 +20,7 @@ public class QuestionOptionsServiceBean implements QuestionOptionsService {
 	private QuestionService questionService;
 	@Autowired
 	private OptionsService optionsService;
+	
 	@Override
 	public QuestionOptions getQuestionOptionsByQuestionId(Long questionId) {
 		QuestionOptions questionOptions = new QuestionOptions();
@@ -29,6 +30,7 @@ public class QuestionOptionsServiceBean implements QuestionOptionsService {
 		questionOptions.setOptions(optionsByQuestionId);
 		return questionOptions;
 	}
+	
 	@Override
 	public List<QuestionOptions> getAllQuestionsAndOptionsBySectionId(int sectionId) {
 		List<QuestionOptions> questionsAndOptionsBySectionId = new ArrayList<QuestionOptions>();
@@ -42,37 +44,37 @@ public class QuestionOptionsServiceBean implements QuestionOptionsService {
 		}
 		return questionsAndOptionsBySectionId;
 	}
+	
 	@Override
-	public boolean saveQuestionOptions(QuestionOptions questionOptions) {
-		boolean saveQuestionOptionsResponse = false;
+	public QuestionOptions saveQuestionOptions(QuestionOptions questionOptions) {
+		QuestionOptions saveQuestionOptionsResponse = new QuestionOptions();
 		Question saveQuestionResponse = questionService.saveQuestion(questionOptions.getQuestion());
 		if(saveQuestionResponse != null) {
-			List<Option> saveOptions = optionsService.saveOptions(questionOptions.getOptions());
+			saveQuestionOptionsResponse.setQuestion(saveQuestionResponse);
+			List<Option> questionInOptionsList = populateQuestionInOptionsList(questionOptions.getOptions(), saveQuestionResponse);
+			List<Option> saveOptions = optionsService.saveOptions(questionInOptionsList);
 			if(!saveOptions.isEmpty()) {
-				saveQuestionOptionsResponse = true;
+				saveQuestionOptionsResponse.setOptions(saveOptions);
 			}
 		}
 		return saveQuestionOptionsResponse;
 	}
+	
 	@Override
-	public boolean saveAllQuestionsAndOptions(List<QuestionOptions> questionsAndOptions) {
-		boolean saveAllQuestionsAndOptionsResponse = false;
-		List<Question> questions = new ArrayList<Question>();
-		List<Option> options = new ArrayList<Option>();
-		
+	public List<QuestionOptions> saveAllQuestionsAndOptions(List<QuestionOptions> questionsAndOptions) {
+		List<QuestionOptions> saveAllQuestionsAndOptionsResponse = new ArrayList<QuestionOptions>();
 		for (QuestionOptions questionOptions : questionsAndOptions) {
-			questions.add(questionOptions.getQuestion());
-			options.addAll(questionOptions.getOptions());
-		}
-		List<Question> saveQuestionsResponse = questionService.saveQuestions(questions);
-		if(!saveQuestionsResponse.isEmpty()) {
-			List<Option> saveOptionsResponse = optionsService.saveOptions(options);
-			if(!saveOptionsResponse.isEmpty()) {
-				saveAllQuestionsAndOptionsResponse = true;
-			}
+			QuestionOptions saveQuestionOptionsResponse = saveQuestionOptions(questionOptions);
+			saveAllQuestionsAndOptionsResponse.add(saveQuestionOptionsResponse);
 		}
 		return saveAllQuestionsAndOptionsResponse;
 	}
 
+	private List<Option> populateQuestionInOptionsList(List<Option> questionOptions, Question question){
+		for(int i=0;i<questionOptions.size();i++) {
+			questionOptions.get(i).setQuestion(question);
+		}
+		return questionOptions;
+	}
 
 }

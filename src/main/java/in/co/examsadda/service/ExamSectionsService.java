@@ -16,7 +16,7 @@ public interface ExamSectionsService {
 	public ExamSection getExamSectionBySectionId(Integer sectionId);
 	public List<ExamSection> getAllExamSectionsByPracticepaperId(Integer practicePaperId);
 	
-	public boolean saveExamSection(ExamSection examSection);
-	public boolean saveAllExamSections(List<ExamSection> examSections);
+	public ExamSection saveExamSection(ExamSection examSection);
+	public List<ExamSection> saveAllExamSections(List<ExamSection> examSections);
 
 }

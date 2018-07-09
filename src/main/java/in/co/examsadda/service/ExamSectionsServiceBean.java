@@ -44,32 +44,30 @@ public class ExamSectionsServiceBean implements ExamSectionsService {
 		return examSections;
 	}
 	@Override
-	public boolean saveExamSection(ExamSection examSection) {
-		boolean saveExamSectionResponse = false;
+	public ExamSection saveExamSection(ExamSection examSection) {
+		ExamSection saveExamSectionResponse = new  ExamSection();
 		Section saveSectionResponse = sectionService.saveSection(examSection.getSection());
 		if(saveSectionResponse != null) {
-			boolean saveAllQuestionsAndOptionsResponse = questionOptionsService.saveAllQuestionsAndOptions(examSection.getQuestions());
-			if(saveAllQuestionsAndOptionsResponse) {
-				saveExamSectionResponse=true;
+			saveExamSectionResponse.setSection(saveSectionResponse);
+			List<QuestionOptions> questionsAndOptionsList = populateSectionIdInQuestionsList(examSection.getQuestions(),saveSectionResponse);
+			List<QuestionOptions> saveAllQuestionsAndOptionsResponse = questionOptionsService.saveAllQuestionsAndOptions(questionsAndOptionsList);
+			if(!saveAllQuestionsAndOptionsResponse.isEmpty()) {
+				saveExamSectionResponse.setQuestions(saveAllQuestionsAndOptionsResponse);
 			}
 		}
 		return saveExamSectionResponse;
 	}
-	@Override
-	public boolean saveAllExamSections(List<ExamSection> examSections) {
-		boolean saveAllExamSectionsResponse = false;
-		List<Section> sections = new ArrayList<Section>();
-		List<QuestionOptions> questions = new ArrayList<QuestionOptions>();
-		for (ExamSection examSection : examSections) {
-			sections.add(examSection.getSection());
-			questions.addAll(examSection.getQuestions());
+	private List<QuestionOptions> populateSectionIdInQuestionsList(List<QuestionOptions> questionOptions, Section saveSectionResponse) {
+		for(int index=0;index<questionOptions.size();index++) {
+			questionOptions.get(index).getQuestion().setSection(saveSectionResponse);
 		}
-		List<Section> saveSectionsResponse = sectionService.saveSections(sections);
-		if(!saveSectionsResponse.isEmpty()) {
-			boolean saveAllQuestionsAndOptions = questionOptionsService.saveAllQuestionsAndOptions(questions);
-			if(saveAllQuestionsAndOptions) {
-				saveAllExamSectionsResponse = true;
-			}
+		return questionOptions;
+	}
+	@Override
+	public List<ExamSection> saveAllExamSections(List<ExamSection> examSections) {
+		List<ExamSection> saveAllExamSectionsResponse = new ArrayList<ExamSection>();
+		for(ExamSection examSection : examSections) {
+			saveAllExamSectionsResponse.add(saveExamSection(examSection));
 		}
 		return saveAllExamSectionsResponse;
 	}

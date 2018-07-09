@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import in.co.examsadda.entity.PracticePaper;
-import in.co.examsadda.entity.Section;
 import in.co.examsadda.model.ExamPaper;
 import in.co.examsadda.model.ExamSection;
 
@@ -49,24 +48,21 @@ public class ExamPaperServiceBean implements ExamPaperService{
 		PracticePaper savePracticePaperResponse = practicePaperService.savePracticePaper(examPaper.getPracticePaper());
 		saveExamPaperResponse.setPracticePaper(savePracticePaperResponse);
 		if(savePracticePaperResponse != null) {
-			boolean saveAllExamSectionsResponse = examSectionsService.saveAllExamSections(examPaper.getSections());
-			if(saveAllExamSectionsResponse) {
-//				saveExamPaperResponse = savePracticePaperResponse;
+			saveExamPaperResponse.setPracticePaper(savePracticePaperResponse);
+			List<ExamSection> examSectionsList = populatePracticepaperIdInSections(examPaper.getSections(),savePracticePaperResponse);
+			List<ExamSection> saveAllExamSectionsResponse = examSectionsService.saveAllExamSections(examSectionsList);
+			if(!saveAllExamSectionsResponse.isEmpty()) {
+				saveExamPaperResponse.setSections(saveAllExamSectionsResponse);
 			}
 		}
 		return saveExamPaperResponse;
 	}
+	
 	@Override
 	public List<ExamPaper> saveExamPapers(List<ExamPaper> examPapers) throws Exception {
 		List<ExamPaper> examPapersResonse = new ArrayList<ExamPaper>();
 		for(ExamPaper examPaper : examPapers) {
-			PracticePaper savePracticePaperResponse = practicePaperService.savePracticePaper(examPaper.getPracticePaper());
-			if(savePracticePaperResponse !=null) {
-				List<ExamSection> examSections = populatePracticepaperIdInSections(examPaper.getSections(),savePracticePaperResponse);
-				boolean saveAllExamSections = examSectionsService.saveAllExamSections(examSections);
-				System.out.println(saveAllExamSections);
-			
-			}
+			examPapersResonse.add(saveExamPaper(examPaper));
 		}
 		return examPapersResonse;
 	}

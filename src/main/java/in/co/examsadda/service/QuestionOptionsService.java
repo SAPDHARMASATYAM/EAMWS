@@ -9,7 +9,7 @@ public interface QuestionOptionsService {
 	public QuestionOptions getQuestionOptionsByQuestionId(Long questionId);
 	public List<QuestionOptions> getAllQuestionsAndOptionsBySectionId(int sectionId);
 	
-	public boolean saveQuestionOptions(QuestionOptions questionOptions);
-	public boolean saveAllQuestionsAndOptions(List<QuestionOptions> questionOptions);
+	public QuestionOptions saveQuestionOptions(QuestionOptions questionOptions);
+	public List<QuestionOptions> saveAllQuestionsAndOptions(List<QuestionOptions> questionOptions);
 	
 }
