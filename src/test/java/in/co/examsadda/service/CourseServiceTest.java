@@ -24,8 +24,8 @@ public class CourseServiceTest {
 		
 		Course course = new Course();
 		course.setCourseActive(true);
-		course.setCourseNameInEnglish("Constable");
-		course.setCourseNameInRegional("కానిస్టేబుల్");
+		course.setCourseNameInEnglish("sub-inspector of police");
+		course.setCourseNameInRegional("పోలీసుల సబ్-ఇన్స్పెక్టర్");
 		course.setNew(true);
 		course.setDatOfCourseRegistration(new Date());
 		Course addCourseResponse = courseService.addCourse(course);
