@@ -3,14 +3,19 @@ package in.co.examsadda.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,11 +23,16 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 import in.co.examsadda.entity.Option;
+import in.co.examsadda.entity.PracticePaper;
 import in.co.examsadda.entity.Question;
 import in.co.examsadda.entity.Section;
+import in.co.examsadda.service.ExamPaperService;
 
 public class ReadDocFile
 {
+	@Autowired
+	private ExamPaperService examPaper;
+	
 	ArrayList<String> fileContent=new ArrayList<String>();
 	public void readFile(String fileName) {
 		String fileExt=""; 
@@ -120,6 +130,10 @@ public class ReadDocFile
 		if(fileData.size()==0) {
 			return null;
 		}
+		PracticePaper practicePaper = new PracticePaper();
+		practicePaper.setPracticePaperNameInEnglish("ssc");
+		practicePaper.setPracticePaperNameInRegional("ssc");
+		
 		//Section
 		for(int i=0;i<4;i++) {
 			LinkedHashMap<Question, LinkedHashMap<Character,String>> questionMap = new LinkedHashMap();
@@ -159,6 +173,48 @@ public class ReadDocFile
 			examPaper.put(section, questionMap);
 		}
 		return examPaper;
+	}
+	
+	public void savePracticePaper(LinkedHashMap<Section,LinkedHashMap<Question,LinkedHashMap<Character,String>>> practicePaper) {
+		
+		Set examPaper = null;
+		Section section=null;
+		Question question = null;
+		LinkedHashMap<Question, LinkedHashMap<Character,String>> questionOption=new LinkedHashMap<Question, LinkedHashMap<Character,String>>();
+		LinkedHashMap<Character,String> option = new LinkedHashMap<Character,String>();
+		if(practicePaper!=null) {
+		
+			Set set = practicePaper.entrySet();
+			Iterator iterator = set.iterator();
+			
+			while(iterator.hasNext()) {
+				Map.Entry paper = (Map.Entry)iterator.next();
+				section = (Section)paper.getKey();
+				
+				questionOption = (LinkedHashMap)paper.getValue();
+				
+				Set questionOptionSet = questionOption.entrySet();
+				Iterator questionOptionIterator = questionOptionSet.iterator();
+				
+				while(questionOptionIterator.hasNext()) {
+					
+					Map.Entry questionOptionPaper = (Map.Entry)iterator.next();
+					question = (Question)questionOptionPaper.getKey();
+					option = (LinkedHashMap<Character,String>)questionOptionPaper.getValue();
+					
+					Set optionSet = option.entrySet();
+					Iterator optionIterator = optionSet.iterator();
+					
+					while(optionIterator.hasNext()) {
+						Map.Entry optionMap = (Map.Entry)optionIterator.next();
+						optionMap.getKey();
+						
+					}
+				}
+				
+			}
+		}
+		
 	}
 	
 }
