@@ -20,10 +20,10 @@ public class Option implements Serializable, Persistable<Long> {
 	@Column(name = "option_Id", unique = true, nullable = false)
 	private Long optionId;
 
-	@Column(name = "is_option_active", nullable = false)
+	@Column(name = "is_option_active", nullable = true)
 	private boolean isOptionActive;
 
-	@Column(name = "is_option_has_image", nullable = false)
+	@Column(name = "is_option_has_image", nullable = true)
 	private boolean isOptionHasImage;
 
 	@Column(name = "option_indicator", nullable = false, length = 1)

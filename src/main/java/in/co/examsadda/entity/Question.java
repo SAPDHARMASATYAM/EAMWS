@@ -22,35 +22,35 @@ public class Question implements Serializable, Persistable<Long> {
 	@Column(name="question_id", unique=true, nullable=false)
 	private Long questionId;
 
-	@Column(name="answer_for_this_question", nullable=false, length=1)
+	@Column(name="answer_for_this_question", nullable=false)
 	private String answerForThisQuestion;
 
-	@Column(name="is_question_active", nullable=false)
+	@Column(name="is_question_active", nullable=true)
 	private boolean isQuestionActive;
 
-	@Column(name="is_question_has_image", nullable=false)
+	@Column(name="is_question_has_image", nullable=true)
 	private boolean isQuestionHasImage;
 	
-	@Column(name="question_in_english", nullable=false)
+	@Column(name="question_in_english", nullable=true)
 	private String questionInEnglish;
 
 	
-	@Column(name="question_in_english_image_url", nullable=false)
+	@Column(name="question_in_english_image_url", nullable=true)
 	private String questionInEnglishImageUrl;
 
 	
-	@Column(name="question_in_regional", nullable=false)
+	@Column(name="question_in_regional", nullable=true)
 	private String questionInRegional;
 
 	
-	@Column(name="question_in_regional_image_url", nullable=false)
+	@Column(name="question_in_regional_image_url", nullable=true)
 	private String questionInRegionalImageUrl;
 
 	@ManyToOne
 	@JoinColumn(name="section_id", nullable=false)
 	private Section section;
 
-	@Column(name="user_answer_for_this_question", nullable=false, length=1)
+	@Column(name="user_answer_for_this_question", nullable=true, length=1)
 	private String userAnswerForThisQuestion;
 	
 	@Transient

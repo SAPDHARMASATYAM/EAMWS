@@ -12,11 +12,6 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
 import in.co.examsadda.entity.Option;
 import in.co.examsadda.entity.Question;
 import in.co.examsadda.entity.Section;
@@ -42,7 +37,7 @@ public class ReadDocFile
 			
 				 //Gson gson = new Gson();
 
-				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				/*Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			        // Convert the ordered map into an ordered string.
 			        String json = gson.toJson(converListToMap, LinkedHashMap.class);
 
@@ -53,7 +48,7 @@ public class ReadDocFile
 			        JsonParser jp = new JsonParser();
 			        JsonElement je = jp.parse(json);
 			        String prettyJsonString = gson.toJson(je);
-			        System.out.println(prettyJsonString); 
+			        System.out.println(prettyJsonString); */
 			        
 				//System.out.println(converListToMap);
 			}catch(Exception e){

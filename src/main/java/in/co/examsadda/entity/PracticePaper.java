@@ -23,10 +23,10 @@ public class PracticePaper implements Serializable, Persistable<Integer> {
 
     //Mapping To Course 
     @ManyToOne
-    @JoinColumn(name="course_id", nullable=false)
+    @JoinColumn(name="course_id", nullable=true)
     private Course course;
 	
-	@Column(name="is_practice_paper_active", nullable=false)
+	@Column(name="is_practice_paper_active", nullable=true)
 	private boolean isPracticePaperActive;
 
 	@Column(name="number_of_sections_in_this_practice_paper", nullable=false)

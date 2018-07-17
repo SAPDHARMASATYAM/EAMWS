@@ -31,10 +31,10 @@ public class Section implements Serializable, Persistable<Integer> {
 	@JoinColumn(name="practice_paper_id", nullable=false)
 	private PracticePaper practicePaper;
 
-	@Column(name="section_description_in_english", nullable=false)
+	@Column(name="section_description_in_english", nullable=true)
 	private String sectionDescriptionInEnglish;
 
-	@Column(name="section_description_in_regional", nullable=false)
+	@Column(name="section_description_in_regional", nullable=true)
 	private String sectionDescriptionInRegional;
 
 	@Column(name="section_name_in_english", nullable=false)

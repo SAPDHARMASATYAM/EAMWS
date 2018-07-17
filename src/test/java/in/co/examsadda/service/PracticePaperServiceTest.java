@@ -21,10 +21,16 @@ public class PracticePaperServiceTest {
 
 	@Autowired
 	private PracticePaperService practicePaperService;
-	@Autowired
-	private ReadDocFile readDocFile;
+	
+	private ReadDocFile readDocFile = new ReadDocFile();
 	@Autowired
 	private SectionService sectionService;
+	
+	@Autowired
+	private QuestionService questionService;
+	
+	@Autowired
+	private OptionsService optionService;
 	
 	@Test
 	public void savePracticePaperTest() {
@@ -51,9 +57,15 @@ public class PracticePaperServiceTest {
 						for (Question question : QuestionsKeySet) {
 							question.setSection(saveSectionResponse);
 							LinkedHashMap<Character, Option> optionsMap = questionsMap.get(question);
+							Question saveQuestionResponse = questionService.saveQuestion(question);
+							
 							Set<Character> optionsKeySet = optionsMap.keySet();
 							for (Character optionKey : optionsKeySet) {
-								optionsMap.get(optionKey);
+								Option option = optionsMap.get(optionKey);
+								option.setQuestion(saveQuestionResponse);
+								Option saveOptionResponse = optionService.saveOption(option);
+								
+								System.err.println(saveOptionResponse);
 							}
 								
 							
