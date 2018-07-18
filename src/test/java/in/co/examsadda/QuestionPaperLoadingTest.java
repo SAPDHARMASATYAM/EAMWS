@@ -13,6 +13,6 @@ public class QuestionPaperLoadingTest {
 	public void questionPaperLoading() {
 		
 	ReadDocFile readDocFile = new ReadDocFile(); 
-	readDocFile.readFile("E:\\Development\\Workspaces\\eaws\\SampleFIleReadid.docx");
+	readDocFile.readFile("resources\\SampleFIleReadid.docx");
 	}
 }
