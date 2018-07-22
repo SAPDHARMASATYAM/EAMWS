@@ -35,7 +35,7 @@ public class PracticePaperServiceTest {
 	@Test
 	public void savePracticePaperTest() {
 		
-		LinkedHashMap<Section, LinkedHashMap<Question, LinkedHashMap<Character, Option>>> fileData = readDocFile.readFile("E:\\Development\\Workspaces\\eaws\\EAS\\src\\main\\resources\\SampleFIleReadid.docx");
+		LinkedHashMap<Section, LinkedHashMap<Question, LinkedHashMap<Character, Option>>> fileData = readDocFile.readFile("E:\\Development\\Workspaces\\eaws\\EAS\\src\\main\\resources\\SamplePaper.docx");
 		
 		
 		PracticePaper practicePaper = new PracticePaper();

@@ -1,10 +1,9 @@
 package in.co.examsadda;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import java.io.File;
+import java.io.IOException;
 
+import org.junit.Test;
 import in.co.examsadda.util.ReadDocFile;
 /*@RunWith(SpringRunner.class)
 @SpringBootTest*/
@@ -13,6 +12,13 @@ public class QuestionPaperLoadingTest {
 	public void questionPaperLoading() {
 		
 	ReadDocFile readDocFile = new ReadDocFile(); 
-	readDocFile.readFile("resources\\SampleFIleReadid.docx");
+	try {
+		//readDocFile.readexclFile("E:\\Development\\Workspaces\\eaws\\EAS\\src\\main\\resources\\SamplePaperexcl.xlsx");
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("SamplePaperexcl.xlsx").getFile());
+		readDocFile.readexclFile(file.getAbsolutePath());
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 	}
 }
