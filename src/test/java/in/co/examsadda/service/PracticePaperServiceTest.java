@@ -1,5 +1,6 @@
 package in.co.examsadda.service;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -35,7 +36,14 @@ public class PracticePaperServiceTest {
 	@Test
 	public void savePracticePaperTest() {
 		
-		LinkedHashMap<Section, LinkedHashMap<Question, LinkedHashMap<Character, Option>>> fileData = readDocFile.readFile("E:\\Development\\Workspaces\\eaws\\EAS\\src\\main\\resources\\SamplePaper.docx");
+		ReadDocFile readDocFile = new ReadDocFile(); 
+		String fileName = "SampleFIleReadid.docx";
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource(fileName).getFile());
+		String filePath = file.getAbsolutePath();
+		filePath = "E:\\DE\\sts ws\\EAS\\src\\main\\resources\\SampleFIleReadid.docx";
+		
+		LinkedHashMap<Section, LinkedHashMap<Question, LinkedHashMap<Character, Option>>> fileData = readDocFile.readFile(filePath);
 		
 		
 		PracticePaper practicePaper = new PracticePaper();
