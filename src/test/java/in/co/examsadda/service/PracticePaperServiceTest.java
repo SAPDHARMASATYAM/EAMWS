@@ -41,7 +41,7 @@ public class PracticePaperServiceTest {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource(fileName).getFile());
 		String filePath = file.getAbsolutePath();
-		filePath = "E:\\DE\\sts ws\\EAS\\src\\main\\resources\\SampleFIleReadid.docx";
+		//filePath = "E:\\DE\\sts ws\\EAS\\src\\main\\resources\\SampleFIleReadid.docx";
 		
 		LinkedHashMap<Section, LinkedHashMap<Question, LinkedHashMap<Character, Option>>> fileData = readDocFile.readFile(filePath);
 		
