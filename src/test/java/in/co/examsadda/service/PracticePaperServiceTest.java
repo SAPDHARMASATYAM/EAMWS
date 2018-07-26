@@ -66,8 +66,7 @@ public class PracticePaperServiceTest {
 								Option saveOptionResponse = optionService.saveOption(option);
 								
 								System.err.println(saveOptionResponse);
-							}
-								
+							}		
 							
 						}
 					}
